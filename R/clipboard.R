@@ -9,6 +9,10 @@ read_clip <- function() {
   # Pass to appropriate handler function
   if(stype == "Darwin") {
     osx_read_clip()
+  } else if(stype == "Windows") {
+    win_read_clip()
+  } else if(stype == "Linux") {
+    linux_read_clip()
   } else {
     stop("System not recognized!")
   }
@@ -25,6 +29,10 @@ write_clip <- function(content) {
   # Pass to appropriate handler function
   if(stype == "Darwin") {
     osx_write_clip(content)
+  } else if(stype == "Windows") {
+    win_write_clip(content)
+  } else if(stype == "Linux") {
+    linux_write_clip()
   } else {
     stop("System not recognized!")
   }
