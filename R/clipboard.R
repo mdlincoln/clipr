@@ -4,8 +4,14 @@
 #' @export
 read_clip <- function() {
   # Determine system type
+  stype <- sys_type()
 
   # Pass to appropriate handler function
+  if(stype == "Darwin") {
+    osx_read_clip()
+  } else {
+    stop("System not recognized!")
+  }
 }
 
 #' Write clipboard
@@ -14,6 +20,12 @@ read_clip <- function() {
 #' @export
 write_clip <- function(content) {
   # Determine system type
+  stype <- sys_type()
 
   # Pass to appropriate handler function
+  if(stype == "Darwin") {
+    osx_write_clip(content)
+  } else {
+    stop("System not recognized!")
+  }
 }
