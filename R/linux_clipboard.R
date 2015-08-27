@@ -19,7 +19,7 @@ linux_write_clip <- function(content) {
   if(Sys.which("xclip") == "")
     stop("Clipboard on Linux requires 'xclip'. Try using:\nsudo apt-get install xclip")
   con <- pipe("xclip -i", "w")
-  writeLines(object, con=con)
+  writeLines(content, con=con)
   close(con)
   return(content)
 }
