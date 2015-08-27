@@ -4,7 +4,7 @@ Title: Read and Write from the System Clipboard
 Version: 0.1
 Date: 2015-08-27
 Authors@R: person("Matthew", "Lincoln", email = "mlincol1@umd.edu", role = c("aut", "cre"))
-Description: Simple utility functions to read and write from the system
+Description: Simple utility functions to read from and write to the system
   clipboards of Windows, OS X, and Linux.
 License: GPL-3
 LazyData: TRUE
