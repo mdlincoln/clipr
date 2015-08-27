@@ -8,3 +8,5 @@ Description: Simple utility functions to read from and write to the system
   clipboards of Windows, OS X, and Linux.
 License: GPL-3
 LazyData: TRUE
+URL: https://github.com/mdlincoln/clipr
+BugReports: https://github.com/mdlincoln/clipr/issues
