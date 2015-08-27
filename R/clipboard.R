@@ -1,6 +1,9 @@
 #' Read clipboard
 #'
 #' Read the contents of the system clipboard into a character vector
+#'
+#' @return A character vector with the contents of the clipboard.
+#'
 #' @export
 read_clip <- function() {
   # Determine system type
@@ -21,6 +24,9 @@ read_clip <- function() {
 #' Write clipboard
 #'
 #' Write a character vector to the system clipboard
+#'
+#' @return On successfully writing the input to the clipboard, this function
+#'   returns the same input for use in piped operations.
 #' @export
 write_clip <- function(content) {
   # Determine system type

@@ -6,4 +6,5 @@ win_read_clip <- function() {
 # Helper function to write to the Windows clipboard
 win_write_clip <- function(content) {
   writeClipboard(object, format = 1)
+  return(content)
 }

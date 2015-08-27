@@ -21,4 +21,5 @@ linux_write_clip <- function(content) {
   con <- pipe("xclip -i", "w")
   writeLines(object, con=con)
   close(con)
+  return(content)
 }
