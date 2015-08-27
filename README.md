@@ -6,7 +6,7 @@ clipr
 Simple utility functions to read and write from the system clipboards of Windows, OS X, and Linux.
 
 ```R
-devtools::install("mdlincoln/clipr")
+devtools::install_github("mdlincoln/clipr")
 
 var <- read_clip()
 
