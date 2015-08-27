@@ -25,6 +25,7 @@ read_clip <- function() {
 #'
 #' Write a character vector to the system clipboard
 #'
+#' @param content A character vector to be written to the system clipboard
 #' @return On successfully writing the input to the clipboard, this function
 #'   returns the same input for use in piped operations.
 #' @export
