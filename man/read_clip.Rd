@@ -7,7 +7,8 @@
 read_clip()
 }
 \value{
-A character vector with the contents of the clipboard.
+A character vector with the contents of the clipboard. If the system
+  clipboard is empty, returns NULL
 }
 \description{
 Read the contents of the system clipboard into a character vector
