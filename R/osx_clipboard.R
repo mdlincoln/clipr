@@ -12,7 +12,7 @@ osx_read_clip <- function() {
 # Adapted from https://github.com/jennybc/reprex/blob/master/R/clipboard.R
 osx_write_clip <- function(content) {
   con <- pipe("pbcopy")
-  cat(content, file = con, sep = "\n")
+  writeChar(content, con = con)
   close(con)
   return(content)
 }
