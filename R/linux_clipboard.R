@@ -25,15 +25,17 @@ linux_read_clip <- function() {
 #
 # Requires the Linux utility 'xclip' or 'xsel'. This function will stop with an error if neither is found.
 # Adapted from https://github.com/mrdwab/overflow-mrdwab/blob/master/R/writeClip.R
+#
+# Targets "primary" and "clipboard" clipboards if using xclip, see: http://unix.stackexchange.com/a/69134/89254
 linux_write_clip <- function(content) {
   if (Sys.which("xclip") != "") {
-    con <- pipe("xclip -i", "w")
+    con <- pipe("xclip -i -sel p -f | xclip -i -sel c", "w")
   } else if (Sys.which("xsel") != "") {
     con <- pipe("xsel -b", "w")
   } else {
     notify_no_cb()
   }
-  writeLines(content, con=con)
+  writeChar(content, con=con)
   close(con)
   return(content)
 }
