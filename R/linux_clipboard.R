@@ -1,13 +1,14 @@
 # Function to stop the read/write and return an error of missing clipboard software.
 notify_no_cb <- function() {
-  stop("Clipboard on Linux requires 'xclip' or 'xsel'. Try using:\nsudo apt-get install xclip",
+  stop("Clipboard on Linux requires 'xclip' (recommended) or 'xsel'. Try using:\nsudo apt-get install xclip",
        call.=FALSE)
 }
 
 # Helper function to read from the Linux clipboard
 #
 # Requires the Linux utility 'xclip' or 'xsel'. This function will stop with an error if neither is found.
-# Adapted from https://github.com/mrdwab/overflow-mrdwab/blob/master/R/readClip.R
+# Adapted from: https://github.com/mrdwab/overflow-mrdwab/blob/master/R/readClip.R
+#          and: https://github.com/jennybc/reprex/blob/master/R/clipboard.R
 linux_read_clip <- function() {
   if (Sys.which("xclip") != "") {
     con <- pipe("xclip -o -selection clipboard")
@@ -16,7 +17,8 @@ linux_read_clip <- function() {
   } else {
     notify_no_cb()
   }
-  content <- readLines(con)
+  content <- scan(con, what = character(), sep = "\n",
+                  blank.lines.skip = FALSE, quiet = TRUE) 
   close(con)
   return(content)
 }
