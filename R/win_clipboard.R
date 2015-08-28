@@ -1,10 +1,10 @@
 # Helper function to read from the Windows clipboard
 win_read_clip <- function() {
-  readClipboard()
+  utils::readClipboard()
 }
 
 # Helper function to write to the Windows clipboard
 win_write_clip <- function(content) {
-  writeClipboard(content, format = 1)
+  utils::writeClipboard(content, format = 1)
   return(content)
 }
