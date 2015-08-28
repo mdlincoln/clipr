@@ -39,7 +39,7 @@ write_clip <- function(content) {
   } else if(stype == "Windows") {
     win_write_clip(content)
   } else if(stype == "Linux") {
-    linux_write_clip()
+    linux_write_clip(content)
   } else {
     stop("System not recognized!")
   }

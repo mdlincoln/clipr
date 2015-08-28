@@ -7,6 +7,7 @@ Simple utility functions to read and write from the system clipboards of Windows
 
 ```R
 devtools::install("mdlincoln/clipr")
+library("clipr")
 
 var <- read_clip()
 
