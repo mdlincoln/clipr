@@ -37,7 +37,7 @@ linux_write_clip <- function(content) {
   } else {
     notify_no_cb()
   }
-  writeChar(content, con=con)
+  writeChar(content, con = con)
   close(con)
   return(content)
 }
