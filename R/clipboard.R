@@ -2,7 +2,8 @@
 #'
 #' Read the contents of the system clipboard into a character vector
 #'
-#' @return A character vector with the contents of the clipboard.
+#' @return A character vector with the contents of the clipboard. If the system
+#'   clipboard is empty, returns NULL
 #'
 #' @export
 read_clip <- function() {
@@ -11,14 +12,20 @@ read_clip <- function() {
 
   # Pass to appropriate handler function
   if(stype == "Darwin") {
-    osx_read_clip()
+    content <- osx_read_clip()
   } else if(stype == "Windows") {
-    win_read_clip()
+    content <- win_read_clip()
   } else if(stype == "Linux") {
-    linux_read_clip()
+    content <- linux_read_clip()
   } else {
     stop("System not recognized!")
   }
+
+  if(length(content) == 0) {
+    warning("System clipboard contained no readable text. Returning NULL.")
+    return(NULL)
+  }
+  content
 }
 
 #' Write clipboard
