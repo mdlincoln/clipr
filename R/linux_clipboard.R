@@ -29,7 +29,7 @@ linux_read_clip <- function() {
 # Adapted from https://github.com/mrdwab/overflow-mrdwab/blob/master/R/writeClip.R
 #
 # Targets "primary" and "clipboard" clipboards if using xclip, see: http://unix.stackexchange.com/a/69134/89254
-linux_write_clip <- function(content) {
+linux_write_clip <- function(content, wc.opts) {
   if (Sys.which("xclip") != "") {
     con <- pipe("xclip -i -sel p -f | xclip -i -sel c", "w")
   } else if (Sys.which("xsel") != "") {
@@ -37,7 +37,17 @@ linux_write_clip <- function(content) {
   } else {
     notify_no_cb()
   }
-  writeChar(content, con = con)
+  
+  # If no custom line separator has been specified, use Unix's default newline character: (\code{\n})
+  sep <- ifelse(is.null(wc.opts$sep), '\n', wc.opts$sep)
+  
+  # If no custom 'end of string' character is specified, then by default assign \code{eos = NULL}
+  # Text will be sent to the clipboard without a terminator character.
+  eos <- wc.opts$eos
+  # Note - works the same as ifelse(is.null,NULL,wc.opts$eos)
+  
+  content <- flat_str(content, sep)
+  writeChar(content, con = con, eos = eos)
   close(con)
   return(content)
 }
