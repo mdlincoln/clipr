@@ -4,10 +4,17 @@
 \alias{write_clip}
 \title{Write clipboard}
 \usage{
-write_clip(content)
+write_clip(content, sep = NULL, eos = NULL)
 }
 \arguments{
-\item{content}{A character vector to be written to the system clipboard}
+\item{content}{A character vector to be written to the system clipboard.
+Anything not a character vector will be coerced to one.}
+
+\item{sep}{A character vector (string) to join each element in content using.
+Defaults to the operating system's newline character, indicated by \code{NULL}.}
+
+\item{eos}{The terminator to be written after each string, followed by an ASCII \code{nul}.
+Defaults to no terminator character, indicated by \code{NULL}.}
 }
 \value{
 On successfully writing the input to the clipboard, this function

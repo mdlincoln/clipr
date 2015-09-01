@@ -9,3 +9,5 @@ Description: Simple utility functions to read from and write to the system
 License: GPL-3
 LazyData: TRUE
 Suggests: testthat
+URL: https://github.com/mdlincoln/clipr
+BugReports: https://github.com/mdlincoln/clipr/issues
