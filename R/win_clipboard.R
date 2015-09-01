@@ -12,6 +12,6 @@ win_write_clip <- function(content, wc.opts) {
   # Note - doesn't appear to be a way to supply eos to writeClipboard
 
   content <- flat_str(content, sep)
-  writeClipboard(content, format = 1)
+  utils::writeClipboard(content, format = 1)
   return(content)
 }
