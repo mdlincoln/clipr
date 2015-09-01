@@ -11,12 +11,14 @@ read_clip <- function() {
   sys.type <- sys_type()
 
   # Use the appropriate handler function
-  switch(sys.type,
-        "Darwin" = osx_read_clip(),
-        "Linux" = linux_read_clip(),
-        "Windows" = win_read_clip(),
+  chosen_read_clip <- switch(sys.type,
+        "Darwin" = osx_read_clip,
+        "Linux" = linux_read_clip,
+        "Windows" = win_read_clip,
         stop("System not recognized!")
   )
+
+  content <- chosen_read_clip()
 
   if(length(content) == 0) {
     warning("System clipboard contained no readable text. Returning NULL.")
