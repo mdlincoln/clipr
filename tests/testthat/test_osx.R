@@ -21,5 +21,5 @@ test_that("Reads clipboard text successfully", {
 test_that("Writes clipboard text successfully", {
   check_osx()
   expect_equal(write_clip("hello, world!"), "hello, world!")
-  expect_equal(read_clip(), "hello, world!")
+  expect_equal(system("pbpaste", intern = TRUE), "hello, world!")
 })
