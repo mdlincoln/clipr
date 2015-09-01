@@ -50,7 +50,7 @@ write_clip <- function(content, sep = NULL, eos = NULL) {
 
   # Choose an operating system-specific function (stop with error if not recognized)
   chosen_write_clip <- switch(sys.type,
-                          "Darwin" = osx_read_clip,
+                          "Darwin" = osx_write_clip,
                           "Linux" = linux_write_clip,
                           "Windows" = win_write_clip,
                           stop("System not recognized!")
