@@ -1,7 +1,7 @@
 Package: clipr
 Type: Package
 Title: Read and Write from the System Clipboard
-Version: 0.1
+Version: 0.0.0.9000
 Date: 2015-08-27
 Authors@R: person("Matthew", "Lincoln", email = "mlincol1@umd.edu", role = c("aut", "cre"))
 Description: Simple utility functions to read from and write to the system
