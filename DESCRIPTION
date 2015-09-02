@@ -6,6 +6,7 @@ Date: 2015-08-27
 Authors@R: person("Matthew", "Lincoln", email = "matthew.d.lincoln@gmail.com", role = c("aut", "cre"))
 Description: Simple utility functions to read from and write to the system
   clipboards of Windows, OS X, and Linux.
+Imports: utils
 License: GPL-3
 LazyData: TRUE
 URL: https://github.com/mdlincoln/clipr
