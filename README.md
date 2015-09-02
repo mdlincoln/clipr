@@ -11,8 +11,7 @@ library("clipr")
 
 var <- read_clip()
 
-write_clip("Text")
-> [1] "Text"
+write_clip(c("Text", "for", "clipboard"), sep = "\n")
 ```
 
 ---
