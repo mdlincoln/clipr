@@ -3,6 +3,8 @@ clipr
 
 [![Project Status: Wip - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/0.1.0/wip.svg)](http://www.repostatus.org/#wip)
 
+[![CRAN status.](http://www.r-pkg.org/badges/version/clipr)]((http://www.r-pkg.org/pkg/clipr))
+
 Simple utility functions to read and write from the system clipboards of Windows, OS X, and Linux.
 
 ```R
