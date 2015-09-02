@@ -41,7 +41,7 @@ read_clip <- function() {
 #' @return On successfully writing the input to the clipboard, this function
 #'   returns the same input for use in piped operations.
 #' @export
-write_clip <- function(content, sep = NULL, eos = NULL) {
+write_clip <- function(content, sep = NULL, eos = NULL) invisible({
   # Determine system type
   sys.type <- sys_type()
   # Initialise an empty list to pass options on to OS-specific functions
@@ -60,4 +60,4 @@ write_clip <- function(content, sep = NULL, eos = NULL) {
 
   # Supply the clipboard content to write and options list to this function
   chosen_write_clip(content, wc.opts)
-}
+})
