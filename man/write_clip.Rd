@@ -23,4 +23,11 @@ On successfully writing the input to the clipboard, this function
 \description{
 Write a character vector to the system clipboard
 }
+\examples{
+text <- "Write to clipboard"
+write_clip(text)
+
+multiline <- c("Write", "to", "clipboard")
+write_clip(multiline, sep = "\\n")
+}
 
