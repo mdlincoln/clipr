@@ -13,4 +13,7 @@ A character vector with the contents of the clipboard. If the system
 \description{
 Read the contents of the system clipboard into a character vector.
 }
+\examples{
+clip_text <- read_clip()
+}
 

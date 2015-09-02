@@ -1,11 +1,14 @@
 Package: clipr
 Type: Package
 Title: Read and Write from the System Clipboard
-Version: 0.0.0.9000
+Version: 0.1.0
 Date: 2015-08-27
-Authors@R: person("Matthew", "Lincoln", email = "mlincol1@umd.edu", role = c("aut", "cre"))
+Authors@R: c(
+  person("Matthew", "Lincoln", email = "matthew.d.lincoln@gmail.com", role = c("aut", "cre")),
+  person("Louis", "Maddox", role = "ctb"))
 Description: Simple utility functions to read from and write to the system
   clipboards of Windows, OS X, and Linux.
+Imports: utils
 License: GPL-3
 LazyData: TRUE
 URL: https://github.com/mdlincoln/clipr

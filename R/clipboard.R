@@ -5,6 +5,9 @@
 #' @return A character vector with the contents of the clipboard. If the system
 #'   clipboard is empty, returns NULL
 #'
+#' @examples
+#' clip_text <- read_clip()
+#'
 #' @export
 read_clip <- function() {
   # Determine system type
@@ -40,6 +43,13 @@ read_clip <- function() {
 #'            Defaults to no terminator character, indicated by \code{NULL}.
 #' @return On successfully writing the input to the clipboard, this function
 #'   returns the same input for use in piped operations.
+#'
+#' @examples
+#' text <- "Write to clipboard"
+#' write_clip(text)
+#'
+#' multiline <- c("Write", "to", "clipboard")
+#' write_clip(multiline, sep = "\n")
 #' @export
 write_clip <- function(content, sep = NULL, eos = NULL) invisible({
   # Determine system type
