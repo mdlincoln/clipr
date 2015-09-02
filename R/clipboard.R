@@ -16,9 +16,8 @@ read_clip <- function() {
   # Use the appropriate handler function
   chosen_read_clip <- switch(sys.type,
         "Darwin" = osx_read_clip,
-        "Linux" = linux_read_clip,
         "Windows" = win_read_clip,
-        stop("System not recognized!")
+        linux_read_clip
   )
 
   content <- chosen_read_clip()
@@ -63,9 +62,8 @@ write_clip <- function(content, sep = NULL, eos = NULL) invisible({
   # Choose an operating system-specific function (stop with error if not recognized)
   chosen_write_clip <- switch(sys.type,
                           "Darwin" = osx_write_clip,
-                          "Linux" = linux_write_clip,
                           "Windows" = win_write_clip,
-                          stop("System not recognized!")
+                          linux_write_clip
                          )
 
   # Supply the clipboard content to write and options list to this function
