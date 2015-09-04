@@ -6,12 +6,18 @@ win_read_clip <- function() {
 # Helper function to write to the Windows clipboard
 win_write_clip <- function(content, wc.opts) {
 
-  # If no custom line separator has been specified, use Linux's default newline character: (\code{\r\n})
-  sep <- ifelse(is.null(wc.opts$sep), '\r\n', wc.opts$sep)
+  .dots <- list(...)
 
-  # Note - doesn't appear to be a way to supply eos to writeClipboard
+  # If no custom line separator has been specified, use Windows's default
+  # newline character '\r\n'
+  .dots$collapse <- ifelse(is.null(.dots$collapse), '\r\n', .dots$collapse)
 
-  content <- flat_str(content, sep)
+  # If no custom tab separator for tables has been specified, use Windows's
+  # default tab character: '\t'
+  .dots$sep <- ifelse(is.null(.dots$sep), '\t', .dots$sep)
+
+  # Pass the object to rendering functions before writing out to the clipboard
+  rendered_content <- render_object(content, object_type, .dots)
   utils::writeClipboard(content, format = 1)
   return(content)
 }
