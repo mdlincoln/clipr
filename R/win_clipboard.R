@@ -4,7 +4,7 @@ win_read_clip <- function() {
 }
 
 # Helper function to write to the Windows clipboard
-win_write_clip <- function(content, wc.opts) {
+win_write_clip <- function(content, object_type, eos, ...) {
 
   .dots <- list(...)
 
