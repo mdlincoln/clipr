@@ -48,6 +48,8 @@ read_clip <- function() {
 #'   \code{\link{paste0}}, depending on the \code{object_type}. Defaults to sane
 #'   line-break and tab standards based on the operating system.
 #'
+#' @return Invisibly returns the original object
+#'
 #' @examples
 #' text <- "Write to clipboard"
 #' write_clip(text)
