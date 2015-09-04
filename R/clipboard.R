@@ -44,9 +44,10 @@ read_clip <- function() {
 #' @param eos The terminator to be written after each string, followed by an
 #'   ASCII \code{nul}. Defaults to no terminator character, indicated by
 #'   \code{NULL}.
-#' @param ... Custom options to be passed to \code{\link{write.table}} or
-#'   \code{\link{paste0}}, depending on the \code{object_type}. Defaults to sane
-#'   line-break and tab standards based on the operating system.
+#' @param ... Custom options to be passed to \code{\link{write.table}} (if the
+#'   object is a table-like) or \code{\link{paste0}} (if the object is a
+#'   character vector), following the specified \code{object_type}. Defaults to
+#'   sane line-break and tab standards based on the operating system.
 #'
 #' @return Invisibly returns the original object
 #'
