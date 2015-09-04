@@ -50,22 +50,18 @@ read_clip <- function() {
 #' multiline <- c("Write", "to", "clipboard")
 #' write_clip(multiline, sep = "\n")
 #' @export
-write_clip <- function(content, sep = NULL, eos = NULL) invisible({
+write_clip <- function(content, object_type = c("auto", "character", "table"), eos = NULL, ...) invisible({
+  object_type <- match.arg(object_type)
   # Determine system type
   sys.type <- sys_type()
-  # Initialise an empty list to pass options on to OS-specific functions
-  wc.opts <- list()
-  # If they are non-NULL, they will be stored in the list
-  wc.opts$sep <- sep
-  wc.opts$eos <- eos
 
   # Choose an operating system-specific function (stop with error if not recognized)
   chosen_write_clip <- switch(sys.type,
                           "Darwin" = osx_write_clip,
                           "Windows" = win_write_clip,
                           linux_write_clip
-                         )
+  )
 
   # Supply the clipboard content to write and options list to this function
-  chosen_write_clip(content, wc.opts)
+  chosen_write_clip(content, object_type, eos, ...)
 })
