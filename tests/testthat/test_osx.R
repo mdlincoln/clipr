@@ -23,3 +23,11 @@ test_that("Writes clipboard text successfully", {
   expect_equal(write_clip("hello, world!"), "hello, world!")
   expect_equal(system("pbpaste", intern = TRUE), "hello, world!")
 })
+
+test_that("Writes tables with tabs", {
+  tbl <- data.frame(a=c(1,2,3), b=c(3,4,5))
+  tbl_string <- "a\tb\n1\t3\n2\t4\n3\t5"
+  check_osx()
+  expect_equal(write_clip(tbl), tbl_string)
+  expect_equal(system("pbpaste", intern = TRUE), tbl_string)
+})
