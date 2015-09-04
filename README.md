@@ -1,9 +1,11 @@
 clipr
 =====
 
-[![Project Status: Wip - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/0.1.0/wip.svg)](http://www.repostatus.org/#wip)
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active)
 
-Simple utility functions to read and write from the system clipboards of Windows, OS X, and Linux.
+[![CRAN status.](http://www.r-pkg.org/badges/version/clipr)](http://www.r-pkg.org/pkg/clipr)
+
+Simple utility functions to read and write from the system clipboards of Windows, OS X, and Unix-like systems (which require either xclip or xsel.)
 
 ```R
 devtools::install_github("mdlincoln/clipr")
@@ -11,8 +13,7 @@ library("clipr")
 
 var <- read_clip()
 
-write_clip("Text")
-> [1] "Text"
+write_clip(c("Text", "for", "clipboard"), sep = "\n")
 ```
 
 ---

@@ -5,6 +5,9 @@
 #' @return A character vector with the contents of the clipboard. If the system
 #'   clipboard is empty, returns NULL
 #'
+#' @examples
+#' clip_text <- read_clip()
+#'
 #' @export
 read_clip <- function() {
   # Determine system type
@@ -13,9 +16,8 @@ read_clip <- function() {
   # Use the appropriate handler function
   chosen_read_clip <- switch(sys.type,
         "Darwin" = osx_read_clip,
-        "Linux" = linux_read_clip,
         "Windows" = win_read_clip,
-        stop("System not recognized!")
+        linux_read_clip
   )
 
   content <- chosen_read_clip()
@@ -40,8 +42,15 @@ read_clip <- function() {
 #'            Defaults to no terminator character, indicated by \code{NULL}.
 #' @return On successfully writing the input to the clipboard, this function
 #'   returns the same input for use in piped operations.
+#'
+#' @examples
+#' text <- "Write to clipboard"
+#' write_clip(text)
+#'
+#' multiline <- c("Write", "to", "clipboard")
+#' write_clip(multiline, sep = "\n")
 #' @export
-write_clip <- function(content, sep = NULL, eos = NULL) {
+write_clip <- function(content, sep = NULL, eos = NULL) invisible({
   # Determine system type
   sys.type <- sys_type()
   # Initialise an empty list to pass options on to OS-specific functions
@@ -53,11 +62,10 @@ write_clip <- function(content, sep = NULL, eos = NULL) {
   # Choose an operating system-specific function (stop with error if not recognized)
   chosen_write_clip <- switch(sys.type,
                           "Darwin" = osx_write_clip,
-                          "Linux" = linux_write_clip,
                           "Windows" = win_write_clip,
-                          stop("System not recognized!")
+                          linux_write_clip
                          )
 
   # Supply the clipboard content to write and options list to this function
   chosen_write_clip(content, wc.opts)
-}
+})
