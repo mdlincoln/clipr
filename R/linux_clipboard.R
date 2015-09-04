@@ -48,15 +48,18 @@ linux_write_clip <- function(content, wc.opts) {
     notify_no_cb()
   }
 
-  # If no custom line separator has been specified, use Unix's default newline character: (\code{\n})
-  sep <- ifelse(is.null(wc.opts$sep), '\n', wc.opts$sep)
+  .dots <- list(...)
 
-  # If no custom 'end of string' character is specified, then by default assign \code{eos = NULL}
-  # Text will be sent to the clipboard without a terminator character.
-  eos <- wc.opts$eos
-  # Note - works the same as ifelse(is.null,NULL,wc.opts$eos)
+  # If no custom line separator has been specified, use Unix's default newline
+  # character '\n'
+  .dots$collapse <- ifelse(is.null(.dots$collapse), '\n', .dots$collapse)
 
-  content <- flat_str(content, sep)
+  # If no custom tab separator for tables has been specified, use Unix's default
+  # tab character: '\t'
+  .dots$sep <- ifelse(is.null(.dots$sep), '\t', .dots$sep)
+
+  # Pass the object to rendering functions before writing out to the clipboard
+  rendered_content <- render_object(content, object_type, .dots)
   writeChar(content, con = con, eos = eos)
   close(con)
   return(content)
