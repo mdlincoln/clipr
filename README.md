@@ -5,7 +5,7 @@ clipr
 
 [![CRAN status.](http://www.r-pkg.org/badges/version/clipr)](http://www.r-pkg.org/pkg/clipr)
 
-Simple utility functions to read and write from the system clipboards of Windows, OS X, and Linux.
+Simple utility functions to read and write from the system clipboards of Windows, OS X, and Unix-like systems (which require either xclip or xsel.)
 
 ```R
 devtools::install_github("mdlincoln/clipr")
