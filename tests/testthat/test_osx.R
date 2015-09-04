@@ -20,14 +20,37 @@ test_that("Reads clipboard text successfully", {
 
 test_that("Writes clipboard text successfully", {
   check_osx()
-  expect_equal(write_clip("hello, world!"), "hello, world!")
-  expect_equal(system("pbpaste", intern = TRUE), "hello, world!")
+  text <- "hello, world!"
+  expect_equal(write_clip(text), text)
+  expect_equal(system("pbpaste", intern = TRUE), text)
 })
 
-test_that("Writes tables with tabs", {
-  tbl <- data.frame(a=c(1,2,3), b=c(3,4,5))
-  tbl_string <- "a\tb\n1\t3\n2\t4\n3\t5"
+
+test_that("Writes multiline text successfully", {
   check_osx()
-  expect_equal(write_clip(tbl), tbl_string)
+  text <- c("This", "is", "multiple", "lines")
+  sep_text <- "This is multiple lines"
+  expect_equal(write_clip(text), text)
+  expect_equal(system("pbpaste", intern = TRUE), text)
+  expect_equal(write_clip(text, collapse = " "), text)
+  expect_equal(system("pbpaste", intern = TRUE), sep_text)
+})
+
+test_that("Writes data.frames with tabs", {
+  tbl <- data.frame(a=c(1,2,3), b=c(4,5,6))
+  tbl_string <- c("a\tb", "1\t4", "2\t5", "3\t6")
+  check_osx()
+  expect_equal(write_clip(tbl), tbl)
   expect_equal(system("pbpaste", intern = TRUE), tbl_string)
 })
+
+test_that("Writes matricies with tabs", {
+  tbl <- matrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)
+  tbl_string <- c("1\t4", "2\t5", "3\t6")
+  check_osx()
+  expect_equal(write_clip(tbl), tbl)
+  expect_equal(system("pbpaste", intern = TRUE), tbl_string)
+})
+
+# Clear the clipboard after tests are complete
+system("pbcopy < /dev/null")
