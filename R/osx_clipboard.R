@@ -19,7 +19,7 @@ osx_write_clip <- function(content, object_type, eos, ...) {
   .dots$collapse <- ifelse(is.null(.dots$collapse), '\n', .dots$collapse)
 
   # If no custom tab separator for tables has been specified, use Unix's default
-  # tab character: '\n'
+  # tab character: '\t'
   .dots$sep <- ifelse(is.null(.dots$sep), '\t', .dots$sep)
 
   # Pass the object to rendering functions before writing out to the clipboard
