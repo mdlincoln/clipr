@@ -14,12 +14,15 @@ osx_write_clip <- function(content, object_type, eos, ...) {
   .dots <- list(...)
   con <- pipe("pbcopy")
 
-  # If no custom line separator has been specified, use Unix's default newline character: (\code{\n})
+  # If no custom line separator has been specified, use Unix's default newline
+  # character '\n'
   .dots$collapse <- ifelse(is.null(.dots$collapse), '\n', .dots$collapse)
 
-  # If no custom tab separator has been specified, use Unix's default tab character: (\code{\n})
+  # If no custom tab separator for tables has been specified, use Unix's default
+  # tab character: '\n'
   .dots$sep <- ifelse(is.null(.dots$sep), '\t', .dots$sep)
 
+  # Pass the object to rendering functions before writing out to the clipboard
   rendered_content <- render_object(content, object_type, .dots)
   writeChar(rendered_content, con = con, eos = eos)
   close(con)
