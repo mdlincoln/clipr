@@ -18,7 +18,7 @@ win_write_clip <- function(content, object_type, eos, return_new, ...) {
 
   # Pass the object to rendering functions before writing out to the clipboard
   rendered_content <- render_object(content, object_type, .dots)
-  utils::writeClipboard(content, format = 1)
+  utils::writeClipboard(rendered_content, format = 1)
   if(return_new) {
     rendered_content
   } else {

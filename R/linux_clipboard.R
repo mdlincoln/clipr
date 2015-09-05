@@ -60,7 +60,7 @@ linux_write_clip <- function(content, object_type, eos, return_new, ...) {
 
   # Pass the object to rendering functions before writing out to the clipboard
   rendered_content <- render_object(content, object_type, .dots)
-  writeChar(content, con = con, eos = eos)
+  writeChar(rendered_content, con = con, eos = eos)
   close(con)
   if(return_new) {
     rendered_content
