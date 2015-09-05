@@ -10,7 +10,7 @@ osx_read_clip <- function() {
 
 # Helper function to write to the OS X clipboard
 # Adapted from https://github.com/jennybc/reprex/blob/master/R/clipboard.R
-osx_write_clip <- function(content, object_type, eos, ...) {
+osx_write_clip <- function(content, object_type, eos, return_new, ...) {
   .dots <- list(...)
   con <- pipe("pbcopy")
 
@@ -26,5 +26,9 @@ osx_write_clip <- function(content, object_type, eos, ...) {
   rendered_content <- render_object(content, object_type, .dots)
   writeChar(rendered_content, con = con, eos = eos)
   close(con)
-  return(content)
+  if(return_new) {
+    rendered_content
+  } else {
+    content
+  }
 }

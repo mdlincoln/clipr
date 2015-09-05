@@ -44,6 +44,8 @@ read_clip <- function() {
 #' @param eos The terminator to be written after each string, followed by an
 #'   ASCII \code{nul}. Defaults to no terminator character, indicated by
 #'   \code{NULL}.
+#' @param return_new If true, returns the rendered string; if false, returns the
+#'   original object
 #' @param ... Custom options to be passed to \code{\link{write.table}} (if the
 #'   object is a table-like) or \code{\link{paste0}} (if the object is a
 #'   character vector), following the specified \code{object_type}. Defaults to
@@ -67,7 +69,7 @@ read_clip <- function() {
 #' tbl <- data.frame(a=c(1,2,3), b=c(4,5,6))
 #' write_clip(tbl)
 #' @export
-write_clip <- function(content, object_type = c("auto", "character", "table"), eos = NULL, ...) invisible({
+write_clip <- function(content, object_type = c("auto", "character", "table"), eos = NULL, return_new = TRUE, ...) invisible({
   object_type <- match.arg(object_type)
   # Determine system type
   sys.type <- sys_type()
@@ -80,5 +82,5 @@ write_clip <- function(content, object_type = c("auto", "character", "table"), e
   )
 
   # Supply the clipboard content to write and options list to this function
-  chosen_write_clip(content, object_type, eos, ...)
+  chosen_write_clip(content, object_type, eos, return_new, ...)
 })

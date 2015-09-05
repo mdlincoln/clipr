@@ -39,7 +39,7 @@ linux_read_clip <- function() {
 # Adapted from https://github.com/mrdwab/overflow-mrdwab/blob/master/R/writeClip.R
 #
 # Targets "primary" and "clipboard" clipboards if using xclip, see: http://unix.stackexchange.com/a/69134/89254
-linux_write_clip <- function(content, object_type, eos, ...) {
+linux_write_clip <- function(content, object_type, eos, return_new, ...) {
   if (has_xclip()) {
     con <- pipe("xclip -i -sel p -f | xclip -i -sel c", "w")
   } else if (has_xsel()) {
@@ -62,5 +62,9 @@ linux_write_clip <- function(content, object_type, eos, ...) {
   rendered_content <- render_object(content, object_type, .dots)
   writeChar(content, con = con, eos = eos)
   close(con)
-  return(content)
+  if(return_new) {
+    rendered_content
+  } else {
+    content
+  }
 }
