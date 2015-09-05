@@ -10,19 +10,25 @@ osx_read_clip <- function() {
 
 # Helper function to write to the OS X clipboard
 # Adapted from https://github.com/jennybc/reprex/blob/master/R/clipboard.R
-osx_write_clip <- function(content, wc.opts) {
+osx_write_clip <- function(content, object_type, eos, return_new, ...) {
+  .dots <- list(...)
   con <- pipe("pbcopy")
-  
-  # If no custom line separator has been specified, use Unix's default newline character: (\code{\n})
-  sep <- ifelse(is.null(wc.opts$sep), '\n', wc.opts$sep)
-  
-  # If no custom 'end of string' character is specified, then by default assign \code{eos = NULL},
-  # thus sending text to the clipboard without a terminator character.
-  eos <- wc.opts$eos
-  # Note - works the same as ifelse(is.null,NULL,wc.opts$eos)
-  
-  content <- flat_str(content, sep)
-  writeChar(content, con = con, eos = eos)
+
+  # If no custom line separator has been specified, use Unix's default newline
+  # character '\n'
+  .dots$collapse <- ifelse(is.null(.dots$collapse), '\n', .dots$collapse)
+
+  # If no custom tab separator for tables has been specified, use Unix's default
+  # tab character: '\t'
+  .dots$sep <- ifelse(is.null(.dots$sep), '\t', .dots$sep)
+
+  # Pass the object to rendering functions before writing out to the clipboard
+  rendered_content <- render_object(content, object_type, .dots)
+  writeChar(rendered_content, con = con, eos = eos)
   close(con)
-  return(content)
+  if(return_new) {
+    rendered_content
+  } else {
+    content
+  }
 }

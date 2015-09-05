@@ -4,21 +4,33 @@
 \alias{write_clip}
 \title{Write clipboard}
 \usage{
-write_clip(content, sep = NULL, eos = NULL)
+write_clip(content, object_type = c("auto", "character", "table"),
+  eos = NULL, return_new = TRUE, ...)
 }
 \arguments{
-\item{content}{A character vector to be written to the system clipboard.
-Anything not a character vector will be coerced to one.}
+\item{content}{An object to be written to the system clipboard.}
 
-\item{sep}{A character vector (string) to join each element in content using.
-Defaults to the operating system's newline character, indicated by \code{NULL}.}
+\item{object_type}{write_clip() tries to be smart about writing objects in a
+useful manner. If passed a data.frame or matrix, it will format it using
+\code{\link{write.table}} for pasting into an external spreasheet program.
+It will otherwise coerce the object to a character vector. \code{auto} will
+check the object type, otherwise \code{table} or \code{character} can be
+explicitly specified.}
 
-\item{eos}{The terminator to be written after each string, followed by an ASCII \code{nul}.
-Defaults to no terminator character, indicated by \code{NULL}.}
+\item{eos}{The terminator to be written after each string, followed by an
+ASCII \code{nul}. Defaults to no terminator character, indicated by
+\code{NULL}.}
+
+\item{return_new}{If true, returns the rendered string; if false, returns the
+original object}
+
+\item{...}{Custom options to be passed to \code{\link{write.table}} (if the
+  object is a table-like) or \code{\link{paste0}} (if the object is a
+  character vector), following the specified \code{object_type}. Defaults to
+  sane line-break and tab standards based on the operating system.}
 }
 \value{
-On successfully writing the input to the clipboard, this function
-  returns the same input for use in piped operations.
+Invisibly returns the original object
 }
 \description{
 Write a character vector to the system clipboard
@@ -28,6 +40,15 @@ text <- "Write to clipboard"
 write_clip(text)
 
 multiline <- c("Write", "to", "clipboard")
-write_clip(multiline, sep = "\\n")
+write_clip(multiline)
+# Write
+# to
+# clipboard
+
+write_clip(multiline, collapse = ",")
+# write,to,clipboard
+
+tbl <- data.frame(a=c(1,2,3), b=c(4,5,6))
+write_clip(tbl)
 }
 

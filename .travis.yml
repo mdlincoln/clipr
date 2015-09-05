@@ -1,0 +1,17 @@
+# Sample .travis.yml for R projects
+
+language: r
+warnings_are_errors: true
+sudo: true
+
+env:
+ global:
+   - CRAN: http://cran.rstudio.com
+
+apt_packages:
+  - xclip
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change

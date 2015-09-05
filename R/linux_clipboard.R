@@ -39,7 +39,7 @@ linux_read_clip <- function() {
 # Adapted from https://github.com/mrdwab/overflow-mrdwab/blob/master/R/writeClip.R
 #
 # Targets "primary" and "clipboard" clipboards if using xclip, see: http://unix.stackexchange.com/a/69134/89254
-linux_write_clip <- function(content, wc.opts) {
+linux_write_clip <- function(content, object_type, eos, return_new, ...) {
   if (has_xclip()) {
     con <- pipe("xclip -i -sel p -f | xclip -i -sel c", "w")
   } else if (has_xsel()) {
@@ -48,16 +48,23 @@ linux_write_clip <- function(content, wc.opts) {
     notify_no_cb()
   }
 
-  # If no custom line separator has been specified, use Unix's default newline character: (\code{\n})
-  sep <- ifelse(is.null(wc.opts$sep), '\n', wc.opts$sep)
+  .dots <- list(...)
 
-  # If no custom 'end of string' character is specified, then by default assign \code{eos = NULL}
-  # Text will be sent to the clipboard without a terminator character.
-  eos <- wc.opts$eos
-  # Note - works the same as ifelse(is.null,NULL,wc.opts$eos)
+  # If no custom line separator has been specified, use Unix's default newline
+  # character '\n'
+  .dots$collapse <- ifelse(is.null(.dots$collapse), '\n', .dots$collapse)
 
-  content <- flat_str(content, sep)
-  writeChar(content, con = con, eos = eos)
+  # If no custom tab separator for tables has been specified, use Unix's default
+  # tab character: '\t'
+  .dots$sep <- ifelse(is.null(.dots$sep), '\t', .dots$sep)
+
+  # Pass the object to rendering functions before writing out to the clipboard
+  rendered_content <- render_object(content, object_type, .dots)
+  writeChar(rendered_content, con = con, eos = eos)
   close(con)
-  return(content)
+  if(return_new) {
+    rendered_content
+  } else {
+    content
+  }
 }
