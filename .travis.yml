@@ -8,7 +8,7 @@ env:
  global:
    - CRAN: http://cran.rstudio.com
 
-apt-packages:
+apt_packages:
   - xclip
 
 notifications:
