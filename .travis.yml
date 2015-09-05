@@ -2,18 +2,14 @@
 
 language: r
 warnings_are_errors: true
-sudo: false
+sudo: true
 
 env:
  global:
    - CRAN: http://cran.rstudio.com
 
-addons:
-  apt:
-    sources:
-    - r-packages-trusty
-    packages:
-    - xclip
+apt-packages:
+  - xclip
 
 notifications:
   email:
