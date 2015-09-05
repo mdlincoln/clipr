@@ -14,18 +14,18 @@ eval_object <- function(content) {
 
 # If object is a table, default to a multiline string with tab separators
 table_str <- function(content, .dots) {
+  # Take the system-specific collapse out of the list
+  collapse <- .dots$collapse
+  .dots$collapse <- NULL
   .dots$x <- content
   .dots$sep <- .dots$sep
-  # Reassign the system default 'collapse' to its write.table equivalent 'eol'
-  .dots$eol <- .dots$collapse
-  .dots$collapse <- NULL
   .dots$quote <- ifelse(is.null(.dots$quote), FALSE, .dots$quote)
   .dots$na <- ifelse(is.null(.dots$na), "", .dots$na)
   .dots$row.names <- ifelse(is.null(.dots$row.names), FALSE, .dots$row.names)
   # If matrix, default to not printing column names
   if(is.matrix(content))
     .dots$col.names <- ifelse(is.null(.dots$col.names), FALSE, .dots$col.names)
-  paste0(utils::capture.output(do.call(utils::write.table, .dots)), collapse = .dots$eol)
+  paste0(utils::capture.output(do.call(utils::write.table, .dots)), collapse = collapse)
 }
 
 # Helper function to flatten content into 1-tuple character vector (i.e. a string)
