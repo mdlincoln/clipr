@@ -84,3 +84,16 @@ write_clip <- function(content, object_type = c("auto", "character", "table"), e
   # Supply the clipboard content to write and options list to this function
   chosen_write_clip(content, object_type, eos, return_new, ...)
 })
+
+#' Clear clipboard
+#'
+#' Clear the system clipboard.
+#'
+#' @note This is a simple wrapper function for write_clip("")
+#'
+#' @export
+clear_clip <- function() {
+  # pipe() sends a warning when writing an empty string. Since that is exatly
+  # what we want it to do, we will suppress that warning
+  suppressWarnings(write_clip(""))
+}
