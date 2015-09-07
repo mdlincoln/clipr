@@ -7,13 +7,32 @@ clipr
 
 Simple utility functions to read and write from the system clipboards of Windows, OS X, and Unix-like systems (which require either xclip or xsel.)
 
-```R
-devtools::install_github("mdlincoln/clipr")
+``` r
 library("clipr")
 
-var <- read_clip()
+cb <- read_clip()
 
-write_clip(c("Text", "for", "clipboard"), sep = "\n")
+# Character vectors with length > 1 will be collapsed with system-appropriate
+# line breaks, unless otherwise specified
+
+cb <- write_clip(c("Text", "for", "clipboard"))
+cb
+#> [1] "Text\nfor\nclipboard"     # on OS X or Unix-like
+#> [1] "Text\r\nfor\r\nclipboard" # on Windows
+
+cb <- write_clip(c("Text", "for", "clipboard"), collapse = ", ")
+cb
+#> [1] "Text, for, clipboard"
+```
+
+`write_clip` also tries to intelligently handle data.frames and matricies, rendering them with `write.table` so that they can be pasted into a spreasheet like Excel.
+
+``` r
+tbl <- data.frame(a=c(1,2,3), b=c(4,5,6))
+cb <- write_clip(tbl)
+cb
+#> [1] "a\tb\n1\t4\n2\t5\n3\t6"   # on OS X or Unix-like
+#> [1] "a,b\r\n1,4\r\n2,5\r\n3,6" # on Windows
 ```
 
 ---
