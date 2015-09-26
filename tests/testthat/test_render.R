@@ -16,7 +16,7 @@ test_that("Render default multiline vectors", {
 
 test_that("Render custom multiline vectors", {
   multiline <- c("hello", "world!")
-  expect_equal(write_clip(multiline, collapse = ", "), "hello, world!")
+  expect_equal(write_clip(multiline, breaks = ", "), "hello, world!")
 })
 
 test_that("Render default data.frames", {

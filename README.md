@@ -21,7 +21,7 @@ cb
 #> [1] "Text\nfor\nclipboard"     # on OS X or Unix-like
 #> [1] "Text\r\nfor\r\nclipboard" # on Windows
 
-cb <- write_clip(c("Text", "for", "clipboard"), collapse = ", ")
+cb <- write_clip(c("Text", "for", "clipboard"), breaks = ", ")
 cb
 #> [1] "Text, for, clipboard"
 ```

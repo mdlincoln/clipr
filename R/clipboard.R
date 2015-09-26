@@ -41,14 +41,16 @@ read_clip <- function() {
 #'   It will otherwise coerce the object to a character vector. \code{auto} will
 #'   check the object type, otherwise \code{table} or \code{character} can be
 #'   explicitly specified.
+#' @param breaks The separator to be used between each element of the character
+#'   vector being written. \code{NULL} defaults to writing system-specific line
+#'   breaks between each element of a character vector, or each row of a table.
 #' @param eos The terminator to be written after each string, followed by an
 #'   ASCII \code{nul}. Defaults to no terminator character, indicated by
 #'   \code{NULL}.
 #' @param return_new If true, returns the rendered string; if false, returns the
 #'   original object
 #' @param ... Custom options to be passed to \code{\link{write.table}} (if the
-#'   object is a table-like) or \code{\link{paste0}} (if the object is a
-#'   character vector), following the specified \code{object_type}. Defaults to
+#'   object is a table-like) Defaults to
 #'   sane line-break and tab standards based on the operating system.
 #'
 #' @return Invisibly returns the original object
@@ -63,13 +65,13 @@ read_clip <- function() {
 #' # to
 #' # clipboard
 #'
-#' write_clip(multiline, collapse = ",")
+#' write_clip(multiline, breaks = ",")
 #' # write,to,clipboard
 #'
 #' tbl <- data.frame(a=c(1,2,3), b=c(4,5,6))
 #' write_clip(tbl)
 #' @export
-write_clip <- function(content, object_type = c("auto", "character", "table"), eos = NULL, return_new = TRUE, ...) invisible({
+write_clip <- function(content, object_type = c("auto", "character", "table"), breaks = NULL, eos = NULL, return_new = TRUE, ...) invisible({
   object_type <- match.arg(object_type)
   # Determine system type
   sys.type <- sys_type()
@@ -82,7 +84,7 @@ write_clip <- function(content, object_type = c("auto", "character", "table"), e
   )
 
   # Supply the clipboard content to write and options list to this function
-  chosen_write_clip(content, object_type, eos, return_new, ...)
+  chosen_write_clip(content, object_type, breaks, eos, return_new, ...)
 })
 
 #' Clear clipboard

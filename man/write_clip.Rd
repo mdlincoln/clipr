@@ -5,7 +5,7 @@
 \title{Write clipboard}
 \usage{
 write_clip(content, object_type = c("auto", "character", "table"),
-  eos = NULL, return_new = TRUE, ...)
+  breaks = NULL, eos = NULL, return_new = TRUE, ...)
 }
 \arguments{
 \item{content}{An object to be written to the system clipboard.}
@@ -17,6 +17,10 @@ It will otherwise coerce the object to a character vector. \code{auto} will
 check the object type, otherwise \code{table} or \code{character} can be
 explicitly specified.}
 
+\item{breaks}{The separator to be used between each element of the character
+vector being written. \code{NULL} defaults to writing system-specific line
+breaks between each element of a character vector, or each row of a table.}
+
 \item{eos}{The terminator to be written after each string, followed by an
 ASCII \code{nul}. Defaults to no terminator character, indicated by
 \code{NULL}.}
@@ -25,8 +29,7 @@ ASCII \code{nul}. Defaults to no terminator character, indicated by
 original object}
 
 \item{...}{Custom options to be passed to \code{\link{write.table}} (if the
-  object is a table-like) or \code{\link{paste0}} (if the object is a
-  character vector), following the specified \code{object_type}. Defaults to
+  object is a table-like) Defaults to
   sane line-break and tab standards based on the operating system.}
 }
 \value{
@@ -45,7 +48,7 @@ write_clip(multiline)
 # to
 # clipboard
 
-write_clip(multiline, collapse = ",")
+write_clip(multiline, breaks = ",")
 # write,to,clipboard
 
 tbl <- data.frame(a=c(1,2,3), b=c(4,5,6))
