@@ -65,7 +65,7 @@ read_clip <- function() {
 #' # to
 #' # clipboard
 #'
-#' write_clip(multiline, collapse = ",")
+#' write_clip(multiline, breaks = ",")
 #' # write,to,clipboard
 #'
 #' tbl <- data.frame(a=c(1,2,3), b=c(4,5,6))
