@@ -52,14 +52,14 @@ linux_write_clip <- function(content, object_type, eos, return_new, ...) {
 
   # If no custom line separator has been specified, use Unix's default newline
   # character '\n'
-  .dots$collapse <- ifelse(is.null(.dots$collapse), '\n', .dots$collapse)
+  breaks <- ifelse(is.null(breaks), '\n', breaks)
 
   # If no custom tab separator for tables has been specified, use Unix's default
   # tab character: '\t'
   .dots$sep <- ifelse(is.null(.dots$sep), '\t', .dots$sep)
 
   # Pass the object to rendering functions before writing out to the clipboard
-  rendered_content <- render_object(content, object_type, .dots)
+  rendered_content <- render_object(content, object_type, breaks, .dots)
   writeChar(rendered_content, con = con, eos = eos)
   close(con)
   if(return_new) {
