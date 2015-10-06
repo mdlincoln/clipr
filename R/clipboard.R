@@ -5,6 +5,12 @@
 #' @return A character vector with the contents of the clipboard. If the system
 #'   clipboard is empty, returns NULL
 #'
+#' @note \code{read_clip} will not try to guess at how to parse copied text. If
+#'   you are copying tabular data, it is suggested that you use
+#'   \code{\link[readr]{read_delim}} or one of its sibling functions from the
+#'   readr package (\url{https://cran.r-project.org/package=readr}) to coax the
+#'   text into a data frame.
+#'
 #' @examples
 #' clip_text <- read_clip()
 #'
