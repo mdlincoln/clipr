@@ -10,16 +10,16 @@ has_xsel <- function() {
 
 # Stop read/write and return an error of missing clipboard software.
 notify_no_cb <- function() {
-  stop("Clipboard on Unix-like systems requires 'xclip' (recommended) or 'xsel'.",
+  stop("Clipboard on X11 requires 'xclip' (recommended) or 'xsel'.",
        call.=FALSE)
 }
 
-# Helper function to read from the Linux clipboard
+# Helper function to read from the X11 clipboard
 #
-# Requires the Linux utility 'xclip' or 'xsel'. This function will stop with an error if neither is found.
+# Requires the utility 'xclip' or 'xsel'. This function will stop with an error if neither is found.
 # Adapted from: https://github.com/mrdwab/overflow-mrdwab/blob/master/R/readClip.R
 #          and: https://github.com/jennybc/reprex/blob/master/R/clipboard.R
-linux_read_clip <- function() {
+X11_read_clip <- function() {
   if (has_xclip()) {
     con <- pipe("xclip -o -selection clipboard")
   } else if (has_xsel()) {
@@ -33,13 +33,13 @@ linux_read_clip <- function() {
   return(content)
 }
 
-# Helper function to write to the Linux clipboard
+# Helper function to write to the X11 clipboard
 #
-# Requires the Linux utility 'xclip' or 'xsel'. This function will stop with an error if neither is found.
+# Requires the utility 'xclip' or 'xsel'. This function will stop with an error if neither is found.
 # Adapted from https://github.com/mrdwab/overflow-mrdwab/blob/master/R/writeClip.R
 #
 # Targets "primary" and "clipboard" clipboards if using xclip, see: http://unix.stackexchange.com/a/69134/89254
-linux_write_clip <- function(content, object_type, breaks, eos, return_new, ...) {
+X11_write_clip <- function(content, object_type, breaks, eos, return_new, ...) {
   if (has_xclip()) {
     con <- pipe("xclip -i -sel p -f | xclip -i -sel c", "w")
   } else if (has_xsel()) {

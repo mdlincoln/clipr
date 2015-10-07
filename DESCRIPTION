@@ -5,8 +5,8 @@ Version: 0.2.0.9000
 Authors@R: c(
   person("Matthew", "Lincoln", email = "matthew.d.lincoln@gmail.com", role = c("aut", "cre")),
   person("Louis", "Maddox", role = "ctb"))
-Description: Simple utility functions to read from and write to the system
-  clipboards of Windows, OS X, and Linux.
+Description: Simple utility functions to read from and write to the Windows,
+  OS X, and X11 clipboards.
 Imports: utils
 SystemRequirements: xclip (http://sourceforge.net/projects/xclip/) or xsel
   (http://www.vergenet.net/~conrad/software/xsel/) for accessing the X11

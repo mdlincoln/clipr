@@ -23,7 +23,7 @@ read_clip <- function() {
   chosen_read_clip <- switch(sys.type,
         "Darwin" = osx_read_clip,
         "Windows" = win_read_clip,
-        linux_read_clip
+        X11_read_clip
   )
 
   content <- chosen_read_clip()
@@ -86,7 +86,7 @@ write_clip <- function(content, object_type = c("auto", "character", "table"), b
   chosen_write_clip <- switch(sys.type,
                           "Darwin" = osx_write_clip,
                           "Windows" = win_write_clip,
-                          linux_write_clip
+                          X11_write_clip
   )
 
   # Supply the clipboard content to write and options list to this function
