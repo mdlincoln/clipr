@@ -8,6 +8,9 @@ Authors@R: c(
 Description: Simple utility functions to read from and write to the system
   clipboards of Windows, OS X, and Linux.
 Imports: utils
+SystemRequirements: xclip (http://sourceforge.net/projects/xclip/) or xsel
+  (http://www.vergenet.net/~conrad/software/xsel/) for accessing the X11
+  clipboard
 License: GPL-3
 LazyData: TRUE
 Suggests: testthat
