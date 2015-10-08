@@ -38,6 +38,12 @@ Invisibly returns the original object
 \description{
 Write a character vector to the system clipboard
 }
+\note{
+On X11 systems, \code{write_clip} will cause either xclip (preferred)
+  or xsel to be called. Be aware that, by design, these processes will fork
+  into the background until the next paste event, when they will then exit
+  silently.
+}
 \examples{
 text <- "Write to clipboard"
 write_clip(text)
