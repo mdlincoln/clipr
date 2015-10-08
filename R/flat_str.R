@@ -26,7 +26,8 @@ table_str <- function(content, breaks, .dots) {
   paste0(utils::capture.output(do.call(utils::write.table, .dots)), collapse = breaks)
 }
 
-# Helper function to flatten content into 1-tuple character vector (i.e. a string)
+# Helper function to flatten content into 1-tuple character vector (i.e. a
+# string)
 flat_str <- function(content, breaks) {
   if(typeof(content) != "character") {
     warning("Coercing content to character")

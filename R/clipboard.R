@@ -82,12 +82,14 @@ read_clip <- function() {
 #' tbl <- data.frame(a=c(1,2,3), b=c(4,5,6))
 #' write_clip(tbl)
 #' @export
-write_clip <- function(content, object_type = c("auto", "character", "table"), breaks = NULL, eos = NULL, return_new = TRUE, ...) invisible({
+write_clip <- function(content, object_type = c("auto", "character", "table"),
+                       breaks = NULL, eos = NULL, return_new = TRUE, ...) invisible({
   object_type <- match.arg(object_type)
   # Determine system type
   sys.type <- sys_type()
 
-  # Choose an operating system-specific function (stop with error if not recognized)
+  # Choose an operating system-specific function (stop with error if not
+  # recognized)
   chosen_write_clip <- switch(sys.type,
                           "Darwin" = osx_write_clip,
                           "Windows" = win_write_clip,

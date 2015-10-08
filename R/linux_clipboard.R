@@ -16,9 +16,10 @@ notify_no_cb <- function() {
 
 # Helper function to read from the X11 clipboard
 #
-# Requires the utility 'xclip' or 'xsel'. This function will stop with an error if neither is found.
-# Adapted from: https://github.com/mrdwab/overflow-mrdwab/blob/master/R/readClip.R
-#          and: https://github.com/jennybc/reprex/blob/master/R/clipboard.R
+# Requires the utility 'xclip' or 'xsel'. This function will stop with an error
+# if neither is found. Adapted from:
+# https://github.com/mrdwab/overflow-mrdwab/blob/master/R/readClip.R and:
+# https://github.com/jennybc/reprex/blob/master/R/clipboard.R
 X11_read_clip <- function() {
   if (has_xclip()) {
     con <- pipe("xclip -o -selection clipboard")
@@ -35,10 +36,12 @@ X11_read_clip <- function() {
 
 # Helper function to write to the X11 clipboard
 #
-# Requires the utility 'xclip' or 'xsel'. This function will stop with an error if neither is found.
-# Adapted from https://github.com/mrdwab/overflow-mrdwab/blob/master/R/writeClip.R
+# Requires the utility 'xclip' or 'xsel'. This function will stop with an error
+# if neither is found. Adapted from
+# https://github.com/mrdwab/overflow-mrdwab/blob/master/R/writeClip.R
 #
-# Targets "primary" and "clipboard" clipboards if using xclip, see: http://unix.stackexchange.com/a/69134/89254
+# Targets "primary" and "clipboard" clipboards if using xclip, see:
+# http://unix.stackexchange.com/a/69134/89254
 X11_write_clip <- function(content, object_type, breaks, eos, return_new, ...) {
   if (has_xclip()) {
     con <- pipe("xclip -i -sel p -f | xclip -i -sel c", "w")

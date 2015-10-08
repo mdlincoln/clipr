@@ -29,8 +29,8 @@ ASCII \code{nul}. Defaults to no terminator character, indicated by
 original object}
 
 \item{...}{Custom options to be passed to \code{\link{write.table}} (if the
-  object is a table-like) Defaults to
-  sane line-break and tab standards based on the operating system.}
+  object is a table-like) Defaults to sane line-break and tab standards based
+  on the operating system.}
 }
 \value{
 Invisibly returns the original object
