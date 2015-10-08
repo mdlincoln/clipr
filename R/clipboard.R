@@ -56,8 +56,13 @@ read_clip <- function() {
 #' @param return_new If true, returns the rendered string; if false, returns the
 #'   original object
 #' @param ... Custom options to be passed to \code{\link{write.table}} (if the
-#'   object is a table-like) Defaults to
-#'   sane line-break and tab standards based on the operating system.
+#'   object is a table-like) Defaults to sane line-break and tab standards based
+#'   on the operating system.
+#'
+#' @note On X11 systems, \code{write_clip} will cause either xclip (preferred)
+#'   or xsel to be called. Be aware that, by design, these processes will fork
+#'   into the background until the next paste event, when they will then exit
+#'   silently.
 #'
 #' @return Invisibly returns the original object
 #'
