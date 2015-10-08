@@ -8,6 +8,22 @@ clipr
 
 Simple utility functions to read and write from the system clipboards of Windows, OS X, and Unix-like systems (which require either xclip or xsel.)
 
+## Installation
+
+Install from CRAN
+
+```r
+install.packages("clipr")
+```
+
+Or try the development version
+
+```r
+devtools::install_github("mdlincoln/clipr")
+```
+
+## Usage
+
 ``` r
 library("clipr")
 
