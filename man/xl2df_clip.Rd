@@ -14,6 +14,10 @@ xl2df_clip(clip = clipr::read_clip(), headers = TRUE,
 
 \item{stringsAsFactor}{logical for using stringAsFactors, default is FALSE}
 }
+\value{
+A data.frame with the contents of the clipboard.
+       If the system clipboard is empty, returns NULL
+}
 \description{
 Transforms Output of Read_clip into Data.Frame
 }

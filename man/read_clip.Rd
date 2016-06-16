@@ -16,9 +16,7 @@ Read the contents of the system clipboard into a character vector.
 \note{
 \code{read_clip} will not try to guess at how to parse copied text. If
   you are copying tabular data, it is suggested that you use
-  \code{\link[readr]{read_delim}} or one of its sibling functions from the
-  readr package (\url{https://cran.r-project.org/package=readr}) to coax the
-  text into a data frame.
+  \code{xl2df}.
 }
 \examples{
 clip_text <- read_clip()

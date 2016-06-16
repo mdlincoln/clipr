@@ -5,6 +5,8 @@
 #' @param clip the excel table clip to transform to data.frame
 #' @param headers logical for if clip contains colnames or a vector of colnames to use
 #' @param stringsAsFactor logical for using stringAsFactors, default is FALSE
+#' @return A data.frame with the contents of the clipboard.
+#'        If the system clipboard is empty, returns NULL
 #' @export
 #' @examples
 #' # excel contents
@@ -24,8 +26,7 @@
 #' # 1 the thing I might the thing I may
 #' # 2    become despite coding this way
 xl2df_clip <- function (clip = clipr::read_clip(), headers = TRUE, stringsAsFactor = FALSE) {
-    out <- t(sapply(clip, function(x) strsplit(x, "\t")[[1]],
-        USE.NAMES = FALSE))
+    out <- t(sapply(clip, function(x) strsplit(x, "\t")[[1]],  USE.NAMES = FALSE))
     if (is.logical(headers)) {
         if (headers) {
             xx <- out[2:nrow(out), ]
@@ -39,6 +40,6 @@ xl2df_clip <- function (clip = clipr::read_clip(), headers = TRUE, stringsAsFact
         xx <- out[2:nrow(out), ]
         colnames(xx) <- headers
     }
-    as.data.frame(xx, stringsAsFactors = stringsAsFactor)
+    readr::type_convert(as.data.frame(xx, stringsAsFactors = stringsAsFactor))
 }
 
