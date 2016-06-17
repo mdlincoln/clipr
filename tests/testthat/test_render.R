@@ -55,3 +55,19 @@ test_that("Render custom matricies", {
     expect_equal(write_clip(tbl, sep = ","), "1,4\n2,5\n3,6")
   }
 })
+
+
+
+test_that("Render clipped default matrices", {
+
+  if(sys_type() == "Windows") {
+    tbl <- read_clip_tbl("a\tb\tc\r\n1\tcat\t12/31/1999\r\n2\tdog\t01/01/2000")
+  } else {
+    tbl <- read_clip_tbl("a\tb\tc\n1\tcat\t12/31/1999\n2\tdog\t01/01/2000")
+  }
+
+  class(tbl) <- c('tbl_df', 'tbl','data.frame')
+  tbl2 <- write_clip(tbl)
+  expect_equal(read_clip_tbl(tbl2), tbl)
+})
+

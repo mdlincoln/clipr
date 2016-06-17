@@ -4,15 +4,20 @@ Title: Read and Write from the System Clipboard
 Version: 0.2.0.9000
 Authors@R: c(
   person("Matthew", "Lincoln", email = "matthew.d.lincoln@gmail.com", role = c("aut", "cre")),
-  person("Louis", "Maddox", role = "ctb"))
+  person("Louis", "Maddox", role = "ctb"),
+  person("Steve", "Simpson", role ="ctb"))
 Description: Simple utility functions to read from and write to the Windows,
-  OS X, and X11 clipboards.
-Imports: utils
+    OS X, and X11 clipboards.
+Imports:
+    utils
 SystemRequirements: xclip (http://sourceforge.net/projects/xclip/) or xsel
-  (http://www.vergenet.net/~conrad/software/xsel/) for accessing the X11
-  clipboard
+    (http://www.vergenet.net/~conrad/software/xsel/) for accessing the X11
+    clipboard
 License: GPL-3
 LazyData: TRUE
-Suggests: testthat
+Suggests:
+    testthat,
+    readr
 URL: https://github.com/mdlincoln/clipr
 BugReports: https://github.com/mdlincoln/clipr/issues
+RoxygenNote: 5.0.1

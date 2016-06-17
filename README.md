@@ -52,5 +52,8 @@ cb
 #> [1] "a,b\r\n1,4\r\n2,5\r\n3,6" # on Windows
 ```
 
+`read_clip_tbl` allows clips from spreadsheets containing matrices to be read in as data.frames directly. It can be used either directly after the copy step, as `read_clip` is, or on a variable that the output of read_clip has been assigned to.
+
+
 ---
 [Matthew Lincoln](http://matthewlincoln.net) | University of Maryland, College Park
