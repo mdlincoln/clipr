@@ -58,16 +58,13 @@ test_that("Render custom matricies", {
 
 
 
-test_that("Render clipped default matrices", {
+test_that("Render tables read from clipboard as data.frames", {
 
-  if(sys_type() == "Windows") {
-    tbl <- read_clip_tbl("a\tb\tc\r\n1\tcat\t12/31/1999\r\n2\tdog\t01/01/2000")
-  } else {
-    tbl <- read_clip_tbl("a\tb\tc\n1\tcat\t12/31/1999\n2\tdog\t01/01/2000")
-  }
-
-  class(tbl) <- c('tbl_df', 'tbl','data.frame')
-  tbl2 <- write_clip(tbl)
-  expect_equal(read_clip_tbl(tbl2), tbl)
+  tbl <- data.frame(a = c(1, 2), b = c("cat", "dog"), c = c("1999-12-31", "2000-01-01"))
+  write_clip(tbl)
+  # Comparison table
+  ptbl <- data.frame(a = as.numeric(c(1, 2)), b = c("cat", "dog"), c = as.Date(c("1999-12-31", "2000-01-01")), stringsAsFactors = FALSE)
+  rtbl <- read_clip_tbl(col_types = "ncD")
+  expect_equivalent(rtbl, ptbl)
 })
 
