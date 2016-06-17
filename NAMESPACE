@@ -2,5 +2,5 @@
 
 export(clear_clip)
 export(read_clip)
+export(read_clip_tbl)
 export(write_clip)
-export(xl2df_clip)
