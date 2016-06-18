@@ -14,10 +14,10 @@
 #'
 #' @examples
 #' write_clip(head(iris))
-#'
 #' str(read_clip())
 #' #>  chr [1:7] "Sepal.Length\tSepal.Width\tPetal.Length\tPetal.Width\tSpecies" ...
 #'
+#' write_clip(head(iris))
 #' str(read_clip_tbl())
 #' #> Classes 'tbl_df', 'tbl' and 'data.frame':    6 obs. of  5 variables:
 #' #>  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4
