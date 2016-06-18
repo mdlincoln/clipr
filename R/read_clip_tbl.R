@@ -14,5 +14,7 @@
 read_clip_tbl <- function(x = read_clip(), ...) {
   if(is.null(x))
     return(NULL)
+  if(!requireNamespace("readr", quietly = TRUE))
+    stop("read_clip_tbl requires the readr package. Run install.packages('readr') first")
   readr::read_tsv(paste0(x, collapse = "\n"), ...)
 }
