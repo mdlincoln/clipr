@@ -59,14 +59,9 @@ test_that("Render custom matricies", {
 
 
 test_that("Render tables read from clipboard as data.frames", {
-
-  tbl <- data.frame(a = c(1, 2), b = c("cat", "dog"), c = c("1999-12-31", "2000-01-01"))
-  write_clip(tbl)
-  # Comparison table
-  ptbl <- data.frame(a = as.numeric(c(1, 2)), b = c("cat", "dog"), c = as.Date(c("1999-12-31", "2000-01-01")), stringsAsFactors = FALSE)
-  rtbl <- read_clip_tbl(col_types = "ncD")
-  expect_equivalent(rtbl, ptbl)
-  clear_clip()
-  expect_warning(expect_null(read_clip_tbl()))
+  contents <- c("Sepal.Length\tSepal.Width\tPetal.Length\tPetal.Width",
+                "5.1\t3.5\t1.4\t0.2",
+                "4.9\t3\t1.4\t0.2")
+  expect_equivalent(read_clip_tbl(contents), iris[1:2, 1:4])
 })
 

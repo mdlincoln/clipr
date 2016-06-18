@@ -11,20 +11,6 @@
 #'   clipboard is empty, returns \code{NULL}
 #'
 #' @export
-#'
-#' @examples
-#' write_clip(head(iris))
-#' str(read_clip())
-#' #>  chr [1:7] "Sepal.Length\tSepal.Width\tPetal.Length\tPetal.Width\tSpecies" ...
-#'
-#' write_clip(head(iris))
-#' str(read_clip_tbl())
-#' #> Classes 'tbl_df', 'tbl' and 'data.frame':    6 obs. of  5 variables:
-#' #>  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4
-#' #>  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9
-#' #>  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7
-#' #>  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4
-#' #>  $ Species     : chr  "setosa" "setosa" "setosa" "setosa" ...
 read_clip_tbl <- function(x = read_clip(), ...) {
   if(is.null(x))
     return(NULL)
