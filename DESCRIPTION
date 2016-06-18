@@ -16,8 +16,7 @@ SystemRequirements: xclip (http://sourceforge.net/projects/xclip/) or xsel
 License: GPL-3
 LazyData: TRUE
 Suggests:
-    testthat,
-    readr
+    testthat
 URL: https://github.com/mdlincoln/clipr
 BugReports: https://github.com/mdlincoln/clipr/issues
 RoxygenNote: 5.0.1
