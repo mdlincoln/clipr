@@ -81,7 +81,7 @@ read_clip <- function() {
 #' write_clip(tbl)
 #' @export
 write_clip <- function(content, object_type = c("auto", "character", "table"),
-                       breaks = NULL, eos = NULL, return_new = TRUE, ...) invisible({
+                       breaks = NULL, eos = NULL, return_new = TRUE, ...) {
   object_type <- match.arg(object_type)
   # Determine system type
   sys.type <- sys_type()
@@ -95,8 +95,8 @@ write_clip <- function(content, object_type = c("auto", "character", "table"),
   )
 
   # Supply the clipboard content to write and options list to this function
-  chosen_write_clip(content, object_type, breaks, eos, return_new, ...)
-})
+  invisible(chosen_write_clip(content, object_type, breaks, eos, return_new, ...))
+}
 
 #' Clear clipboard
 #'
