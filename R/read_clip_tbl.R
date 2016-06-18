@@ -26,5 +26,7 @@
 #' #>  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4
 #' #>  $ Species     : chr  "setosa" "setosa" "setosa" "setosa" ...
 read_clip_tbl <- function(x = read_clip(), ...) {
+  if(is.null(x))
+    return(NULL)
   readr::read_tsv(paste0(x, collapse = "\n"), ...)
 }

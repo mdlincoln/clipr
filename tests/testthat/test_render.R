@@ -66,5 +66,7 @@ test_that("Render tables read from clipboard as data.frames", {
   ptbl <- data.frame(a = as.numeric(c(1, 2)), b = c("cat", "dog"), c = as.Date(c("1999-12-31", "2000-01-01")), stringsAsFactors = FALSE)
   rtbl <- read_clip_tbl(col_types = "ncD")
   expect_equivalent(rtbl, ptbl)
+  clear_clip()
+  expect_warning(expect_null(read_clip_tbl()))
 })
 
