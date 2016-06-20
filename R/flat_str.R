@@ -23,7 +23,14 @@ table_str <- function(content, breaks, .dots) {
   # If matrix, default to not printing column names
   if(is.matrix(content))
     .dots$col.names <- ifelse(is.null(.dots$col.names), FALSE, .dots$col.names)
-  paste0(utils::capture.output(do.call(utils::write.table, .dots)), collapse = breaks)
+
+  # Writing to and reading from a temp file is much faster than using capture.output
+  tbl_file <- tempfile()
+  .dots$file = tbl_file
+  do.call(utils::write.table, .dots)
+  read_tbl <- paste0(readLines(tbl_file), collapse = breaks)
+  unlink(tbl_file)
+  return(read_tbl)
 }
 
 # Helper function to flatten content into 1-tuple character vector (i.e. a
