@@ -4,7 +4,7 @@
     - The separator to be used when writing a character vector can now be
     explicitly declared using `breaks`. `breaks=NULL` will default to
     system-specific line breaks for both vectors and tables.
-    - `write_clip` will default to formatting data.frames and matricies with 
+    - `write_clip` will default to formatting data.frames and matrices with 
   `write.table`, allowing easy pasting of tabular objects into programs like 
   Excel. Option `object_type="auto"` will check the object type to decide on the
   correct formatting, or the user may explicitly state `object_type="table"` or
