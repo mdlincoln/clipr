@@ -52,7 +52,7 @@ cb
 #> [1] "a,b\r\n1,4\r\n2,5\r\n3,6" # on Windows
 ```
 
-`read_clip_tbl` will try to parse clipboard contents from spreadsheets into data.frames directly.
+`read_clip_tbl` will try to parse clipboard contents from spreadsheets into data frames directly.
 
 ---
 [Matthew Lincoln](http://matthewlincoln.net) | University of Maryland, College Park

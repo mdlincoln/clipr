@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_clip_tbl.R
 \name{read_clip_tbl}
 \alias{read_clip_tbl}
-\title{Transforms Output of read_clip into dataframe.}
+\title{Transforms Output of read_clip into data frame.}
 \usage{
 read_clip_tbl(x = read_clip(), ...)
 }
@@ -19,11 +19,11 @@ overridden by specifying them when calling \code{read_clip_tbl}: \describe{
 \item{\code{strip.white}}{\code{TRUE}} }}
 }
 \value{
-A data.frame with the contents of the clipboard. If the system
+A data frame with the contents of the clipboard. If the system
   clipboard is empty, returns \code{NULL}
 }
 \description{
-Transforms clipped content into a data.frame by putting
+Transforms clipped content into a data frame by putting
 \code{\link{read_clip}} output by using \code{\link{read.table}}.
 }
 

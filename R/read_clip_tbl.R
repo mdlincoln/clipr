@@ -1,6 +1,6 @@
-#' Transforms Output of read_clip into dataframe.
+#' Transforms Output of read_clip into data frame.
 #'
-#' Transforms clipped content into a data.frame by putting
+#' Transforms clipped content into a data frame by putting
 #' \code{\link{read_clip}} output by using \code{\link{read.table}}.
 #'
 #' @param x Defaults to reading from the clipboard, but can be substituted by a
@@ -13,7 +13,7 @@
 #'   \item{\code{na.strings}}{\code{c("NA", "")}}
 #'   \item{\code{strip.white}}{\code{TRUE}} }
 #'
-#' @return A data.frame with the contents of the clipboard. If the system
+#' @return A data frame with the contents of the clipboard. If the system
 #'   clipboard is empty, returns \code{NULL}
 #'
 #' @export
