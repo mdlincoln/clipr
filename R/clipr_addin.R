@@ -9,6 +9,6 @@
 #' @export
 clipr_addin <- function() {
   context <- rstudioapi::getActiveDocumentContext()
-  text_expr <- parse(text = context$selection[[1]]$text)
-  write_clip(eval(text_expr))
+  expr_object <- eval(parse(text = context$selection[[1]]$text))
+  write_clip(expr_object)
 }
