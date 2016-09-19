@@ -1,0 +1,4 @@
+Name: Copy expression results to clipboard
+Description: Copies the results of a selected expression to the system clipboard
+Binding: clipr_addin
+Interactive: false

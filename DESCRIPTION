@@ -16,6 +16,7 @@ SystemRequirements: xclip (http://sourceforge.net/projects/xclip/) or xsel
 License: GPL-3
 LazyData: TRUE
 Suggests:
+    rstudioapi,
     testthat
 URL: https://github.com/mdlincoln/clipr
 BugReports: https://github.com/mdlincoln/clipr/issues
