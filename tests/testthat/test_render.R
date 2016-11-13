@@ -1,10 +1,8 @@
 context("Clipr read and write")
 
 # When running X11 headless for automated testing, we need to set the DISPLAY
-# environment variable
-sys <- sys_type()
-
-if (all(sys != c("Windows", "Darwin"))) {
+# environment variable. Thanks to @jennybc for solving this.
+if (!(sys_type() %in% c("Windows", "Darwin"))) {
   Sys.setenv(DISPLAY = ":99.0")
   system("sh -e /etc/init.d/xvfb start", ignore.stderr = TRUE)
   Sys.sleep(3)
