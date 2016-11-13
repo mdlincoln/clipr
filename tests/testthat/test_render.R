@@ -1,4 +1,7 @@
 context("Clipr read and write")
+Sys.setenv(DISPLAY = ":99.0")
+system("sh -e /etc/init.d/xvfb start", ignore.stderr = TRUE)
+Sys.sleep(3)
 
 test_that("Render character vectors", {
   single <- "hello, world!"
@@ -44,7 +47,6 @@ test_that("Render custom data.frames", {
   }
   expect_equivalent(read_clip(), c("a,b", "1,4", "2,5", "3,6"))
 })
-
 
 test_that("Render matricies", {
   tbl <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 3, ncol = 2)
