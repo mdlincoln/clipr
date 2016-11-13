@@ -1,9 +1,20 @@
 # Sample .travis.yml for R projects
 
 language: r
+r:
+  - oldrel
+  - release
+  - devel
 warnings_are_errors: true
 cache: packages
-sudo: true
+sudo: false
 
-apt_packages:
-  - xclip
+addons:
+  apt:
+    packages:
+      - xclip
+
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3
