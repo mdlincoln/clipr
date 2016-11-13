@@ -45,6 +45,7 @@ On X11 systems, \code{write_clip} will cause either xclip (preferred)
   silently.
 }
 \examples{
+\dontrun{
 text <- "Write to clipboard"
 write_clip(text)
 
@@ -59,5 +60,7 @@ write_clip(multiline, breaks = ",")
 
 tbl <- data.frame(a=c(1,2,3), b=c(4,5,6))
 write_clip(tbl)
+}
+
 }
 
