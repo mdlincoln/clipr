@@ -11,7 +11,7 @@ if (!(sys_type() %in% c("Windows", "Darwin"))) {
 
 test_that("Unavailable clipboard throws warning", {
   if (clipr_available()) {
-    expect_silent(write_clip("a"))
+    expect_equivalent(write_clip("a"), "a")
   } else {
     expect_error(write_clip("a"))
   }
