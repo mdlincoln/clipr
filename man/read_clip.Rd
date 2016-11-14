@@ -19,7 +19,9 @@ Read the contents of the system clipboard into a character vector.
   \code{\link{read_clip_tbl}}.
 }
 \examples{
+\dontrun{
 clip_text <- read_clip()
+}
 
 }
 
