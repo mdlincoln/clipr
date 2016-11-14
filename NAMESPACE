@@ -2,6 +2,7 @@
 
 export(clear_clip)
 export(clipr_addin)
+export(clipr_output_addin)
 export(read_clip)
 export(read_clip_tbl)
 export(write_clip)

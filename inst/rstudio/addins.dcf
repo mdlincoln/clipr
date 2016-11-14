@@ -1,4 +1,9 @@
-Name: Results to clipboard
-Description: Copies the results of a selected expression to the system clipboard
+Name: Value to clipboard
+Description: Copies the value of a selected expression to the system clipboard
 Binding: clipr_addin
+Interactive: false
+
+Name: Output to clipboard
+Description: Copies the console output (rather than the value) of a selected expression to the system clipboard
+Binding: clipr_output_addin
 Interactive: false
