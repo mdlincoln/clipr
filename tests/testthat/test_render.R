@@ -9,6 +9,11 @@ if (!(sys_type() %in% c("Windows", "Darwin"))) {
   Sys.sleep(3)
 }
 
+test_that("Unavailable clipboard throws warning", {
+  skip_if_not(!is_clipr_available())
+  expect_error(write_clip("a"))
+})
+
 test_that("Render character vectors", {
   skip_if_not(is_clipr_available(), skip_msg)
 
