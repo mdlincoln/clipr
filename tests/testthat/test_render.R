@@ -10,19 +10,22 @@ if (!(sys_type() %in% c("Windows", "Darwin"))) {
 }
 
 test_that("Unavailable clipboard throws warning", {
-  skip_if_not(!is_clipr_available())
-  expect_error(write_clip("a"))
+  if (clipr_available()) {
+    expect_silent(write_clip("a"))
+  } else {
+    expect_error(write_clip("a"))
+  }
 })
 
 test_that("Render character vectors", {
-  skip_if_not(is_clipr_available(), skip_msg)
+  skip_if_not(clipr_available(), skip_msg)
 
   single <- "hello, world!"
   expect_equivalent(write_clip(single), single)
 })
 
 test_that("Render default multiline vectors", {
-  skip_if_not(is_clipr_available(), skip_msg)
+  skip_if_not(clipr_available(), skip_msg)
 
   multiline <- c("hello", "world!")
   inv_out <- write_clip(multiline)
@@ -35,7 +38,7 @@ test_that("Render default multiline vectors", {
 })
 
 test_that("Render custom multiline vectors", {
-  skip_if_not(is_clipr_available(), skip_msg)
+  skip_if_not(clipr_available(), skip_msg)
 
   multiline <- c("hello", "world!")
   inv_out <- write_clip(multiline, breaks = ", ")
@@ -44,7 +47,7 @@ test_that("Render custom multiline vectors", {
 })
 
 test_that("Render default data.frames", {
-  skip_if_not(is_clipr_available(), skip_msg)
+  skip_if_not(clipr_available(), skip_msg)
 
   tbl <- data.frame(a = c(1,2,3), b = c(4,5,6))
   inv_out <- write_clip(tbl)
@@ -57,7 +60,7 @@ test_that("Render default data.frames", {
 })
 
 test_that("Render custom data.frames", {
-  skip_if_not(is_clipr_available(), skip_msg)
+  skip_if_not(clipr_available(), skip_msg)
 
   tbl <- data.frame(a = c(1,2,3), b = c(4,5,6))
   inv_out <- write_clip(tbl, sep = ",")
@@ -70,7 +73,7 @@ test_that("Render custom data.frames", {
 })
 
 test_that("Render matricies", {
-  skip_if_not(is_clipr_available(), skip_msg)
+  skip_if_not(clipr_available(), skip_msg)
 
   tbl <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 3, ncol = 2)
   inv_out <- write_clip(tbl)
@@ -83,7 +86,7 @@ test_that("Render matricies", {
 })
 
 test_that("Render custom matricies", {
-  skip_if_not(is_clipr_available(), skip_msg)
+  skip_if_not(clipr_available(), skip_msg)
 
   tbl <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 3, ncol = 2)
   inv_out <- write_clip(tbl, sep = ",")
@@ -96,7 +99,7 @@ test_that("Render custom matricies", {
 })
 
 test_that("Render tables read from clipboard as data.frames", {
-  skip_if_not(is_clipr_available(), skip_msg)
+  skip_if_not(clipr_available(), skip_msg)
 
   inv_out <- write_clip(iris[1:2, 1:4])
   expect_equivalent(read_clip_tbl(), iris[1:2, 1:4])

@@ -20,6 +20,7 @@ sys_type <- function() {
 #' }
 #'
 #' @export
-is_clipr_available <- function() {
-  !inherits(try(write_clip("a"), silent = TRUE), "try-error")
+clipr_available <- function() {
+  !(inherits(try(write_clip("a"), silent = TRUE), "try-error") |
+      inherits(try(read_clip(), silent = TRUE), "try-error"))
 }
