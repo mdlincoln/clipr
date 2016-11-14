@@ -18,21 +18,21 @@
 #'
 #' @export
 read_clip_tbl <- function(x = read_clip(), ...) {
-  if(is.null(x))
+  if (is.null(x))
     return(NULL)
 
   .dots <- list(...)
   .dots$file <- textConnection(paste0(x, collapse = "\n"))
 
-  if(is.null(.dots$header))
+  if (is.null(.dots$header))
     .dots$header <- TRUE
-  if(is.null(.dots$sep))
+  if (is.null(.dots$sep))
     .dots$sep <- "\t"
-  if(is.null(.dots$stringsAsFactors))
+  if (is.null(.dots$stringsAsFactors))
     .dots$stringsAsFactors <- FALSE
-  if(is.null(.dots$na.strings))
+  if (is.null(.dots$na.strings))
     .dots$na.strings <- c("NA", "")
-  if(is.null(.dots$strip.white))
+  if (is.null(.dots$strip.white))
     .dots$strip.white <- TRUE
 
 

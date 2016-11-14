@@ -65,7 +65,7 @@ X11_write_clip <- function(content, object_type, breaks, eos, return_new, ...) {
   rendered_content <- render_object(content, object_type, breaks, .dots)
   writeChar(rendered_content, con = con, eos = eos)
   close(con)
-  if(return_new) {
+  if (return_new) {
     rendered_content
   } else {
     content

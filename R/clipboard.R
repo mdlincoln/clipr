@@ -26,7 +26,7 @@ read_clip <- function() {
 
   content <- chosen_read_clip()
 
-  if(length(content) == 0) {
+  if (length(content) == 0) {
     warning("System clipboard contained no readable text. Returning NULL.")
     return(NULL)
   }
