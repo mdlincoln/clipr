@@ -1,8 +1,8 @@
 # Determine if a given utility is installed AND accessible
-has_util <- function(util_name) {
+has_util <- function(util_name, util_test) {
   if (nzchar(Sys.which(util_name))) {
     # If utility is accessible, check that DISPLAY can be opened.
-    try_res <- tryCatch(system2(util_name, stdout = TRUE, stderr = TRUE),
+    try_res <- tryCatch(system2(util_test, stdout = TRUE, stderr = TRUE),
                         error = function(c) FALSE,
                         warning = function(c) FALSE)
 
@@ -17,10 +17,10 @@ has_util <- function(util_name) {
 }
 
 # Determine if system has 'xclip' installed AND it's accessible
-has_xclip <- function() has_util("xclip")
+has_xclip <- function() has_util("xclip", "xclip -o -selection clipboard")
 
 # Determine if system has 'xsel' installed
-has_xsel <- function() has_util("xsel")
+has_xsel <- function() has_util("xsel", "xsel --clipboard")
 
 # Stop read/write and return an error of missing clipboard software.
 notify_no_cb <- function() {
