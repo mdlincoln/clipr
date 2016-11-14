@@ -1,4 +1,4 @@
-skip_msg <- "Test can only be run if system clipboard is available."
+skip_msg <- "System clipboard is not available - skipping test."
 context("Clipr read and write")
 
 # When running X11 headless for automated testing, we need to set the DISPLAY
