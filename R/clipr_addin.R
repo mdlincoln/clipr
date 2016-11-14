@@ -7,5 +7,5 @@ clipr_result <- function() {
 clipr_output <- function() {
   context <- rstudioapi::getActiveDocumentContext()
   expr_object <- eval(parse(text = context$selection[[1]]$text))
-  write_clip(capture.output(expr_object))
+  write_clip(utils::capture.output(expr_object))
 }

@@ -10,6 +10,17 @@ is_clipr_available()
 boolean
 }
 \description{
-Checks to see if the system clipboard is writeable/readable.
+Checks to see if the system clipboard is writeable/readable. This may be
+useful if you are developing a package that relies on \link{clipr} and need
+to ensure that it will pass tests on machines (e.g. CRAN, Travis) where
+the system clipboard may not be available.
+}
+\examples{
+\dontrun{
+# When using testthat:
+library(testthat)
+skip_if_not(is_clipr_available())
+}
+
 }
 
