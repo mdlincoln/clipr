@@ -6,6 +6,8 @@ has_util <- function(util_name, util_test) {
                         error = function(c) FALSE,
                         warning = function(c) FALSE)
 
+    # In the case of an error/warning on trying the function, then the util is
+    # not available
     if (try_res == FALSE) {
       FALSE
     } else {
