@@ -21,6 +21,9 @@ sys_type <- function() {
 #'
 #' @export
 clipr_available <- function() {
-  !(inherits(try(write_clip("a"), silent = TRUE), "try-error") |
-      inherits(try(read_clip(), silent = TRUE), "try-error"))
+  suppressWarnings({
+    !(inherits(try(write_clip("a"), silent = TRUE), "try-error") |
+        inherits(try(read_clip(), silent = TRUE), "try-error") |
+        !identical(read_clip(), "a"))
+  })
 }
