@@ -16,7 +16,7 @@ sys_type <- function() {
 #' \dontrun{
 #' # When using testthat:
 #' library(testthat)
-#' skip_if_not(is_clipr_available())
+#' skip_if_not(clipr_available())
 #' }
 #'
 #' @export
