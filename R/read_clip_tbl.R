@@ -1,4 +1,4 @@
-#' Transforms Output of read_clip into data frame.
+#' Transforms output of \code{\link{read_clip}} into data frame.
 #'
 #' Transforms clipped content into a data frame by putting
 #' \code{\link{read_clip}} output by using \code{\link{read.table}}.

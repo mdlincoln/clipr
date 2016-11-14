@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_clip_tbl.R
 \name{read_clip_tbl}
 \alias{read_clip_tbl}
-\title{Transforms Output of read_clip into data frame.}
+\title{Transforms output of \code{\link{read_clip}} into data frame.}
 \usage{
 read_clip_tbl(x = read_clip(), ...)
 }
