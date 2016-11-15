@@ -55,4 +55,4 @@ cb
 `read_clip_tbl` will try to parse clipboard contents from spreadsheets into data frames directly.
 
 ---
-[Matthew Lincoln](http://matthewlincoln.net) | University of Maryland, College Park
+[Matthew Lincoln](http://matthewlincoln.net)
