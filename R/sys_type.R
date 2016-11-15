@@ -22,7 +22,7 @@ sys_type <- function() {
 #' @export
 clipr_available <- function() {
   suppressWarnings({
-    !(inherits(try(write_clip("a"), silent = TRUE), "try-error") |
+    !(inherits(try(write_clip("a"), silent = TRUE), "try-error") ||
         inherits(try(read_clip(), silent = TRUE), "try-error"))
   })
 }
