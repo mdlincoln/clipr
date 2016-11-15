@@ -8,10 +8,10 @@ r:
 warnings_are_errors: true
 cache: packages
 sudo: false
+r_check_revdep: true
 
 addons:
   apt:
     packages:
       - xclip
 
-after_success: R -e "devtools::revdep_check()"
