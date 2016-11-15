@@ -13,3 +13,5 @@ addons:
   apt:
     packages:
       - xclip
+
+after_success: R -e "devtools::revdep_check()"
