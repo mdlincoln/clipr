@@ -1,14 +1,6 @@
 skip_msg <- "System clipboard is not available - skipping test."
 context("Clipr read and write")
 
-# When running X11 headless for automated testing, we need to set the DISPLAY
-# environment variable. Thanks to @jennybc for solving this.
-if (!(sys_type() %in% c("Windows", "Darwin"))) {
-  Sys.setenv(DISPLAY = ":99.0")
-  system("sh -e /etc/init.d/xvfb start", ignore.stderr = TRUE)
-  Sys.sleep(3)
-}
-
 test_that("Unavailable clipboard throws warning", {
   if (clipr_available()) {
     expect_equivalent(write_clip("a"), "a")
