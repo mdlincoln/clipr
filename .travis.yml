@@ -6,6 +6,7 @@ r:
   - release
   - devel
 env:
+  - DISPLAY=""
   - DISPLAY=:90.0
 warnings_are_errors: true
 cache: packages
