@@ -11,7 +11,7 @@ env:
 warnings_are_errors: true
 cache: packages
 sudo: false
-r_check_revdep: true
+r_check_revdep: false
 
 addons:
   apt:
