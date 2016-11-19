@@ -17,6 +17,13 @@ test_that("Unavailable clipboard throws warning", {
   }
 })
 
+test_that("clipr_available() does not overwrite existing contents", {
+  skip_if_not(clipr_available(), skip_msg)
+  write_clip("z")
+  clipr_available()
+  expect_equal(read_clip(), "z")
+})
+
 test_that("Render character vectors", {
   skip_if_not(clipr_available(), skip_msg)
 
