@@ -5,7 +5,8 @@ Version: 0.2.1.9000
 Authors@R: c(
   person("Matthew", "Lincoln", email = "matthew.d.lincoln@gmail.com", role = c("aut", "cre")),
   person("Louis", "Maddox", role = "ctb"),
-  person("Steve", "Simpson", role ="ctb"))
+  person("Steve", "Simpson", role = "ctb"),
+  person("Jennifer", "Bryan", role = "ctb"))
 Description: Simple utility functions to read from and write to the Windows,
     OS X, and X11 clipboards.
 Imports:
