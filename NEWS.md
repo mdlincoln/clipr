@@ -1,4 +1,4 @@
-## clipr 0.2.2
+## clipr 0.3.0
 
 - Introduces `clipr_available` which checks to see if the system clipboard is
 writeable/readable. This may be useful if you are developing a package that
