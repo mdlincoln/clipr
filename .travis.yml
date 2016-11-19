@@ -5,6 +5,9 @@ r:
   - oldrel
   - release
   - devel
+# Create a build matrix that will test package with an empty DISPLAY value
+# (making the clipboard unavailable) and a correctly-configured DISPLAY (making
+# the clipboard available)
 env:
   - DISPLAY=""
   - DISPLAY=:90.0
@@ -13,11 +16,13 @@ cache: packages
 sudo: false
 r_check_revdep: false
 
+# Install xclip
 addons:
   apt:
     packages:
       - xclip
 
+# Ensure xclip can still run headlessly
 before_script:
   - sh -e /etc/init.d/xvfb start
   - sleep 3
