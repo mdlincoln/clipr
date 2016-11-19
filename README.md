@@ -54,5 +54,14 @@ cb
 
 `read_clip_tbl` will try to parse clipboard contents from spreadsheets into data frames directly.
 
+## Using clipr in packages
+
+clipr's functionality, particularly on Linux-based systems, depends on the installation of additional software and, on headless systems like CRAN or other testing infrastructure like Travis, customization of environmental variables.
+Therfore, if you want to use clipr in your package, you will want to take some care in constructing your examples and tests:
+
+1. Examples that will try to use `read_clip()` or `write_clip()` ought to be wrapped in `\dontrun{}`
+2. Tests calling clipr should be conditionally skipped, calling on `clipr_available()` to check for this availability. This is necessary to pass CRAN checks.
+3. If you are using [Travis.ci](https://travis-ci.org/) to check your package build on Linux, consult the [`.travis.yml`](https://github.com/mdlincoln/clipr/blob/master/.travis.yml) for this package, which includes code for setting the `DISPLAY` environment variable, installing `xclip`, and running a pre-build script that will set up `xclip` to run headlessly.
+
 ---
 [Matthew Lincoln](http://matthewlincoln.net)
