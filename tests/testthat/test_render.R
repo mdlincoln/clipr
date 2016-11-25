@@ -6,8 +6,13 @@ test_that("clipr_available fails when DISPLAY is not configured; succeeds when i
   skip_if_not(identical(Sys.getenv("TRAVIS"), "true"))
   if (identical(Sys.getenv("DISPLAY"), ""))
     expect_false(clipr_available())
-  if (identical(Sys.getenv("DISPLAY"), ":90.0"))
+  if (identical(Sys.getenv("DISPLAY"), ":90.0")) {
+    expect_equivalent({
+      write_clip("a")
+      read_clip()
+    }, "a")
     expect_true(clipr_available())
+  }
 })
 
 test_that("Unavailable clipboard throws warning", {
