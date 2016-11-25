@@ -12,12 +12,12 @@ has_util <- function(util_test) {
     # In the case of an error/warning on trying the function, then the util is
     # not available
     if (identical(try_res, FALSE)) {
-      FALSE
+      notify_no_display()
     } else {
       TRUE
     }
   } else {
-    FALSE
+    notify_no_cb()
   }
 }
 
@@ -30,6 +30,11 @@ has_xsel <- function() has_util(c("xsel", "--clipboard"))
 # Stop read/write and return an error of missing clipboard software.
 notify_no_cb <- function() {
   stop("Clipboard on X11 requires 'xclip' (recommended) or 'xsel'.",
+       call. = FALSE)
+}
+
+notify_no_display <- function() {
+  stop("Clipboard on X11 requires that the DISPLAY envvar be configured.",
        call. = FALSE)
 }
 
