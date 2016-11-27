@@ -1,7 +1,7 @@
 Package: clipr
 Type: Package
 Title: Read and Write from the System Clipboard
-Version: 0.3.0
+Version: 0.3.0.9000
 Authors@R: c(
   person("Matthew", "Lincoln", email = "matthew.d.lincoln@gmail.com", role = c("aut", "cre")),
   person("Louis", "Maddox", role = "ctb"),
