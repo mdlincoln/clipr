@@ -1,8 +1,5 @@
-This is a resubmission. I have hopefully fixed a function that 
-ought to check for the availability of the system clipboard via xclip/xsel, and 
-skip tests if neither utility is installed OR if one is installed but the 
-DISPLAY env var is not configured to provide system clipboard functionality.
-This ought to allow tests to pass on CRAN.
+This submission fixes a new bug introduced in 0.3.0 in which clipr_available 
+erroneously returned false.
 
 ## Test environments 
 * local OS X install, R 3.3.2 

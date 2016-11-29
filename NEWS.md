@@ -1,3 +1,11 @@
+## clipr 0.3.1
+
+- Fixes a breaking bug that caused `clipr_available` to erroneously return
+`FALSE`. Thank you to @krivit for catching this.
+
+- Introduces better testing of `clipr_available` to properly evaluate it on
+Travis CI.
+
 ## clipr 0.3.0
 
 - Introduces `clipr_available` which checks to see if the system clipboard is
