@@ -1,5 +1,5 @@
 This submission fixes a new bug introduced in 0.3.0 in which clipr_available 
-erroneously returned false.
+erroneously returned false due to an improper use of system2().
 
 ## Test environments 
 * local OS X install, R 3.3.2 
