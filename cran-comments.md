@@ -1,5 +1,5 @@
-This submission fixes a new bug introduced in 0.3.0 in which clipr_available 
-erroneously returned false due to an improper use of system2().
+This submission fixes some minor bugs related to NA/NULL/empty vectors passed to
+`write_clip()`
 
 ## Test environments 
 * local OS X install, R 3.3.2 
@@ -12,10 +12,4 @@ There were no ERRORs or WARNINGs.
 
 ## Downstream dependencies
 
-curlconverter fails because of more stringent clipboard availability checking 
-introduced in this new version of clipr. The maintainer has been alerted, and a
-patch has been submitted, however the fix depends on a new function introduced
-in this version of clipr that checks whether relevant tests should be skipped
-when the system clipboard cannot be accessed (as on the X11 platforms on CRAN).
-Once this new version of clipr is available, the updated version of
-curlconverter should pass.
+There are 3 downstream dependencies of clipr. 0 packages with problems.
