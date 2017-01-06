@@ -42,6 +42,9 @@ flat_str <- function(content, breaks) {
   }
   if (length(content) > 1) {
     content <- paste0(content, collapse = breaks)
+  } else {
+    if (is.na(content))
+      content <- "NA"
   }
   return(content)
 }
