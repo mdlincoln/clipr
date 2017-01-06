@@ -27,6 +27,8 @@ test_that("clipr_available() does not overwrite existing contents", {
 })
 
 test_that("empty character in write_clip() causes no erroneous warning", {
+  skip_if_not(is_clipr_available, skip_msg)
+
   expect_silent(write_clip(""))
   expect_silent(clear_clip())
 })
