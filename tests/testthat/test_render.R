@@ -26,6 +26,11 @@ test_that("clipr_available() does not overwrite existing contents", {
   expect_equal(read_clip(), "z")
 })
 
+test_that("empty character in write_clip() causes no erroneous warning", {
+  expect_silent(write_clip(""))
+  expect_silent(clear_clip())
+})
+
 test_that("Render character vectors", {
   skip_if_not(is_clipr_available, skip_msg)
 

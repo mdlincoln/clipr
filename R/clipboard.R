@@ -111,7 +111,5 @@ write_clip <- function(content, object_type = c("auto", "character", "table"),
 #'
 #' @export
 clear_clip <- function() {
-  # pipe() sends a warning when writing an empty string. Since that is exatly
-  # what we want it to do, we will suppress that warning
-  suppressWarnings(write_clip(""))
+  write_clip("")
 }
