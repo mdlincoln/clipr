@@ -27,6 +27,8 @@ test_that("clipr_available() does not overwrite existing contents", {
 })
 
 test_that("single NA vectors don't cause error", {
+  skip_if_not(is_clipr_available, skip_msg)
+
   expect_equivalent(write_clip(NA_character_), "NA")
   expect_warning(write_clip(NA))
   expect_warning(write_clip(NA_integer_))
