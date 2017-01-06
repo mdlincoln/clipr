@@ -40,11 +40,14 @@ flat_str <- function(content, breaks) {
     warning("Coercing content to character")
     content <- as.character(content)
   }
-  if (length(content) > 1) {
+
+  if (length(content) < 1) {
+    content <- ""
+  } else if (length(content) > 1) {
     content <- paste0(content, collapse = breaks)
-  } else {
-    if (is.na(content))
-      content <- "NA"
+  } else if (is.na(content)) {
+    content <- "NA"
   }
+
   return(content)
 }

@@ -39,7 +39,12 @@ test_that("single NA vectors don't cause error", {
 test_that("empty character in write_clip() causes no erroneous warning", {
   skip_if_not(is_clipr_available, skip_msg)
 
-  expect_silent(write_clip(""))
+  expect_equivalent(write_clip(""), "")
+  expect_warning(null_res <- write_clip(NULL))
+  expect_equivalent(null_res, "")
+  expect_equivalent(write_clip(character(0)), "")
+  expect_warning(empty_res <- write_clip(integer(0)))
+  expect_equivalent(empty_res, "")
   expect_silent(clear_clip())
 })
 
