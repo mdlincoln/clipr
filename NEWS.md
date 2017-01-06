@@ -1,3 +1,14 @@
+## clipr 0.3.2
+
+- Suppress an erroneous warning on OS X / X11 systems when trying to write an 
+empty string to the clipboard.
+
+- Fix error when `NA` is passed to `write_clip()`. This will now write `"NA"` to
+the clipboard.
+
+- Fix error when passing `NULL` or an empty vector (e.g. `character(0)`). This
+will now write `""` to the clipboard.
+
 ## clipr 0.3.1
 
 - Fixes a breaking bug that caused `clipr_available` to erroneously return
