@@ -14,6 +14,12 @@ osx_write_clip <- function(content, object_type, breaks, eos, return_new, ...) {
   .dots <- list(...)
   con <- pipe("pbcopy")
 
+  write_nix(content, object_type, breaks, eos, return_new, con, .dots)
+}
+
+# The same content rendering and writing steps are used in both OS X and Linux,
+# just with different connection objects
+write_nix <- function(content, object_type, breaks, eos, return_new, con, .dots) {
   # If no custom line separator has been specified, use Unix's default newline
   # character '\n'
   breaks <- ifelse(is.null(breaks), '\n', breaks)
