@@ -31,14 +31,16 @@ write_nix <- function(content, object_type, breaks, eos, return_new, con, .dots)
   # Pass the object to rendering functions before writing out to the clipboard
   rendered_content <- render_object(content, object_type, breaks, .dots)
 
-  # pipe() sends a warning when writing an empty string with a NULL string
-  # ending. In the case where we deliberately want to do that, then eos is set
-  # to an empty string.
-  if (rendered_content == "" && is.null(eos))
-    eos <- ""
+  # Suppress pipe() warning when writing an empty string with a NULL string
+  # ending.
+  if (identical(rendered_content, "")) {
+    suppressWarnings(writeChar(rendered_content, con = con, eos = eos))
+  } else {
+    writeChar(rendered_content, con = con, eos = eos)
+  }
 
-  writeChar(rendered_content, con = con, eos = eos)
   close(con)
+
   if (return_new) {
     rendered_content
   } else {
