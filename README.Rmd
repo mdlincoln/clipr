@@ -75,5 +75,13 @@ A few best practices will also help you responsibly test your clipr-using packag
 2. Tests calling clipr should be conditionally skipped, based on the output of `clipr_available()`. This is necessary to pass CRAN checks.
 3. If you are using [Travis.ci](https://travis-ci.org/) to check your package build on Linux, consult the [`.travis.yml`](https://github.com/mdlincoln/clipr/blob/master/.travis.yml) for this package, which includes code for setting the `DISPLAY` environment variable, installing `xclip`, and running a pre-build script that will set up `xclip` to run headlessly.
 
+## Nice uses of clipr
+
+(a non-comprehensive list)
+
+1. [reprex](https://github.com/jennybc/reprex) by [@jennybc](https://github.com/jennybc) takes R code on the clipboard and renders a reproducible example from it, ready to then paste on to GitHub, Stack Overflow, or the like.
+2. [datapasta](https://github.com/milesmcbain/datapasta) by [@milesmcbain](https://github.com/milesmcbain) eases the copying and pasting of R objects in and out of different sources (Excel, Google Sheets).
+3. [curlconverter](https://github.com/hrbrmstr/curlconverter) by [@brbrmstr](https://github.com/hrbrmstr/curlconverter) translates cURL command lines into [httr](https://github.com/hadley/httr) calls.
+
 ---
 [Matthew Lincoln](http://matthewlincoln.net)
