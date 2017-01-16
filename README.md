@@ -70,7 +70,7 @@ A few best practices will also help you responsibly test your clipr-using packag
 
 1.  [reprex](https://github.com/jennybc/reprex) by [@jennybc](https://github.com/jennybc) takes R code on the clipboard and renders a reproducible example from it, ready to then paste on to GitHub, Stack Overflow, or the like.
 2.  [datapasta](https://github.com/milesmcbain/datapasta) by [@milesmcbain](https://github.com/milesmcbain) eases the copying and pasting of R objects in and out of different sources (Excel, Google Sheets).
-3.  [curlconverter](https://github.com/hrbrmstr/curlconverter) by [@brbrmstr](https://github.com/hrbrmstr/curlconverter) translates cURL command lines into [httr](https://github.com/hadley/httr) calls.
+3.  [curlconverter](https://github.com/hrbrmstr/curlconverter) by [@hrbrmstr](https://github.com/hrbrmstr/curlconverter) translates cURL command lines into [httr](https://github.com/hadley/httr) calls.
 
 ------------------------------------------------------------------------
 
