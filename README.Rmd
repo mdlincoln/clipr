@@ -75,7 +75,7 @@ A few best practices will also help you responsibly test your clipr-using packag
 2. Tests calling clipr should be conditionally skipped, based on the output of `clipr_available()`. This is necessary to pass CRAN checks.
 3. If you are using [Travis.ci](https://travis-ci.org/) to check your package build on Linux, consult the [`.travis.yml`](https://github.com/mdlincoln/clipr/blob/master/.travis.yml) for this package, which includes code for setting the `DISPLAY` environment variable, installing `xclip`, and running a pre-build script that will set up `xclip` to run headlessly.
 
-## Nice uses of clipr
+### Nice uses of clipr
 
 (a non-comprehensive list)
 
