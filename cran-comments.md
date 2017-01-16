@@ -12,4 +12,7 @@ There were no ERRORs or WARNINGs.
 
 ## Downstream dependencies
 
-There are 3 downstream dependencies of clipr. 0 packages with problems.
+I have run R CMD check on the 3 downstream dependencies of clipr.
+(Summary at <https://github.com/mdlincoln/clipr/tree/master/revdep>)
+
+All passed with no errors or warnings.
