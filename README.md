@@ -61,7 +61,7 @@ clipr's functionality on X11-based systems depends on the installation of additi
 A few best practices will also help you responsibly test your clipr-using package on headless systems like CRAN or other testing infrastructure like Travis:
 
 1.  Examples that will try to use `read_clip()` or `write_clip()` ought to be wrapped in `\dontrun{}`
-2.  Tests calling clipr should be conditionally skipped, calling on `clipr_available()` to check for this availability. This is necessary to pass CRAN checks.
+2.  Tests calling clipr should be conditionally skipped, based on the output of `clipr_available()`. This is necessary to pass CRAN checks.
 3.  If you are using [Travis.ci](https://travis-ci.org/) to check your package build on Linux, consult the [`.travis.yml`](https://github.com/mdlincoln/clipr/blob/master/.travis.yml) for this package, which includes code for setting the `DISPLAY` environment variable, installing `xclip`, and running a pre-build script that will set up `xclip` to run headlessly.
 
 ------------------------------------------------------------------------
