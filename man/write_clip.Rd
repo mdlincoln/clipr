@@ -63,4 +63,3 @@ write_clip(tbl)
 }
 
 }
-

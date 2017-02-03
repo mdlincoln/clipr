@@ -26,4 +26,3 @@ A data frame with the contents of the clipboard. If the system
 Transforms clipped content into a data frame by putting
 \code{\link{read_clip}} output by using \code{\link{read.table}}.
 }
-

@@ -18,4 +18,3 @@ content like a table copied from a spreadsheet program.
 \code{\link{clipr_available}} is useful when buildling packages that
 depend on \link{clipr} functionality.
 }
-

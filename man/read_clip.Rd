@@ -24,4 +24,3 @@ clip_text <- read_clip()
 }
 
 }
-

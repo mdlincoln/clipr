@@ -23,4 +23,3 @@ skip_if_not(clipr_available())
 }
 
 }
-

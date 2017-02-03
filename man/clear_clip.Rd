@@ -12,4 +12,3 @@ Clear the system clipboard.
 \note{
 This is a simple wrapper function for write_clip("")
 }
-
