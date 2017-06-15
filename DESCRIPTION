@@ -11,7 +11,7 @@ Description: Simple utility functions to read from and write to the Windows,
     OS X, and X11 clipboards.
 Imports:
     utils
-SystemRequirements: xclip (http://sourceforge.net/projects/xclip/) or xsel
+SystemRequirements: xclip (https://github.com/astrand/xclip) or xsel
     (http://www.vergenet.net/~conrad/software/xsel/) for accessing the X11
     clipboard
 License: GPL-3
