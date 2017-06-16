@@ -7,19 +7,19 @@ r:
   - devel
 
 env:
-  - DISPLAY=:99.0
+  - UTIL=tree
+  - UTIL=xsel
+  - UTIL=xclip
 warnings_are_errors: true
 cache: packages
 sudo: false
 r_check_revdep: false
 
-matrix:
-  include:
-    addons: {apt: {packages: [xsel]}}
-  include:
-    addons: {apt: {packages: [xclip]}}
+install:
+  - apt-get install ${UTIL}
 
 # Ensure xclip can still run headlessly
 before_script:
+  - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - sleep 3
