@@ -1,26 +1,34 @@
 # Sample .travis.yml for R projects
 
 language: r
-r:
-  - oldrel
-  - release
-  - devel
-# Create a build matrix that will test package with an empty DISPLAY value
-# (making the clipboard unavailable) and a correctly-configured DISPLAY (making
-# the clipboard available)
-env:
-  - DISPLAY=""
-  - DISPLAY=:99.0
+
 warnings_are_errors: true
 cache: packages
 sudo: false
 r_check_revdep: false
 
-# Install xclip
-addons:
-  apt:
-    packages:
-      - xclip
+matrix:
+  include:
+    - r: oldrel
+      env: TRAVIS_CLIP=xsel DISPLAY=:99.0
+      addons: {apt: {packages: [xsel]}}
+    - r: release
+      env: TRAVIS_CLIP=xsel DISPLAY=:99.0
+      addons: {apt: {packages: [xsel]}}
+    - r: devel
+      env: TRAVIS_CLIP=xsel DISPLAY=:99.0
+      addons: {apt: {packages: [xsel]}}
+    - r: oldrel
+      env: TRAVIS_CLIP=xclip DISPLAY=:99.0
+      addons: {apt: {packages: [xclip]}}
+    - r: release
+      env: TRAVIS_CLIP=xclip DISPLAY=:99.0
+      addons: {apt: {packages: [xclip]}}
+    - r: devel
+      env: TRAVIS_CLIP=xclip DISPLAY=:99.0
+      addons: {apt: {packages: [xclip]}}
+    - r: release
+      env: TRAVIS_CLIP=none DISPLAY=:99.0
 
 # Ensure xclip can still run headlessly
 before_script:
