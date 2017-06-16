@@ -19,15 +19,6 @@ matrix:
   include:
     r: devel
     addons: {apt: {packages: [xsel]}}
-  include:
-    r: oldrel
-    addons: {apt: {packages: [xclip]}}
-  include:
-    r: release
-    addons: {apt: {packages: [xclip]}}
-  include:
-    r: devel
-    addons: {apt: {packages: [xclip]}}
 
 # Ensure xclip can still run headlessly
 before_script:
