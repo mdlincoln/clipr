@@ -2,8 +2,6 @@
 
 language: r
 
-env:
-  - DISPLAY=:99.0
 warnings_are_errors: true
 cache: packages
 sudo: false
@@ -12,25 +10,25 @@ r_check_revdep: false
 matrix:
   include:
     - r: oldrel
-      env: TRAVIS_CLIP=xsel
+      env: TRAVIS_CLIP=xsel DISPLAY=:99.0
       addons: {apt: {packages: [xsel]}}
     - r: release
-      env: TRAVIS_CLIP=xsel
+      env: TRAVIS_CLIP=xsel DISPLAY=:99.0
       addons: {apt: {packages: [xsel]}}
     - r: devel
-      env: TRAVIS_CLIP=xsel
+      env: TRAVIS_CLIP=xsel DISPLAY=:99.0
       addons: {apt: {packages: [xsel]}}
     - r: oldrel
-      env: TRAVIS_CLIP=xclip
+      env: TRAVIS_CLIP=xclip DISPLAY=:99.0
       addons: {apt: {packages: [xclip]}}
     - r: release
-      env: TRAVIS_CLIP=xclip
+      env: TRAVIS_CLIP=xclip DISPLAY=:99.0
       addons: {apt: {packages: [xclip]}}
     - r: devel
-      env: TRAVIS_CLIP=xclip
+      env: TRAVIS_CLIP=xclip DISPLAY=:99.0
       addons: {apt: {packages: [xclip]}}
     - r: release
-      env: TRAVIS_CLIP=none
+      env: TRAVIS_CLIP=none DISPLAY=:99.0
 
 # Ensure xclip can still run headlessly
 before_script:
