@@ -15,23 +15,18 @@ r_check_revdep: false
 
 matrix:
   include:
-    r: oldrel
-    addons: {apt: {packages: [xsel]}}
-  include:
-    r: release
-    addons: {apt: {packages: [xsel]}}
-  include:
-    r: devel
-    addons: {apt: {packages: [xsel]}}
-  include:
-    r: oldrel
-    addons: {apt: {packages: [xclip]}}
-  include:
-    r: release
-    addons: {apt: {packages: [xclip]}}
-  include:
-    r: devel
-    addons: {apt: {packages: [xclip]}}
+    - r: oldrel
+      addons: {apt: {packages: [xsel]}}
+    - r: release
+      addons: {apt: {packages: [xsel]}}
+    - r: devel
+      addons: {apt: {packages: [xsel]}}
+    - r: oldrel
+      addons: {apt: {packages: [xclip]}}
+    - r: release
+      addons: {apt: {packages: [xclip]}}
+    - r: devel
+      addons: {apt: {packages: [xclip]}}
 
 # Ensure xclip can still run headlessly
 before_script:
