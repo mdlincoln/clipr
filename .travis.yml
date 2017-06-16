@@ -1,6 +1,10 @@
 # Sample .travis.yml for R projects
 
 language: r
+r:
+  - oldrel
+  - release
+  - devel
 
 env:
   - DISPLAY=:99.0
@@ -11,14 +15,9 @@ r_check_revdep: false
 
 matrix:
   include:
-    r: oldrel
     addons: {apt: {packages: [xsel]}}
   include:
-    r: release
-    addons: {apt: {packages: [xsel]}}
-  include:
-    r: devel
-    addons: {apt: {packages: [xsel]}}
+    addons: {apt: {packages: [xclip]}}
 
 # Ensure xclip can still run headlessly
 before_script:
