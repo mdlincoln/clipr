@@ -5,16 +5,20 @@ r:
   - oldrel
   - release
   - devel
-# Create a build matrix that will test package with an empty DISPLAY value
-# (making the clipboard unavailable) and a correctly-configured DISPLAY (making
-# the clipboard available)
+
 env:
-  - DISPLAY=""
   - DISPLAY=:99.0
 warnings_are_errors: true
 cache: packages
 sudo: false
 r_check_revdep: false
+
+matrix:
+  include:
+    addons: {apt: {packages: [xsel]}}
+  include:
+    addons: {apt: {packages: [xclip]}}
+
 
 # Install xclip
 addons:
