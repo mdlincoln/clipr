@@ -12,18 +12,25 @@ r_check_revdep: false
 matrix:
   include:
     - r: oldrel
+      env: TRAVIS_CLIP=xsel
       addons: {apt: {packages: [xsel]}}
     - r: release
+      env: TRAVIS_CLIP=xsel
       addons: {apt: {packages: [xsel]}}
     - r: devel
+      env: TRAVIS_CLIP=xsel
       addons: {apt: {packages: [xsel]}}
     - r: oldrel
+      env: TRAVIS_CLIP=xclip
       addons: {apt: {packages: [xclip]}}
     - r: release
+      env: TRAVIS_CLIP=xclip
       addons: {apt: {packages: [xclip]}}
     - r: devel
+      env: TRAVIS_CLIP=xclip
       addons: {apt: {packages: [xclip]}}
     - r: release
+      env: TRAVIS_CLIP=none
 
 # Ensure xclip can still run headlessly
 before_script:
