@@ -7,19 +7,33 @@ r:
   - devel
 
 env:
-  - UTIL=tree
-  - UTIL=xsel
-  - UTIL=xclip
+  - DISPLAY=:99.0
 warnings_are_errors: true
 cache: packages
 sudo: false
 r_check_revdep: false
 
-install:
-  - apt-get install ${UTIL}
+matrix:
+  include:
+    r: oldrel
+    addons: {apt: {packages: [xsel]}}
+  include:
+    r: release
+    addons: {apt: {packages: [xsel]}}
+  include:
+    r: devel
+    addons: {apt: {packages: [xsel]}}
+  include:
+    r: oldrel
+    addons: {apt: {packages: [xclip]}}
+  include:
+    r: release
+    addons: {apt: {packages: [xclip]}}
+  include:
+    r: devel
+    addons: {apt: {packages: [xclip]}}
 
 # Ensure xclip can still run headlessly
 before_script:
-  - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - sleep 3
