@@ -4,9 +4,9 @@
 
 |setting  |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.3.1 (2016-06-21) |
-|system   |x86_64, darwin15.5.0         |
-|ui       |RStudio (1.0.136)            |
+|version  |R version 3.4.0 (2017-04-21) |
+|system   |x86_64, darwin15.6.0         |
+|ui       |RStudio (1.0.143)            |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Los_Angeles          |
@@ -22,33 +22,8 @@
 
 # Check results
 
-1 packages with problems
+0 packages with problems
 
-|package  |version | errors| warnings| notes|
-|:--------|:-------|------:|--------:|-----:|
-|vegalite |0.6.1   |      1|        0|     0|
 
-## vegalite (0.6.1)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/vegalite/issues
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking examples ... ERROR
-Running examples in ‘vegalite-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: from_spec
-> ### Title: Take a JSON Vega-Lite Spec and render as an htmlwidget
-> ### Aliases: from_spec
-> 
-> ### ** Examples
-> 
-> from_spec("http://rud.is/dl/embedded.json")
-Error in file(con, "r") : cannot open the connection
-Calls: from_spec -> readLines -> file
-Execution halted
-```
 

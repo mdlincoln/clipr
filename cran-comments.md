@@ -11,6 +11,3 @@ There were no ERRORs or WARNINGs.
 
 I have run R CMD check on the 4 downstream dependencies of clipr. (Summary at
 <https://github.com/mdlincoln/clipr/tree/master/revdep>)
-
-* vegalite: one preexisting build error as of 2017-06-19 unrelated to
-clipr
