@@ -17,7 +17,7 @@ has_util <- function(util_test) {
       TRUE
     }
   } else {
-    notify_no_cb()
+    FALSE
   }
 }
 
