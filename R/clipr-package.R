@@ -8,7 +8,7 @@
 #' clipboard. \code{\link{read_clip_tbl}} will attempt to process the clipboard
 #' content like a table copied from a spreadsheet program.
 #'
-#' \code{\link{clipr_available}} is useful when buildling packages that
+#' \code{\link{clipr_available}} is useful when building packages that
 #' depend on \link{clipr} functionality.
 #'
 #' @docType package

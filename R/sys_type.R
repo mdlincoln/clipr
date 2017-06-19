@@ -5,7 +5,7 @@ sys_type <- function() {
 
 #' Is the system clipboard available?
 #'
-#' Checks to see if the system clipboard is writeable/readable. This may be
+#' Checks to see if the system clipboard is write-able/read-able. This may be
 #' useful if you are developing a package that relies on \link{clipr} and need
 #' to ensure that it will skip tests on machines (e.g. CRAN, Travis) where
 #' the system clipboard may not be available.

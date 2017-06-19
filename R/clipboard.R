@@ -43,7 +43,7 @@ read_clip <- function() {
 #' @param content An object to be written to the system clipboard.
 #' @param object_type write_clip() tries to be smart about writing objects in a
 #'   useful manner. If passed a data.frame or matrix, it will format it using
-#'   \code{\link{write.table}} for pasting into an external spreasheet program.
+#'   \code{\link{write.table}} for pasting into an external spreadsheet program.
 #'   It will otherwise coerce the object to a character vector. \code{auto} will
 #'   check the object type, otherwise \code{table} or \code{character} can be
 #'   explicitly specified.
