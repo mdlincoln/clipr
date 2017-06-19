@@ -1,5 +1,4 @@
-This submission fixes some minor bugs related to NA/NULL/empty vectors passed to
-`write_clip()`
+This submission fixes a major issue with xsel integration.
 
 ## Test environments 
 * local OS X install, R 3.3.2 
