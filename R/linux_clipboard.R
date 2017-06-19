@@ -17,7 +17,7 @@ has_util <- function(util_test) {
       TRUE
     }
   } else {
-    notify_no_cb()
+    FALSE
   }
 }
 
@@ -70,7 +70,7 @@ X11_write_clip <- function(content, object_type, breaks, eos, return_new, ...) {
   if (has_xclip()) {
     con <- pipe("xclip -i -sel p -f | xclip -i -sel c", "w")
   } else if (has_xsel()) {
-    con <- pipe("xsel -b", "w")
+    con <- pipe("xsel -b -i", "w")
   } else {
     notify_no_cb()
   }
