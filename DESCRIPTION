@@ -21,4 +21,4 @@ Suggests:
     testthat
 URL: https://github.com/mdlincoln/clipr
 BugReports: https://github.com/mdlincoln/clipr/issues
-RoxygenNote: 6.0.0
+RoxygenNote: 6.0.1
