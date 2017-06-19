@@ -1,7 +1,9 @@
 This submission fixes a major issue with xsel integration.
 
-## Test environments * local OS X install, R 3.3.2 * ubuntu 12.04 (Travis.ci: R
-oldrel, release, and devel) * win-builder (devel and release)
+## Test environments 
+* local OS X install, R 3.4.0
+* ubuntu 12.04 (Travis.ci: R oldrel, release, and devel)
+* win-builder (devel and release)
 
 ## R CMD check results
 
