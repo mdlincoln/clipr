@@ -37,3 +37,5 @@ matrix:
 before_script:
   - sh -e /etc/init.d/xvfb start
   - sleep 3
+  - uptime | xclip -i -sel p -f | xclip -i -sel c
+  - xclip -o -sel clipboard
