@@ -33,7 +33,7 @@ dr_clipr <- function() {
   if (clipr_results_check(res)) {
     msg <- msg_clipr_available()
   } else {
-    msg <- attr(res, which = "condition", exact = TRUE)$message
+    msg <- attr(res$write, which = "condition", exact = TRUE)$message
   }
 
   message(msg)
