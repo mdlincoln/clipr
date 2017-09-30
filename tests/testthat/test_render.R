@@ -16,6 +16,14 @@ test_that("clipr_available fails when DISPLAY is not configured; succeeds when i
   }
 })
 
+test_that("dr_clipr provides informative messages", {
+  if (is_clipr_available) {
+    expect_message(dr_clipr(), msg_clipr_available())
+  } else if (identical(Sys.getenv("TRAVIS_CLIP"), "none")) {
+    expect_message(dr_clipr(), msg_no_clipboard())
+  }
+})
+
 test_that("Unavailable clipboard throws warning", {
   if (!is_clipr_available) {
     expect_error(write_clip("a"))

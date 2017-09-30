@@ -2,9 +2,12 @@
 % Please edit documentation in R/sys_type.R
 \name{clipr_available}
 \alias{clipr_available}
+\alias{dr_clipr}
 \title{Is the system clipboard available?}
 \usage{
 clipr_available()
+
+dr_clipr()
 }
 \value{
 boolean

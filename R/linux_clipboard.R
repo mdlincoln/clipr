@@ -29,13 +29,11 @@ has_xsel <- function() has_util(c("xsel", "--clipboard"))
 
 # Stop read/write and return an error of missing clipboard software.
 notify_no_cb <- function() {
-  stop("Clipboard on X11 requires 'xclip' (recommended) or 'xsel'.",
-       call. = FALSE)
+  stop(msg_no_clipboard(), call. = FALSE)
 }
 
 notify_no_display <- function() {
-  stop("Clipboard on X11 requires that the DISPLAY envvar be configured.",
-       call. = FALSE)
+  stop(msg_no_display(), call. = FALSE)
 }
 
 # Helper function to read from the X11 clipboard

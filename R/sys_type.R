@@ -21,17 +21,45 @@ sys_type <- function() {
 #'
 #' @export
 clipr_available <- function() {
-  suppressWarnings(
+  clipr_results_check(clipr_available_handler())
+}
+
+#' @rdname clipr_available
+#'
+#' @export
+dr_clipr <- function() {
+  res <- clipr_available_handler()
+
+  if (clipr_results_check(clipr_available_handler()))
+    message(msg_clipr_available())
+
+  clipr_error <- attr(res, which = "condition", exact = TRUE)$message
+
+  message(clipr_error)
+  invisible(clipr_error)
+}
+
+clipr_available_handler <- function() {
+  suppressWarnings({
     read_attempt <- try(read_clip(), silent = TRUE)
-  )
-  if (inherits(read_attempt, "try-error")) {
+    write_attempt <- try(write_clip(read_attempt), silent = TRUE)
+  })
+  return(list(read = read_attempt, write = write_attempt))
+}
+
+clipr_results_check <- function(res) {
+  if (inherits(res$read, "try-error")) {
     return(FALSE)
   }
-  suppressWarnings(
-    write_attempt <- try(write_clip(read_attempt), silent = TRUE)
-  )
-  if (inherits(write_attempt, "try-error")) {
+
+  if (inherits(res$write, "try-error")) {
     return(FALSE)
   }
   TRUE
 }
+
+msg_clipr_available <- function() "clipr has read/write access to the system clipboard!"
+
+msg_no_clipboard <- function() "Clipboard on X11 requires 'xclip' (recommended) or 'xsel'."
+
+msg_no_display <- function() "Clipboard on X11 requires that the DISPLAY envvar be configured."
