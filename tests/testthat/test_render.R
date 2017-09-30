@@ -20,9 +20,9 @@ test_that("dr_clipr provides informative messages", {
   if (identical(Sys.getenv("TRAVIS_CLIP"), "xsel"))
     expect_message(dr_clipr(), msg_clipr_available())
   if (identical(Sys.getenv("TRAVIS_CLIP"), "none"))
-    expect_message(dr_clipr(), msg_no_clipboard())
+    expect_message(dr_clipr(), msg_no_clipboard(), fixed = TRUE)
   if (identical(Sys.getenv("TRAVIS_CLIP"), "nodisplay"))
-    expect_message(dr_clipr(), msg_no_display())
+    expect_message(dr_clipr(), msg_no_display(), fixed = TRUE)
 })
 
 test_that("Unavailable clipboard throws warning", {
