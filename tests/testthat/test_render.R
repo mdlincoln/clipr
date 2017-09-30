@@ -16,9 +16,9 @@ test_that("clipr_available fails when DISPLAY is not configured; succeeds when i
 
 test_that("dr_clipr provides informative messages", {
   if (identical(Sys.getenv("TRAVIS_CLIP"), "xclip"))
-    expect_message(dr_clipr(), msg_clipr_available())
+    expect_message(dr_clipr(), msg_clipr_available(), fixed = TRUE)
   if (identical(Sys.getenv("TRAVIS_CLIP"), "xsel"))
-    expect_message(dr_clipr(), msg_clipr_available())
+    expect_message(dr_clipr(), msg_clipr_available(), fixed = TRUE)
   if (identical(Sys.getenv("TRAVIS_CLIP"), "none"))
     expect_message(dr_clipr(), msg_no_clipboard(), fixed = TRUE)
   if (identical(Sys.getenv("TRAVIS_CLIP"), "nodisplay"))
