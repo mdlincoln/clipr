@@ -30,13 +30,14 @@ clipr_available <- function() {
 dr_clipr <- function() {
   res <- clipr_available_handler()
 
-  if (clipr_results_check(clipr_available_handler()))
-    message(msg_clipr_available())
+  if (clipr_results_check(res)) {
+    msg <- msg_clipr_available()
+  } else {
+    msg <- attr(res, which = "condition", exact = TRUE)$message
+  }
 
-  clipr_error <- attr(res, which = "condition", exact = TRUE)$message
-
-  message(clipr_error)
-  invisible(clipr_error)
+  message(msg)
+  invisible(msg)
 }
 
 clipr_available_handler <- function() {
