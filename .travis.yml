@@ -29,6 +29,9 @@ matrix:
       addons: {apt: {packages: [xclip]}}
     - r: release
       env: TRAVIS_CLIP=none DISPLAY=:99.0
+    - r: release
+      env: TRAVIS_CLIP=nodisplay
+      addons: {apt: {packages: [xclip]}}
 
 # Ensure xclip can still run headlessly
 before_script:
