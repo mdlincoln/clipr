@@ -10,7 +10,7 @@ sys_type <- function() {
 #' to ensure that it will skip tests on machines (e.g. CRAN, Travis) where
 #' the system clipboard may not be available.
 #'
-#' @return boolean
+#' @return \code{clipr_available} returns a boolean value.
 #'
 #' @examples
 #' \dontrun{
@@ -25,6 +25,10 @@ clipr_available <- function() {
 }
 
 #' @rdname clipr_available
+#'
+#' @return \code{dr_clipr} prints an informative message to the console with
+#'   software and system configuration requriements if clipr is not available
+#'   (invisibly returns the same string)
 #'
 #' @export
 dr_clipr <- function() {
