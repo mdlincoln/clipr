@@ -1,3 +1,8 @@
+## clipr 0.4.0
+
+- Introduces `dr_clipr()`, which gives informative suggestions for software and
+configuration requirements when accessing the clipboard on X11-based systems.
+
 ## clipr 0.3.3
 
 - Due to poor testing and configuration options, clipr was not delivering on its
