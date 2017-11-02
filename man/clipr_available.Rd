@@ -13,7 +13,7 @@ dr_clipr()
 \code{clipr_available} returns a boolean value.
 
 \code{dr_clipr} prints an informative message to the console with
-  software and system configuration requriements if clipr is not available
+  software and system configuration requirements if clipr is not available
   (invisibly returns the same string)
 }
 \description{
