@@ -11,5 +11,5 @@ There were no ERRORs or WARNINGs.
 
 ## Downstream dependencies
 
-I have run R CMD check on the 5 downstream dependencies of clipr. (Summary at
+I have run R CMD check on the 6 downstream dependencies of clipr. (Summary at
 <https://github.com/mdlincoln/clipr/tree/master/revdep>)

@@ -4,21 +4,21 @@
 
 |setting  |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.4.0 (2017-04-21) |
+|version  |R version 3.4.2 (2017-09-28) |
 |system   |x86_64, darwin15.6.0         |
-|ui       |RStudio (1.0.143)            |
+|ui       |RStudio (1.1.383)            |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Los_Angeles          |
-|date     |2017-06-19                   |
+|date     |2017-11-02                   |
 
 ## Packages
 
-|package    |*  |version |date       |source                     |
-|:----------|:--|:-------|:----------|:--------------------------|
-|clipr      |*  |0.3.3   |2017-06-19 |local (mdlincoln/clipr@NA) |
-|rstudioapi |   |0.6     |2016-06-27 |cran (@0.6)                |
-|testthat   |   |1.0.2   |2016-04-23 |cran (@1.0.2)              |
+|package    |*  |version    |date       |source                     |
+|:----------|:--|:----------|:----------|:--------------------------|
+|clipr      |*  |0.3.3.9000 |2017-11-02 |local (mdlincoln/clipr@NA) |
+|rstudioapi |   |0.7        |2017-09-07 |cran (@0.7)                |
+|testthat   |   |1.0.2      |2016-04-23 |cran (@1.0.2)              |
 
 # Check results
 
