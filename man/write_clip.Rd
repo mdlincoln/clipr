@@ -5,7 +5,8 @@
 \title{Write clipboard}
 \usage{
 write_clip(content, object_type = c("auto", "character", "table"),
-  breaks = NULL, eos = NULL, return_new = TRUE, ...)
+  breaks = NULL, eos = NULL, return_new = TRUE,
+  allow_non_interactive = FALSE, ...)
 }
 \arguments{
 \item{content}{An object to be written to the system clipboard.}

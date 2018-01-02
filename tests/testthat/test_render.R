@@ -38,6 +38,10 @@ test_that("clipr_available() does not overwrite existing contents", {
   expect_equal(read_clip(), "z")
 })
 
+test_that("clipr does not run in non-interactive sessions unless allowed", {
+
+})
+
 test_that("single NA vectors don't cause error", {
   skip_if_not(is_clipr_available, skip_msg)
 

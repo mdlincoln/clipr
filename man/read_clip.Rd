@@ -4,7 +4,10 @@
 \alias{read_clip}
 \title{Read clipboard}
 \usage{
-read_clip()
+read_clip(allow_non_interactive = FALSE)
+}
+\arguments{
+\item{allow_non_interactive}{By default, clipr will throw an error}
 }
 \value{
 A character vector with the contents of the clipboard. If the system

@@ -4,7 +4,7 @@
 \alias{clear_clip}
 \title{Clear clipboard}
 \usage{
-clear_clip()
+clear_clip(...)
 }
 \description{
 Clear the system clipboard.

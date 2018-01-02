@@ -68,3 +68,8 @@ msg_clipr_available <- function() "clipr has read/write access to the system cli
 msg_no_clipboard <- function() "Clipboard on X11 requires 'xclip' (recommended) or 'xsel'."
 
 msg_no_display <- function() "Clipboard on X11 requires that the DISPLAY envvar be configured."
+
+warn_interactive <- function(interactive_flag) {
+  if (!interactive_flag && !interactive())
+    stop("To run ", deparse(sys.call(-1)), " in non-interactive mode, set allow_non_interactive = TRUE")
+}
