@@ -1,7 +1,11 @@
 skip_msg <- "System clipboard is not available - skipping test."
 context("Clipr read and write")
 
-is_clipr_available <- clipr_available()
+if (identical(Sys.getenv("NOT_CRAN"), "true")) {
+  is_clipr_available <- clipr_available(allow_non_interactive = TRUE)
+} else {
+  is_clipr_available <- FALSE
+}
 
 test_that("clipr_available fails when DISPLAY is not configured; succeeds when it is", {
   # Only run this test on Travis
@@ -36,10 +40,6 @@ test_that("clipr_available() does not overwrite existing contents", {
   write_clip("z")
   clipr_available()
   expect_equal(read_clip(), "z")
-})
-
-test_that("clipr does not run in non-interactive sessions unless allowed", {
-
 })
 
 test_that("single NA vectors don't cause error", {

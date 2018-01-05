@@ -10,6 +10,9 @@ sys_type <- function() {
 #' to ensure that it will skip tests on machines (e.g. CRAN, Travis) where
 #' the system clipboard may not be available.
 #'
+#' If you are trying to call this in a non-interactive session, be sure to call
+#' using \code{clipr_available(allow_non_interactive = TRUE)}
+#'
 #' @return \code{clipr_available} returns a boolean value.
 #'
 #' @examples
@@ -20,8 +23,8 @@ sys_type <- function() {
 #' }
 #'
 #' @export
-clipr_available <- function() {
-  clipr_results_check(clipr_available_handler())
+clipr_available <- function(...) {
+  clipr_results_check(clipr_available_handler(...))
 }
 
 #' @rdname clipr_available
@@ -44,10 +47,10 @@ dr_clipr <- function() {
   invisible(msg)
 }
 
-clipr_available_handler <- function() {
+clipr_available_handler <- function(...) {
   suppressWarnings({
-    read_attempt <- try(read_clip(), silent = TRUE)
-    write_attempt <- try(write_clip(read_attempt), silent = TRUE)
+    read_attempt <- try(read_clip(...), silent = TRUE)
+    write_attempt <- try(write_clip(read_attempt, ...), silent = TRUE)
   })
   return(list(read = read_attempt, write = write_attempt))
 }
