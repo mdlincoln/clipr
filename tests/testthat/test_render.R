@@ -1,33 +1,39 @@
-skip_msg <- "System clipboard is not available - skipping test."
 context("Clipr read and write")
 
 # If on CRAN, do not run any tests, and do not even check if clipr is available
 # as this can start a running process on -nix platforms.
-if (identical(Sys.getenv("NOT_CRAN"), "true")) {
-  is_clipr_available <- clipr_available(allow_non_interactive = TRUE)
-} else {
+on_cran <- identical(Sys.getenv("NOT_CRAN"), "false")
+on_travis <- identical(Sys.getenv("TRAVIS"), "true")
+travis_clip <- Sys.getenv("TRAVIS_CLIP")
+skip_msg <- "System clipboard is not available - skipping test."
+
+if (on_cran) {
   is_clipr_available <- FALSE
+} else {
+  is_clipr_available <- clipr_available(allow_non_interactive = TRUE)
 }
 
 test_that("clipr_available fails when DISPLAY is not configured; succeeds when it is", {
   # Only run this test on Travis
-  skip_if_not(identical(Sys.getenv("TRAVIS"), "true"))
-  if (identical(Sys.getenv("TRAVIS_CLIP"), "none"))
+  skip_if_not(on_travis)
+  if (identical(travis_clip, "none"))
     expect_false(is_clipr_available)
-  if (identical(Sys.getenv("TRAVIS_CLIP"), "xclip"))
+  if (identical(travis_clip, "xclip"))
     expect_true(is_clipr_available)
-  if (identical(Sys.getenv("TRAVIS_CLIP"), "xsel"))
+  if (identical(travis_clip, "xsel"))
     expect_true(is_clipr_available)
 })
 
 test_that("dr_clipr provides informative messages", {
-  if (identical(Sys.getenv("TRAVIS_CLIP"), "xclip"))
+  # Only run this test on Travis
+  skip_if_not(on_travis)
+  if (identical(travis_clip, "xclip"))
     expect_message(dr_clipr(allow_non_interactive = TRUE), msg_clipr_available(), fixed = TRUE)
-  if (identical(Sys.getenv("TRAVIS_CLIP"), "xsel"))
+  if (identical(travis_clip, "xsel"))
     expect_message(dr_clipr(allow_non_interactive = TRUE), msg_clipr_available(), fixed = TRUE)
-  if (identical(Sys.getenv("TRAVIS_CLIP"), "none"))
+  if (identical(travis_clip, "none"))
     expect_message(dr_clipr(allow_non_interactive = TRUE), msg_no_clipboard(), fixed = TRUE)
-  if (identical(Sys.getenv("TRAVIS_CLIP"), "nodisplay"))
+  if (identical(travis_clip, "nodisplay"))
     expect_message(dr_clipr(allow_non_interactive = TRUE), msg_no_display(), fixed = TRUE)
 })
 
