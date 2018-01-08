@@ -3,7 +3,7 @@
 #' Read the contents of the system clipboard into a character vector.
 #'
 #' @param allow_non_interactive By default, clipr will throw an error if run in
-#'   a non-interactive session.
+#'   a non-interactive session. Set to \code{TRUE} to override this default.
 #'
 #' @return A character vector with the contents of the clipboard. If the system
 #'   clipboard is empty, returns NULL
@@ -60,6 +60,8 @@ read_clip <- function(allow_non_interactive = FALSE) {
 #'   \code{NULL}.
 #' @param return_new If true, returns the rendered string; if false, returns the
 #'   original object
+#' @param allow_non_interactive By default, clipr will throw an error if run in
+#'   a non-interactive session. Set to \code{TRUE} to override this default.
 #' @param ... Custom options to be passed to \code{\link{write.table}} (if the
 #'   object is a table-like) Defaults to sane line-break and tab standards based
 #'   on the operating system.
@@ -113,6 +115,9 @@ write_clip <- function(content, object_type = c("auto", "character", "table"),
 #' Clear clipboard
 #'
 #' Clear the system clipboard.
+#'
+#' @param \ldots Pass other options to \link{write_clip}. Generally only used to
+#'   pass the argument \code{allow_non_interactive_use = TRUE}.
 #'
 #' @note This is a simple wrapper function for write_clip("")
 #'

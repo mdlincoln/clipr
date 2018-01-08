@@ -5,9 +5,13 @@
 \alias{dr_clipr}
 \title{Is the system clipboard available?}
 \usage{
-clipr_available()
+clipr_available(...)
 
-dr_clipr()
+dr_clipr(...)
+}
+\arguments{
+\item{\ldots}{Pass other options to \link{write_clip}. Generally only used to
+pass the argument \code{allow_non_interactive_use = TRUE}.}
 }
 \value{
 \code{clipr_available} returns a boolean value.
@@ -21,6 +25,10 @@ Checks to see if the system clipboard is write-able/read-able. This may be
 useful if you are developing a package that relies on \link{clipr} and need
 to ensure that it will skip tests on machines (e.g. CRAN, Travis) where
 the system clipboard may not be available.
+}
+\details{
+If you are trying to call this in a non-interactive session, be sure to call
+using \code{clipr_available(allow_non_interactive = TRUE)}
 }
 \examples{
 \dontrun{

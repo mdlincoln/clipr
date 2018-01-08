@@ -13,6 +13,9 @@ sys_type <- function() {
 #' If you are trying to call this in a non-interactive session, be sure to call
 #' using \code{clipr_available(allow_non_interactive = TRUE)}
 #'
+#' @param \ldots Pass other options to \link{write_clip}. Generally only used to
+#'   pass the argument \code{allow_non_interactive_use = TRUE}.
+#'
 #' @return \code{clipr_available} returns a boolean value.
 #'
 #' @examples

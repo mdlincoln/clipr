@@ -6,6 +6,10 @@
 \usage{
 clear_clip(...)
 }
+\arguments{
+\item{\ldots}{Pass other options to \link{write_clip}. Generally only used to
+pass the argument \code{allow_non_interactive_use = TRUE}.}
+}
 \description{
 Clear the system clipboard.
 }
