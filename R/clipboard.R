@@ -2,7 +2,8 @@
 #'
 #' Read the contents of the system clipboard into a character vector.
 #'
-#' @param allow_non_interactive By default, clipr will throw an error
+#' @param allow_non_interactive By default, clipr will throw an error if run in
+#'   a non-interactive session.
 #'
 #' @return A character vector with the contents of the clipboard. If the system
 #'   clipboard is empty, returns NULL

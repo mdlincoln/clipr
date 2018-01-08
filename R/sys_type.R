@@ -34,8 +34,8 @@ clipr_available <- function(...) {
 #'   (invisibly returns the same string)
 #'
 #' @export
-dr_clipr <- function() {
-  res <- clipr_available_handler()
+dr_clipr <- function(...) {
+  res <- clipr_available_handler(...)
 
   if (clipr_results_check(res)) {
     msg <- msg_clipr_available()
