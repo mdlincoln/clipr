@@ -159,11 +159,21 @@ test_that("Tables written with rownames add extra space for column names", {
 
   mat_rnames_out <- write_clip(d, row.names = TRUE, col.names = FALSE)
   df_rnames_out <- write_clip(df, row.names = TRUE, col.names = FALSE)
-  expect_equivalent(mat_rnames_out, "a\t1\t3\nb\t2\t4")
-  expect_equivalent(df_rnames_out, "a\t1\t3\nb\t2\t4")
+  if (sys_type() == "Windows") {
+    expect_equivalent(mat_rnames_out, "a\t1\t3\r\nb\t2\t4")
+    expect_equivalent(df_rnames_out, "a\t1\t3\r\nb\t2\t4")
+  } else {
+    expect_equivalent(mat_rnames_out, "a\t1\t3\r\nb\t2\t4")
+    expect_equivalent(df_rnames_out, "a\t1\t3\r\nb\t2\t4")
+  }
 
   mat_bnames_out <- write_clip(d, row.names = TRUE, col.names = TRUE)
   df_bnames_out <- write_clip(df, row.names = TRUE, col.names = TRUE)
-  expect_equivalent(mat_bnames_out, "\tc\td\na\t1\t3\nb\t2\t4")
-  expect_equivalent(df_bnames_out, "\tc\td\na\t1\t3\nb\t2\t4")
+  if (sys_type() == "Windows") {
+    expect_equivalent(mat_bnames_out, "\tc\td\r\na\t1\t3\r\nb\t2\t4")
+    expect_equivalent(df_bnames_out, "\tc\td\r\na\t1\t3\r\nb\t2\t4")
+  } else {
+    expect_equivalent(mat_bnames_out, "\tc\td\r\na\t1\t3\r\nb\t2\t4")
+    expect_equivalent(df_bnames_out, "\tc\td\r\na\t1\t3\r\nb\t2\t4")
+  }
 })
