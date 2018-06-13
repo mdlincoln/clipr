@@ -147,3 +147,23 @@ test_that("Render tables read from clipboard as data.frames", {
   inv_out <- write_clip(iris[1:2, 1:4])
   expect_equivalent(read_clip_tbl(), iris[1:2, 1:4])
 })
+
+test_that("Tables written with rownames add extra space for column names", {
+  skip_if_not(is_clipr_available, skip_msg)
+
+  d <- matrix(1:4, 2)
+  rownames(d) <- c('a','b')
+  colnames(d) <- c('c','d')
+  df <- data.frame(c = c(1, 2), d = c(3, 4))
+  rownames(df) <- c('a', 'b')
+
+  mat_rnames_out <- write_clip(d, row.names = TRUE, col.names = FALSE)
+  df_rnames_out <- write_clip(df, row.names = TRUE, col.names = FALSE)
+  expect_equivalent(mat_rnames_out, "a\t1\t3\nb\t2\t4")
+  expect_equivalent(df_rnames_out, "a\t1\t3\nb\t2\t4")
+
+  mat_bnames_out <- write_clip(d, row.names = TRUE, col.names = TRUE)
+  df_bnames_out <- write_clip(df, row.names = TRUE, col.names = TRUE)
+  expect_equivalent(mat_bnames_out, "\tc\td\na\t1\t3\nb\t2\t4")
+  expect_equivalent(df_bnames_out, "\tc\td\na\t1\t3\nb\t2\t4")
+})
