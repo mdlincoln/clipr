@@ -30,6 +30,15 @@ table_str <- function(content, breaks, .dots) {
   do.call(utils::write.table, .dots)
   read_tbl <- paste0(readLines(tbl_file), collapse = breaks)
   unlink(tbl_file)
+
+  # If row.names = TRUE and col.names = TRUE, add additional sep character to
+  # the start of the table
+  if (!is.null(.dots$row.names) & !is.null(.dots$col.names)) {
+    if (.dots$row.names & .dots$col.names) {
+      read_tbl <- paste0(.dots$sep, read_tbl)
+    }
+  }
+
   return(read_tbl)
 }
 
