@@ -18,7 +18,8 @@ License: GPL-3
 LazyData: TRUE
 Suggests:
     rstudioapi (>= 0.5),
-    testthat
+    testthat,
+    covr
 URL: https://github.com/mdlincoln/clipr
 BugReports: https://github.com/mdlincoln/clipr/issues
 RoxygenNote: 6.0.1
