@@ -1,3 +1,8 @@
+## clipr 0.4.1
+
+- Correct a formatting error by adding and separation character to tables when
+they are being written with rownames.
+
 ## clipr 0.4.0
 
 - Introduces `dr_clipr()`, which gives informative suggestions for software and
