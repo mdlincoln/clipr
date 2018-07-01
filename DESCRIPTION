@@ -18,7 +18,7 @@ License: GPL-3
 LazyData: TRUE
 Suggests:
     rstudioapi (>= 0.5),
-    testthat,
+    testthat (>= 2.0.0),
     covr
 URL: https://github.com/mdlincoln/clipr
 BugReports: https://github.com/mdlincoln/clipr/issues
