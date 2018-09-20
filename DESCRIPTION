@@ -3,7 +3,9 @@ Type: Package
 Title: Read and Write from the System Clipboard
 Version: 0.4.1.9000
 Authors@R: c(
-  person("Matthew", "Lincoln", email = "matthew.d.lincoln@gmail.com", role = c("aut", "cre")),
+  person("Matthew", "Lincoln", email = "matthew.d.lincoln@gmail.com", 
+    role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0002-4387-3384")),
   person("Louis", "Maddox", role = "ctb"),
   person("Steve", "Simpson", role = "ctb"),
   person("Jennifer", "Bryan", role = "ctb"))
