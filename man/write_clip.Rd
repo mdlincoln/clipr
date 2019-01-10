@@ -6,8 +6,7 @@
 \usage{
 write_clip(content, object_type = c("auto", "character", "table"),
   breaks = NULL, eos = NULL, return_new = TRUE,
-  allow_non_interactive = Sys.getenv("ALLOW_CLIPBOARD", interactive()),
-  ...)
+  allow_non_interactive = Sys.getenv("CLIPR_ALLOW", interactive()), ...)
 }
 \arguments{
 \item{content}{An object to be written to the system clipboard.}
@@ -32,7 +31,7 @@ original object}
 
 \item{allow_non_interactive}{By default, clipr will throw an error if run in
 a non-interactive session. Set the environment varible
-\code{ALLOW_CLIPBOARD=TRUE} in order to override this behavior, however see
+\code{CLIPR_ALLOW=TRUE} in order to override this behavior, however see
 the advisory below before doing so.}
 
 \item{...}{Custom options to be passed to \code{\link{write.table}} (if the

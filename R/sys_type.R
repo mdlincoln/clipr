@@ -76,6 +76,8 @@ msg_no_clipboard <- function() "Clipboard on X11 requires 'xclip' (recommended) 
 
 msg_no_display <- function() "Clipboard on X11 requires that the DISPLAY envvar be configured."
 
+msg_interactive <- function() "To run write_clip() in non-interactive mode, either call write_clip() with allow_non_interactive = TRUE, or set the environment variable CLIPR_ALLOW=TRUE"
+
 warn_interactive <- function() {
-  stop("To run ", deparse(sys.call(-1)), " in non-interactive mode, either call write_clip() with allow_non_interactive = TRUE, or set the environment variable ALLOW_CLIPBOARD=TRUE")
+  stop(msg_interactive())
 }

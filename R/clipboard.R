@@ -58,7 +58,7 @@ read_clip <- function() {
 #'   original object
 #' @param allow_non_interactive By default, clipr will throw an error if run in
 #'   a non-interactive session. Set the environment varible
-#'   \code{ALLOW_CLIPBOARD=TRUE} in order to override this behavior, however see
+#'   \code{CLIPR_ALLOW=TRUE} in order to override this behavior, however see
 #'   the advisory below before doing so.
 #' @param ... Custom options to be passed to \code{\link{write.table}} (if the
 #'   object is a table-like) Defaults to sane line-break and tab standards based
@@ -98,7 +98,7 @@ read_clip <- function() {
 #'
 #' @export
 write_clip <- function(content, object_type = c("auto", "character", "table"),
-                       breaks = NULL, eos = NULL, return_new = TRUE, allow_non_interactive = Sys.getenv("ALLOW_CLIPBOARD", interactive()), ...) {
+                       breaks = NULL, eos = NULL, return_new = TRUE, allow_non_interactive = Sys.getenv("CLIPR_ALLOW", interactive()), ...) {
   if (!allow_non_interactive == "TRUE") warn_interactive()
 
   object_type <- match.arg(object_type)

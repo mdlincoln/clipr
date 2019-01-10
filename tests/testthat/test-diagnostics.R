@@ -1,31 +1,41 @@
 context("diagnostics")
 
 test_that("clipr_available fails when DISPLAY is not configured; succeeds when it is", {
-  print(paste("NOT_CRAN: ", Sys.getenv("NOT_CRAN")))
-  print(paste("ALLOW_CLIPBOARD: ", Sys.getenv("ALLOW_CLIPBOARD")))
   # Only run this test on Travis
   skip_if_not(identical(Sys.getenv("TRAVIS"), "true"))
-  if (identical(Sys.getenv("TRAVIS_CLIP"), "none"))
+
+  # If this envar hasn't been set, confirm that is_clipr_available will be false
+  # and write_clip will error
+  if (identical(Sys.getenv("CLIPR_ALLOW"), "")) {
     expect_false(is_clipr_available)
-  if (identical(Sys.getenv("TRAVIS_CLIP"), "xclip"))
-    expect_true(is_clipr_available)
-  if (identical(Sys.getenv("TRAVIS_CLIP"), "xsel"))
-    expect_true(is_clipr_available)
+    expect_error(write_clip("test"))
+  } else {
+    if (identical(Sys.getenv("TRAVIS_CLIP"), "none"))
+      expect_false(is_clipr_available)
+    if (identical(Sys.getenv("TRAVIS_CLIP"), "xclip"))
+      expect_true(is_clipr_available)
+    if (identical(Sys.getenv("TRAVIS_CLIP"), "xsel"))
+      expect_true(is_clipr_available)
+  }
 })
 
 test_that("dr_clipr provides informative messages", {
-  if (identical(Sys.getenv("TRAVIS_CLIP"), "xclip"))
-    expect_message(dr_clipr(), msg_clipr_available(), fixed = TRUE)
-  if (identical(Sys.getenv("TRAVIS_CLIP"), "xsel"))
-    expect_message(dr_clipr(), msg_clipr_available(), fixed = TRUE)
-  if (identical(Sys.getenv("TRAVIS_CLIP"), "none"))
-    expect_message(dr_clipr(), msg_no_clipboard(), fixed = TRUE)
-  if (identical(Sys.getenv("TRAVIS_CLIP"), "nodisplay"))
-    expect_message(dr_clipr(), msg_no_display(), fixed = TRUE)
+  if (identical(Sys.getenv("CLIPR_ALLOW"), "")) {
+    expect_message(dr_clipr(), msg_interactive(), fixed = TRUE)
+  } else {
+    if (identical(Sys.getenv("TRAVIS_CLIP"), "xclip"))
+      expect_message(dr_clipr(), msg_clipr_available(), fixed = TRUE)
+    if (identical(Sys.getenv("TRAVIS_CLIP"), "xsel"))
+      expect_message(dr_clipr(), msg_clipr_available(), fixed = TRUE)
+    if (identical(Sys.getenv("TRAVIS_CLIP"), "none"))
+      expect_message(dr_clipr(), msg_no_clipboard(), fixed = TRUE)
+    if (identical(Sys.getenv("TRAVIS_CLIP"), "nodisplay"))
+      expect_message(dr_clipr(), msg_no_display(), fixed = TRUE)
 
-  expect_true(grepl("has read/write access", msg_clipr_available()))
-  expect_true(grepl("requires 'xclip'", msg_no_clipboard()))
-  expect_true(grepl("requires that the DISPLAY", msg_no_display()))
+    expect_true(grepl("has read/write access", msg_clipr_available()))
+    expect_true(grepl("requires 'xclip'", msg_no_clipboard()))
+    expect_true(grepl("requires that the DISPLAY", msg_no_display()))
+  }
 })
 
 test_that("Unavailable clipboard throws warning", {
