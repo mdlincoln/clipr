@@ -16,7 +16,8 @@ cache:
 # Adapt as necessary starting from here
 
 environment:
-  CLIPBOARD_AVAILABLE: TRUE
+  global:
+    CLIPBOARD_AVAILABLE: TRUE
 
 build_script:
   - travis-tool.sh install_deps
