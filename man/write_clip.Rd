@@ -5,7 +5,8 @@
 \title{Write clipboard}
 \usage{
 write_clip(content, object_type = c("auto", "character", "table"),
-  breaks = NULL, eos = NULL, return_new = TRUE, ...)
+  breaks = NULL, eos = NULL, return_new = TRUE,
+  allow_non_interactive = FALSE, ...)
 }
 \arguments{
 \item{content}{An object to be written to the system clipboard.}
@@ -27,6 +28,9 @@ ASCII \code{nul}. Defaults to no terminator character, indicated by
 
 \item{return_new}{If true, returns the rendered string; if false, returns the
 original object}
+
+\item{allow_non_interactive}{By default, clipr will throw an error if run in
+a non-interactive session. Set to \code{TRUE} to override this default.}
 
 \item{...}{Custom options to be passed to \code{\link{write.table}} (if the
 object is a table-like) Defaults to sane line-break and tab standards based
