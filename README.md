@@ -83,6 +83,9 @@ policy](https://cran.r-project.org/web/packages/policies.html):
 > Limited exceptions may be allowed in interactive sessions if the
 > package obtains confirmation from the user.
 
+For this reason, `write_clip()` will error by default in non-interactive use,
+which includes CRAN tests.
+
 ### Linux utility availability
 
 clipr’s functionality on X11-based systems depends on the installation
