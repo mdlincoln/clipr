@@ -6,7 +6,8 @@
 \usage{
 write_clip(content, object_type = c("auto", "character", "table"),
   breaks = NULL, eos = NULL, return_new = TRUE,
-  allow_non_interactive = FALSE, ...)
+  allow_non_interactive = Sys.getenv("ALLOW_CLIPBOARD", interactive()),
+  ...)
 }
 \arguments{
 \item{content}{An object to be written to the system clipboard.}
@@ -30,7 +31,12 @@ ASCII \code{nul}. Defaults to no terminator character, indicated by
 original object}
 
 \item{allow_non_interactive}{By default, clipr will throw an error if run in
-a non-interactive session. Set to \code{TRUE} to override this default.}
+a non-interactive session. Set the environment varible
+\code{ALLOW_CLIPBOARD=TRUE} in order to override this behavior, for
+instance while testing a package that uses clipr. You may not run clipr on
+CRAN, as the nature of xsel
+\href{https://github.com/mdlincoln/clipr/issues/38}{has caused issues in
+the past}.}
 
 \item{...}{Custom options to be passed to \code{\link{write.table}} (if the
 object is a table-like) Defaults to sane line-break and tab standards based

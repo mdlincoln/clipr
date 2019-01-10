@@ -2,9 +2,6 @@
 #'
 #' Read the contents of the system clipboard into a character vector.
 #'
-#' @param allow_non_interactive By default, clipr will throw an error if run in
-#'   a non-interactive session. Set to \code{TRUE} to override this default.
-#'
 #' @return A character vector with the contents of the clipboard. If the system
 #'   clipboard is empty, returns NULL
 #'
@@ -18,8 +15,7 @@
 #' }
 #'
 #' @export
-read_clip <- function(allow_non_interactive = FALSE) {
-  warn_interactive(allow_non_interactive)
+read_clip <- function() {
 
   # Determine system type
   sys.type <- sys_type()
@@ -61,7 +57,12 @@ read_clip <- function(allow_non_interactive = FALSE) {
 #' @param return_new If true, returns the rendered string; if false, returns the
 #'   original object
 #' @param allow_non_interactive By default, clipr will throw an error if run in
-#'   a non-interactive session. Set to \code{TRUE} to override this default.
+#'   a non-interactive session. Set the environment varible
+#'   \code{ALLOW_CLIPBOARD=TRUE} in order to override this behavior, for
+#'   instance while testing a package that uses clipr. You may not run clipr on
+#'   CRAN, as the nature of xsel
+#'   \href{https://github.com/mdlincoln/clipr/issues/38}{has caused issues in
+#'   the past}.
 #' @param ... Custom options to be passed to \code{\link{write.table}} (if the
 #'   object is a table-like) Defaults to sane line-break and tab standards based
 #'   on the operating system.
@@ -93,8 +94,8 @@ read_clip <- function(allow_non_interactive = FALSE) {
 #'
 #' @export
 write_clip <- function(content, object_type = c("auto", "character", "table"),
-                       breaks = NULL, eos = NULL, return_new = TRUE, allow_non_interactive = FALSE, ...) {
-  warn_interactive(allow_non_interactive)
+                       breaks = NULL, eos = NULL, return_new = TRUE, allow_non_interactive = Sys.getenv("ALLOW_CLIPBOARD", interactive()), ...) {
+  if (!allow_non_interactive == "TRUE") warn_interactive()
 
   object_type <- match.arg(object_type)
   # Determine system type
@@ -116,8 +117,7 @@ write_clip <- function(content, object_type = c("auto", "character", "table"),
 #'
 #' Clear the system clipboard.
 #'
-#' @param \ldots Pass other options to \link{write_clip}. Generally only used to
-#'   pass the argument \code{allow_non_interactive_use = TRUE}.
+#' @param \ldots Pass other options to \link{write_clip}.
 #'
 #' @note This is a simple wrapper function for write_clip("")
 #'

@@ -1,83 +1,41 @@
-# Setup
+# Platform
 
-## Platform
-
-|setting  |value                        |
+|field    |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.5.0 (2018-04-23) |
+|version  |R version 3.5.1 (2018-07-02) |
+|os       |macOS  10.14.2               |
 |system   |x86_64, darwin15.6.0         |
-|ui       |RStudio (1.1.383)            |
+|ui       |X11                          |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
-|tz       |America/Los_Angeles          |
-|date     |2018-06-23                   |
+|ctype    |en_US.UTF-8                  |
+|tz       |America/New_York             |
+|date     |2019-01-10                   |
 
-## Packages
+# Dependencies
 
-|package |*  |version    |date       |source                     |
-|:-------|:--|:----------|:----------|:--------------------------|
-|clipr   |*  |0.4.0.9000 |2018-06-23 |local (mdlincoln/clipr@NA) |
+|package |old   |new |Δ  |
+|:-------|:-----|:---|:--|
+|clipr   |0.4.1 |NA  |*  |
 
-# Check results
+# Revdeps
 
-8 packages
+## All (14)
 
-|package    |version | errors| warnings| notes|
-|:----------|:-------|------:|--------:|-----:|
-|datapasta  |3.0.0   |      0|        0|     0|
-|hrbrthemes |0.5.0   |      0|        0|     0|
-|prodigenr  |0.4.0   |      0|        0|     0|
-|reprex     |0.2.0   |      0|        0|     0|
-|rio        |0.5.10  |      0|        0|     0|
-|sealr      |0.1.0   |      0|        0|     0|
-|usethis    |1.3.0   |      0|        0|     0|
-|vegalite   |0.6.1   |      0|        0|     0|
-
-## datapasta (3.0.0)
-Maintainer: Miles McBain <miles.mcbain@gmail.com>  
-Bug reports: https://github.com/milesmcbain/datapasta/issues
-
-0 errors | 0 warnings | 0 notes
-
-## hrbrthemes (0.5.0)
-Maintainer: Bob Rudis <bob@rud.is>  
-Bug reports: https://github.com/hrbrmstr/hrbrthemes/issues
-
-0 errors | 0 warnings | 0 notes
-
-## prodigenr (0.4.0)
-Maintainer: Luke Johnston <lwjohnst@gmail.com>  
-Bug reports: https://github.com/lwjohnst86/prodigenr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## reprex (0.2.0)
-Maintainer: Jennifer Bryan <jenny@rstudio.com>  
-Bug reports: https://github.com/tidyverse/reprex/issues
-
-0 errors | 0 warnings | 0 notes
-
-## rio (0.5.10)
-Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>  
-Bug reports: https://github.com/leeper/rio/issues
-
-0 errors | 0 warnings | 0 notes
-
-## sealr (0.1.0)
-Maintainer: Shinya Uryu <suika1127@gmail.com>  
-Bug reports: https://github.com/uribo/sealr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## usethis (1.3.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/r-lib/usethis/issues
-
-0 errors | 0 warnings | 0 notes
-
-## vegalite (0.6.1)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/vegalite/issues
-
-0 errors | 0 warnings | 0 notes
+|package                                  |version |error |warning |note |
+|:----------------------------------------|:-------|:-----|:-------|:----|
+|autothresholdr                           |1.3.0   |      |        |     |
+|carbonate                                |0.1.0   |      |        |     |
+|datapasta                                |3.0.0   |      |        |     |
+|[detrendr](problems.md#detrendr)         |0.6.0   |      |        |1    |
+|hrbrthemes                               |0.5.0.1 |      |        |     |
+|[nandb](problems.md#nandb)               |2.0.0   |      |        |1    |
+|[prodigenr](problems.md#prodigenr)       |0.4.0   |      |        |1    |
+|rde                                      |0.1.0   |      |        |     |
+|[readr](problems.md#readr)               |1.3.1   |      |        |1    |
+|[reprex](problems.md#reprex)             |0.2.1   |      |        |1    |
+|rio                                      |0.5.16  |      |        |     |
+|[sevenbridges](problems.md#sevenbridges) |1.10.5  |      |        |1    |
+|usethis                                  |1.4.0   |      |        |     |
+|vegalite                                 |0.6.1   |      |        |     |
 

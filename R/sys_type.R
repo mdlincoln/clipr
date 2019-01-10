@@ -11,7 +11,8 @@ sys_type <- function() {
 #' the system clipboard may not be available.
 #'
 #' If you are trying to call this in a non-interactive session, be sure to call
-#' using \code{clipr_available(allow_non_interactive = TRUE)}
+#' using \code{clipr_available(allow_non_interactive = TRUE), or by setting the
+#' environemnt variable CLIPBOARD_AVAILABLE=TRUE}
 #'
 #' @param \ldots Pass other options to \link{write_clip}. Generally only used to
 #'   pass the argument \code{allow_non_interactive_use = TRUE}.
@@ -75,7 +76,6 @@ msg_no_clipboard <- function() "Clipboard on X11 requires 'xclip' (recommended) 
 
 msg_no_display <- function() "Clipboard on X11 requires that the DISPLAY envvar be configured."
 
-warn_interactive <- function(interactive_flag) {
-  if (!interactive_flag && !interactive())
-    stop("To run ", deparse(sys.call(-1)), " in non-interactive mode, set allow_non_interactive = TRUE")
+warn_interactive <- function() {
+  stop("To run ", deparse(sys.call(-1)), " in non-interactive mode, either call write_clip() with allow_non_interactive = TRUE, or set the environment variable ALLOW_CLIPBOARD=TRUE")
 }
