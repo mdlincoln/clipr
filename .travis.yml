@@ -24,6 +24,9 @@ matrix:
     - r: release
       env: TRAVIS_CLIP=xclip DISPLAY=:99.0 ALLOW_CLIPBOARD=TRUE
       addons: {apt: {packages: [xclip]}}
+    - r: release
+      env: TRAVIS_CLIP=xclip DISPLAY=:99.0
+      addons: {apt: {packages: [xclip]}}
     - r: devel
       env: TRAVIS_CLIP=xclip DISPLAY=:99.0 ALLOW_CLIPBOARD=TRUE
       addons: {apt: {packages: [xclip]}}
