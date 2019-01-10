@@ -2,7 +2,7 @@ context("Clipr read and write")
 
 test_that("single NA vectors don't cause error", {
   skip_if_not(is_clipr_available, skip_msg)
-  skip_on_cran()
+
   expect_equivalent(write_clip(NA_character_), "NA")
   expect_warning(write_clip(NA))
   expect_warning(write_clip(NA_integer_))
@@ -12,7 +12,7 @@ test_that("single NA vectors don't cause error", {
 
 test_that("empty character in write_clip() causes no erroneous warning", {
   skip_if_not(is_clipr_available, skip_msg)
-  skip_on_cran()
+
   expect_equivalent(write_clip(""), "")
   expect_warning(null_res <- write_clip(NULL))
   expect_equivalent(null_res, "")
@@ -24,14 +24,14 @@ test_that("empty character in write_clip() causes no erroneous warning", {
 
 test_that("Render character vectors", {
   skip_if_not(is_clipr_available, skip_msg)
-  skip_on_cran()
+
   single <- "hello, world!"
   expect_equivalent(write_clip(single), single)
 })
 
 test_that("Render default multiline vectors", {
   skip_if_not(is_clipr_available, skip_msg)
-  skip_on_cran()
+
   multiline <- c("hello", "world!")
   inv_out <- write_clip(multiline)
   if (sys_type() == "Windows") {
@@ -44,7 +44,7 @@ test_that("Render default multiline vectors", {
 
 test_that("Render custom multiline vectors", {
   skip_if_not(is_clipr_available, skip_msg)
-  skip_on_cran()
+
   multiline <- c("hello", "world!")
   inv_out <- write_clip(multiline, breaks = ", ")
   expect_equivalent(inv_out, "hello, world!")
@@ -53,7 +53,7 @@ test_that("Render custom multiline vectors", {
 
 test_that("Render default data.frames", {
   skip_if_not(is_clipr_available, skip_msg)
-  skip_on_cran()
+
   tbl <- data.frame(a = c(1,2,3), b = c(4,5,6))
   inv_out <- write_clip(tbl)
   if (sys_type() == "Windows") {
@@ -66,7 +66,7 @@ test_that("Render default data.frames", {
 
 test_that("Render custom data.frames", {
   skip_if_not(is_clipr_available, skip_msg)
-  skip_on_cran()
+
   tbl <- data.frame(a = c(1,2,3), b = c(4,5,6))
   inv_out <- write_clip(tbl, sep = ",")
   if (sys_type() == "Windows") {
@@ -79,7 +79,7 @@ test_that("Render custom data.frames", {
 
 test_that("Render matricies", {
   skip_if_not(is_clipr_available, skip_msg)
-  skip_on_cran()
+
   tbl <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 3, ncol = 2)
   inv_out <- write_clip(tbl)
   if (sys_type() == "Windows") {
@@ -92,7 +92,7 @@ test_that("Render matricies", {
 
 test_that("Render custom matricies", {
   skip_if_not(is_clipr_available, skip_msg)
-  skip_on_cran()
+
   tbl <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 3, ncol = 2)
   inv_out <- write_clip(tbl, sep = ",")
   if (sys_type() == "Windows") {
@@ -105,14 +105,14 @@ test_that("Render custom matricies", {
 
 test_that("Render tables read from clipboard as data.frames", {
   skip_if_not(is_clipr_available, skip_msg)
-  skip_on_cran()
+
   inv_out <- write_clip(iris[1:2, 1:4])
   expect_equivalent(read_clip_tbl(), iris[1:2, 1:4])
 })
 
 test_that("Tables written with rownames add extra space for column names", {
   skip_if_not(is_clipr_available, skip_msg)
-  skip_on_cran()
+
   d <- matrix(1:4, 2)
   rownames(d) <- c('a','b')
   colnames(d) <- c('c','d')
