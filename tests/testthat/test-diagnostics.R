@@ -1,6 +1,8 @@
 context("diagnostics")
 
 test_that("clipr_available fails when DISPLAY is not configured; succeeds when it is", {
+  print(paste("NOT_CRAN: ", Sys.getenv("NOT_CRAN")))
+  print(paste("ALLOW_CLIPBOARD: ", Sys.getenv("ALLOW_CLIPBOARD")))
   # Only run this test on Travis
   skip_if_not(identical(Sys.getenv("TRAVIS"), "true"))
   if (identical(Sys.getenv("TRAVIS_CLIP"), "none"))
