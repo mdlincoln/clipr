@@ -10,30 +10,30 @@ r_check_revdep: false
 matrix:
   include:
     - r: oldrel
-      env: TRAVIS_CLIP=xsel DISPLAY=:99.0 ALLOW_CLIPBOARD=TRUE
+      env: TRAVIS_CLIP=xsel DISPLAY=:99.0 CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xsel]}}
     - r: release
-      env: TRAVIS_CLIP=xsel DISPLAY=:99.0 ALLOW_CLIPBOARD=TRUE
+      env: TRAVIS_CLIP=xsel DISPLAY=:99.0 CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xsel]}}
     - r: devel
-      env: TRAVIS_CLIP=xsel DISPLAY=:99.0 ALLOW_CLIPBOARD=TRUE
+      env: TRAVIS_CLIP=xsel DISPLAY=:99.0 CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xsel]}}
     - r: oldrel
-      env: TRAVIS_CLIP=xclip DISPLAY=:99.0 ALLOW_CLIPBOARD=TRUE
+      env: TRAVIS_CLIP=xclip DISPLAY=:99.0 CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xclip]}}
     - r: release
-      env: TRAVIS_CLIP=xclip DISPLAY=:99.0 ALLOW_CLIPBOARD=TRUE
+      env: TRAVIS_CLIP=xclip DISPLAY=:99.0 CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xclip]}}
     - r: release
       env: TRAVIS_CLIP=xclip DISPLAY=:99.0
       addons: {apt: {packages: [xclip]}}
     - r: devel
-      env: TRAVIS_CLIP=xclip DISPLAY=:99.0 ALLOW_CLIPBOARD=TRUE
+      env: TRAVIS_CLIP=xclip DISPLAY=:99.0 CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xclip]}}
     - r: release
-      env: TRAVIS_CLIP=none DISPLAY=:99.0 ALLOW_CLIPBOARD=TRUE
+      env: TRAVIS_CLIP=none DISPLAY=:99.0 CLIPR_ALLOW=TRUE
     - r: release
-      env: TRAVIS_CLIP=nodisplay ALLOW_CLIPBOARD=TRUE
+      env: TRAVIS_CLIP=nodisplay CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xclip]}}
 
 # Ensure xclip can still run headlessly
