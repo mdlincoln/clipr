@@ -18,6 +18,7 @@ cache:
 environment:
   global:
     CLIPR_ALLOW: TRUE
+    PKGTYPE: win.binary
 
 build_script:
   - travis-tool.sh install_deps
