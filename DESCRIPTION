@@ -1,7 +1,7 @@
 Type: Package
 Package: clipr
 Title: Read and Write from the System Clipboard
-Version: 0.4.1.9000
+Version: 0.5.0
 Authors@R: 
     c(person(given = "Matthew",
              family = "Lincoln",
