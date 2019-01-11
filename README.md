@@ -36,6 +36,8 @@ devtools::install_github("mdlincoln/clipr")
 
 ``` r
 library("clipr")
+#> Welcome to clipr. See ?write_clip for advisories on
+#>                         writing to teh clipboard in R.
 
 cb <- read_clip()
 
@@ -69,8 +71,8 @@ into data frames directly.
 
 ### Interactive & non-interactive use
 
-If you use clipr in your own package, you should not call it in
-non-interactive sessions, as this goes against [CRAN repository
+If you use clipr in your own package, **you must not call it in
+non-interactive sessions**, as this goes against [CRAN repository
 policy](https://cran.r-project.org/web/packages/policies.html):
 
 > Packages should not write in the user’s home filespace (including
@@ -83,8 +85,18 @@ policy](https://cran.r-project.org/web/packages/policies.html):
 > Limited exceptions may be allowed in interactive sessions if the
 > package obtains confirmation from the user.
 
-For this reason, `write_clip()` will error by default in non-interactive use,
-which includes CRAN tests.
+For this reason, `write_clip()` will error by default in non-interactive
+use, which includes CRAN tests.
+
+### Linux utility availability
+
+clipr’s functionality on X11-based systems depends on the installation
+of additional software. Therefore, if you want to use clipr in your
+package, you will want to take some care in how you call it, and make
+sure that your package will respond gracefully if clipboard
+functionality is not working as expected. You can use the function
+`clipr_available()` to check if the clipboard is readable and writable
+by the current R session.
 
 ### Linux utility availability
 
@@ -106,13 +118,14 @@ infrastructure like Travis:
     to be wrapped in `\dontrun{}`
 2.  Tests calling clipr should be conditionally skipped, based on the
     output of `clipr_available()`. This is necessary to pass CRAN
-    checks.
+    checks, as otherwise `write_clip` will error out.
 3.  If you are using [Travis.ci](https://travis-ci.org/) to check your
     package build on Linux, consult the
     [`.travis.yml`](https://github.com/mdlincoln/clipr/blob/master/.travis.yml)
-    for this package, which includes code for setting the `DISPLAY`
-    environment variable, installing `xclip` and `xsel`, and running a
-    pre-build script that will set up `xclip`/`xsel` to run headlessly.
+    for this package, which includes code for setting the `DISPLAY` and
+    `CLIPR_ALLOW` environment variables, installing `xclip` and `xsel`,
+    and running a pre-build script that will set up `xclip`/`xsel` to
+    run headlessly.
 4.  If you wish to display system requirements and configuration
     messages to X11 users, `dr_clipr()` provides these.
 
