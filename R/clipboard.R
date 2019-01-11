@@ -60,9 +60,10 @@ read_clip <- function() {
 #'   a non-interactive session. Set the environment varible
 #'   \code{CLIPR_ALLOW=TRUE} in order to override this behavior, however see the
 #'   advisory below before doing so.
-#' @param ... Custom options to be passed to \code{\link{write.table}} (if the
-#'   object is a table-like) Defaults to sane line-break and tab standards based
-#'   on the operating system.
+#' @param ... Custom options to be passed to \code{\link{write.table}} (if
+#'   \code{x} is a table-like). Defaults to sane line-break and tab standards
+#'   based on the operating system. By default \code{col.names = FALSE}, however
+#'   you may override this by passing \code{col.names = TRUE}.
 #'
 #' @note On X11 systems, \code{write_clip} will cause either xclip (preferred)
 #'   or xsel to be called. Be aware that, by design, these processes will fork
@@ -70,7 +71,7 @@ read_clip <- function() {
 #'   will then exit silently. (See the man pages for
 #'   \href{https://linux.die.net/man/1/xclip}{xclip} and
 #'   \href{http://www.vergenet.net/~conrad/software/xsel/xsel.1x.html#notes}{xsel}
-#'   for more on their behaviors.) However, this means that even if you
+#'    for more on their behaviors.) However, this means that even if you
 #'   terminate your R session after running \code{write_clip}, those processes
 #'   will continue until you access the clipboard via another program. This may
 #'   be expected behavior for interactive use, but is generally be undesirable
