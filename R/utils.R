@@ -1,3 +1,8 @@
+.onAttach <- function(libname, pkgname) {
+  packageStartupMessage("Welcome to clipr. See ?write_clip for advisories on
+                        writing to teh clipboard in R.")
+}
+
 # Determine system type
 sys_type <- function() {
   return(Sys.info()["sysname"])
