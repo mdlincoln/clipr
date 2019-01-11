@@ -1,6 +1,5 @@
 .onAttach <- function(libname, pkgname) {
-  packageStartupMessage("Welcome to clipr. See ?write_clip for advisories on
-                        writing to teh clipboard in R.")
+  packageStartupMessage("Welcome to clipr. See ?write_clip for advisories on writing to the clipboard in R.")
 }
 
 # Determine system type
