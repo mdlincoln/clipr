@@ -68,7 +68,7 @@ Version: 1.10.5
     ```
       installed size is  6.7Mb
       sub-directories of 1Mb or more:
-        R     3.0Mb
         doc   2.9Mb
+        R     3.0Mb
     ```
 
