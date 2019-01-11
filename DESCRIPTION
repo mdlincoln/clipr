@@ -29,6 +29,7 @@ Suggests:
     rstudioapi (>= 0.5),
     testthat (>= 2.0.0)
 Encoding: UTF-8
+Language: en-US
 LazyData: TRUE
 RoxygenNote: 6.1.1
 SystemRequirements: xclip (https://github.com/astrand/xclip) or

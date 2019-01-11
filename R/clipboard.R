@@ -57,7 +57,7 @@ read_clip <- function() {
 #' @param return_new If true, returns the rendered string; if false, returns the
 #'   original object
 #' @param allow_non_interactive By default, clipr will throw an error if run in
-#'   a non-interactive session. Set the environment varible
+#'   a non-interactive session. Set the environment variable
 #'   \code{CLIPR_ALLOW=TRUE} in order to override this behavior, however see the
 #'   advisory below before doing so.
 #' @param ... Custom options to be passed to \code{\link{write.table}} (if
@@ -74,9 +74,9 @@ read_clip <- function() {
 #'    for more on their behaviors.) However, this means that even if you
 #'   terminate your R session after running \code{write_clip}, those processes
 #'   will continue until you access the clipboard via another program. This may
-#'   be expected behavior for interactive use, but is generally be undesirable
-#'   for non-interactive use. For this reason you must not run \code{write_clip}
-#'   on CRAN, as the nature of xsel
+#'   be expected behavior for interactive use, but is generally undesirable for
+#'   non-interactive use. For this reason you must not run \code{write_clip} on
+#'   CRAN, as the nature of xsel
 #'   \href{https://github.com/mdlincoln/clipr/issues/38}{has caused issues in
 #'   the past}.
 #'
