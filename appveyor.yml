@@ -16,9 +16,10 @@ cache:
 # Adapt as necessary starting from here
 
 environment:
-  global:
-    CLIPR_ALLOW: TRUE
-    PKGTYPE: win.binary
+  PKGTYPE: win.binary
+  matrix:
+    - CLIPR_ALLOW: TRUE
+    - CLIPR_ALLOW: ""
 
 build_script:
   - travis-tool.sh install_deps
