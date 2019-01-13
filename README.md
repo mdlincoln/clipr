@@ -98,16 +98,6 @@ functionality is not working as expected. You can use the function
 `clipr_available()` to check if the clipboard is readable and writable
 by the current R session.
 
-### Linux utility availability
-
-clipr’s functionality on X11-based systems depends on the installation
-of additional software. Therefore, if you want to use clipr in your
-package, you will want to take some care in how you call it, and make
-sure that your package will respond gracefully if clipboard
-functionality is not working as expected. You can use the function
-`clipr_available()` to check if the clipboard is readable and writable
-by the current R session.
-
 ### Testing on CRAN and CI
 
 A few best practices will also help you responsibly test your
