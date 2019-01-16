@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ## Calling clipr safely
 
 To check whether the system has been properly configured to allow access to the clipboard, you may run `clipr_available()` which will either return `TRUE` or `FALSE`.
-
+This will be particularly useful for Linux-based systems, where clipr's functionality depends on the installation of additional software.
 If you wish to display system requirements and configuration messages to X11 users, `dr_clipr()` will print these.
 
 ## Interactive & non-interactive use
@@ -33,12 +33,6 @@ If you use clipr in your own package, **you must not try to call it in non-inter
 For this reason, `write_clip()` will error by default in non-interactive use, which includes CRAN tests.
 
 If you want to use `write_clip()` interactively, you may either set the environment variable `CLIPR_ALLOW=TRUE` or call `write_clip(..., allow_non_interactive = TRUE)`.
-
-## Linux utility availability
-
-clipr's functionality on X11-based systems depends on the installation of additional software.
-Therefore, if you want to use clipr in your package, you will want to take some care in how you call it, and make sure that your package will respond gracefully if clipboard functionality is not working as expected.
-You can use the function `clipr_available()` to check if the clipboard is readable and writable by the current R session.
 
 ## Testing on CRAN and CI
 
