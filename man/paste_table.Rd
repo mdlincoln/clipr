@@ -2,53 +2,98 @@
 % Please edit documentation in R/copy_paste_table.R
 \name{paste_table}
 \alias{paste_table}
-\title{Paste delimited tabular data from clipboard as a tibble}
+\title{Paste a table from clipboard as a data.frame}
 \usage{
-paste_table(delim = "\\t", quote = "\\"", col_names = TRUE,
-  col_types = NULL, na = c("", "NA"), ...)
+paste_table(x = read_clip(), header = TRUE, sep = "\\t",
+  quote = "", na.strings = c("NA", ""), row.names,
+  stringsAsFactors = FALSE, ...)
 }
 \arguments{
-\item{delim}{Single character used to separate fields within a record.}
+\item{x}{A character vector that contains tabular data. The default is to
+call \code{\link{read_clip}} and read the system clipboard, so this argument
+doesn't need to be specified in most cases. Note that all other parameters
+below are inherited from \code{\link[utils]{read.table}}, and the "file"
+referenced in the argument description is referring to this character vector
+in this context.}
 
-\item{quote}{Single character used to quote strings.}
+\item{header}{a logical value indicating whether the file contains the
+    names of the variables as its first line.  If missing, the value is
+    determined from the file format: \code{header} is set to \code{TRUE}
+    if and only if the first row contains one fewer field than the
+    number of columns.}
 
-\item{col_names}{Either \code{TRUE}, \code{FALSE} or a character vector
-of column names.
+\item{sep}{the field separator character.  Values on each line of the
+    file are separated by this character.  If \code{sep = ""} (the
+    default for \code{read.table}) the separator is \sQuote{white space},
+    that is one or more spaces, tabs, newlines or carriage returns.}
 
-If \code{TRUE}, the first row of the input will be used as the column
-names, and will not be included in the data frame. If \code{FALSE}, column
-names will be generated automatically: X1, X2, X3 etc.
+\item{quote}{the set of quoting characters. To disable quoting
+    altogether, use \code{quote = ""}.  See \code{\link{scan}} for the
+    behaviour on quotes embedded in quotes.  Quoting is only considered
+    for columns read as character, which is all of them unless
+    \code{colClasses} is specified.}
 
-If \code{col_names} is a character vector, the values will be used as the
-names of the columns, and the first row of the input will be read into
-the first row of the output data frame.
+\item{na.strings}{a character vector of strings which are to be
+    interpreted as \code{\link{NA}} values.  Blank fields are also
+    considered to be missing values in logical, integer, numeric and
+    complex fields.  Note that the test happens \emph{after} 
+    white space is stripped from the input, so \code{na.strings} 
+    values may need their own white space stripped in advance.}
 
-Missing (\code{NA}) column names will generate a warning, and be filled
-in with dummy names \code{X1}, \code{X2} etc. Duplicate column names
-will generate a warning and be made unique with a numeric prefix.}
+\item{row.names}{a vector of row names.  This can be a vector giving
+    the actual row names, or a single number giving the column of the
+    table which contains the row names, or character string giving the
+    name of the table column containing the row names.
 
-\item{col_types}{One of \code{NULL}, a \code{\link[=cols]{cols()}} specification, or
-a string. See \code{vignette("readr")} for more details.
+    If there is a header and the first row contains one fewer field than
+    the number of columns, the first column in the input is used for the
+    row names.  Otherwise if \code{row.names} is missing, the rows are
+    numbered.
 
-If \code{NULL}, all column types will be imputed from the first 1000 rows
-on the input. This is convenient (and fast), but not robust. If the
-imputation fails, you'll need to supply the correct types yourself.
+    Using \code{row.names = NULL} forces row numbering. Missing or
+    \code{NULL} \code{row.names} generate row names that are considered
+    to be \sQuote{automatic} (and not preserved by \code{\link{as.matrix}}).
+  }
 
-If a column specification created by \code{\link[=cols]{cols()}}, it must contain
-one column specification for each column. If you only want to read a
-subset of the columns, use \code{\link[=cols_only]{cols_only()}}.
+\item{stringsAsFactors}{logical: should character vectors be converted
+    to factors?  Note that this is overridden by \code{as.is} and
+    \code{colClasses}, both of which allow finer control.}
 
-Alternatively, you can use a compact string representation where each
-character represents one column:
-c = character, i = integer, n = number, d = double,
-l = logical, f = factor, D = date, T = date time, t = time, ? = guess, or
-\code{_}/\code{-} to skip the column.}
-
-\item{na}{Character vector of strings to interpret as missing values. Set this
-option to \code{character()} to indicate no missing values.}
-
-\item{\dots}{Other parameters passed to \code{\link[readr]{read_delim}}.}
+\item{\dots}{Other parameters passed to \code{\link[utils]{read.table}}.}
 }
 \description{
-Paste delimited tabular data from clipboard as a tibble
+This function reads tabular data from clipboard using \code{read.table} and
+returns a data.frame.
+}
+\examples{
+\dontrun{
+# paste returns the same object as what was copied
+tbl <- data.frame(a = c(1,2,3), b = c(4,5,6))
+copy_table(tbl)
+paste_table()
+
+# row.names are ignored by default, use row.names to turn it on
+tbl <- data.frame(a = c(1,2,3), b = c(4,5,6), row.names = c("A", "B", "C"))
+copy_table(tbl, row.names = TRUE)
+paste_table(row.names = 1)
+
+# empty and "NA" can be pasted as missing value by default
+tbl <- data.frame(a = c(1,2,3), b = c(NA,5,6))
+copy_table(tbl)
+paste_table()
+
+copy_table(tbl, na = "NA")
+paste_table()
+
+# Customized na string
+copy_table(tbl, na = "missing")
+paste_table(na.strings = "missing")
+}
+
+
+}
+\seealso{
+\code{\link{copy_table}} for copying an object from R. Also see
+\code{\link[readr]{read_delim}} for how \code{readr} functions read
+clipboard tables into R.
 }

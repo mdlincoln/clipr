@@ -28,14 +28,18 @@
 #
 #
 #
-# Another expectation is that the inverse operation should maintain the same
-# structure. E.g. if a table is copied and pasted to another place, and it's
+# Another functionality I want to have is that I want the default copy and
+# paste operation to be the inverse of each other.
+# E.g. if a table is copied and pasted to another place, and it's
 # copied again from that place and pasted back into R, it should render an
 # equivalent table as the original table object.
-#
-# This means row.names
-#
-#
+# This is not there in the utils::read(write).csv function. The csv file will
+# be different because of row names.
+# I have added some tests for this one in test_copy-paste.R
+
+
+
+
 
 #' Copy a tabular object
 #'
@@ -73,12 +77,13 @@
 #' first call to \code{copy_table()}, which is then used for the second call by
 #' default.
 #'
-#' @param x A tabular object to be copied. This can be \code{data.frame},
-#' \code{table}, \code{matrix} or other tabular classes. The default is
+#' @param x A tabular object to be copied. This can be either \code{data.frame},
+#' \code{table}, or other tabular classes. The default is
 #' \code{.Last.Value}. See details for a recommended workflow.
 #' @inheritParams utils::write.table
-#' @param ... Further parameters passed to \code{\link{function}}.
+#' @param \dots Further parameters passed to \code{\link{write_clip}}.
 #'
+#' @seealso \code{\link{paste_table}} for pasting a table into R.
 #' @examples
 #' \dontrun{
 #' # if interactively in the console ...
@@ -93,33 +98,74 @@
 #'
 #' @export
 copy_table <- function(x = .Last.value, quote = FALSE, sep = "\t",
-                       na = "", row.names = FALSE, col.names = TRUE, ...) {
+                       na = "", row.names = FALSE, col.names = TRUE,
+                       qmethod = "double", ...) {
 
   write_clip(x, object_type = "table", quote = quote, sep = sep,
-             na = na, row.names = FALSE, col.names = col.names, ...)
+             na = na, row.names = row.names, col.names = col.names,
+             qmethod = qmethod, ...)
 
   # content is silently returned so it can be captured if needed
   invisible(x)
 }
 
 
-#' Paste delimited tabular data from clipboard as a tibble
+#' Paste a table from clipboard as a data.frame
 #'
-#' @inheritParams readr::read_delim
-#' @param \dots Other parameters passed to \code{\link[readr]{read_delim}}.
+#' This function reads tabular data from clipboard using \code{read.table} and
+#' returns a data.frame.
+#'
+#' @param x A character vector that contains tabular data. The default is to
+#' call \code{\link{read_clip}} and read the system clipboard, so this argument
+#' doesn't need to be specified in most cases. Note that all other parameters
+#' below are inherited from \code{\link[utils]{read.table}}, and the "file"
+#' referenced in the argument description is referring to this character vector
+#' in this context.
+#' @inheritParams utils::read.table
+#' @param \dots Other parameters passed to \code{\link[utils]{read.table}}.
+#'
+#' @seealso \code{\link{copy_table}} for copying an object from R. Also see
+#' \code{\link[readr]{read_delim}} for how \code{readr} functions read
+#' clipboard tables into R.
+#'
+#' @examples
+#' \dontrun{
+#' # paste returns the same object as what was copied
+#' tbl <- data.frame(a = c(1,2,3), b = c(4,5,6))
+#' copy_table(tbl)
+#' paste_table()
+#'
+#' # row.names are ignored by default, use row.names to turn it on
+#' tbl <- data.frame(a = c(1,2,3), b = c(4,5,6), row.names = c("A", "B", "C"))
+#' copy_table(tbl, row.names = TRUE)
+#' paste_table(row.names = 1)
+#'
+#' # empty and "NA" can be pasted as missing value by default
+#' tbl <- data.frame(a = c(1,2,3), b = c(NA,5,6))
+#' copy_table(tbl)
+#' paste_table()
+#'
+#' copy_table(tbl, na = "NA")
+#' paste_table()
+#'
+#' # Customized na string
+#' copy_table(tbl, na = "missing")
+#' paste_table(na.strings = "missing")
+#' }
+#'
 #'
 #' @export
-paste_table <- function(delim = "\t", quote = "\"",
-                        col_names = TRUE, col_types = NULL,
-                        na = c("", "NA"), ...) {
-  char_vec <- read_clip()
+paste_table <- function(x = read_clip(),
+                        header = TRUE, sep = "\t", quote = "",
+                        na.strings = c("NA", ""), row.names,
+                        stringsAsFactors = FALSE, ...) {
 
-  if (is.null(char_vec) || (length(char_vec) == 1 && char_vec == ""))
+  if (is.null(x) || (length(x) == 1 && x == ""))
     stop("Clipboard is empty.")
 
-  readr::read_delim(char_vec, delim = delim, quote = quote,
-                    col_name = col_names, col_types = col_types,
-                    na = na, ...)
+  utils::read.table(header = header, sep = sep, quote = quote,
+                    na.strings = na.strings, row.names = row.names,
+                    stringsAsFactors = stringsAsFactors, text = x, ...)
 }
 
 

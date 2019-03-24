@@ -5,11 +5,11 @@
 \title{Copy a tabular object}
 \usage{
 copy_table(x = .Last.value, quote = FALSE, sep = "\\t", na = "",
-  row.names = FALSE, col.names = TRUE, ...)
+  row.names = FALSE, col.names = TRUE, qmethod = "double", ...)
 }
 \arguments{
-\item{x}{A tabular object to be copied. This can be \code{data.frame},
-\code{table}, \code{matrix} or other tabular classes. The default is
+\item{x}{A tabular object to be copied. This can be either \code{data.frame},
+\code{table}, or other tabular classes. The default is
 \code{.Last.Value}. See details for a recommended workflow.}
 
 \item{quote}{a logical value (\code{TRUE} or \code{FALSE}) or a
@@ -33,7 +33,15 @@ copy_table(x = .Last.value, quote = FALSE, sep = "\\t", na = "",
     character vector of column names to be written.  See the section on
     \sQuote{CSV files} for the meaning of \code{col.names = NA}.}
 
-\item{...}{Further parameters passed to \code{\link{function}}.}
+\item{qmethod}{a character string specifying how to deal with embedded
+    double quote characters when quoting strings.  Must be one of
+    \code{"escape"} (default for \code{write.table}), in which case the
+    quote character is escaped in C style by a backslash, or
+    \code{"double"} (default for \code{write.csv} and
+    \code{write.csv2}), in which case it is doubled.  You can specify
+    just the initial letter.}
+
+\item{\dots}{Further parameters passed to \code{\link{write_clip}}.}
 }
 \description{
 This function allows users to copy a tabular object (e.g. \code{data.frame},
@@ -83,4 +91,7 @@ obj <- summary(mtcars)
 copy_table(obj)
 }
 
+}
+\seealso{
+\code{\link{paste_table}} for pasting a table into R.
 }
