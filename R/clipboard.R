@@ -105,7 +105,7 @@ read_clip <- function() {
 #'
 #' @export
 write_clip <- function(content, object_type = c("auto", "character", "table"),
-                       breaks = NULL, eos = NULL, return_new = TRUE,
+                       breaks = NULL, eos = NULL, return_new = FALSE,
                        allow_non_interactive = Sys.getenv("CLIPR_ALLOW", interactive()), ...) {
   if (allow_non_interactive != "TRUE") warn_interactive()
 

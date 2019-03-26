@@ -5,7 +5,7 @@
 \title{Write clipboard}
 \usage{
 write_clip(content, object_type = c("auto", "character", "table"),
-  breaks = NULL, eos = NULL, return_new = TRUE,
+  breaks = NULL, eos = NULL, return_new = FALSE,
   allow_non_interactive = Sys.getenv("CLIPR_ALLOW", interactive()), ...)
 }
 \arguments{
