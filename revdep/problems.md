@@ -1,3 +1,16 @@
+# AdhereR
+
+Version: 0.4.1
+
+## In both
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  5.2Mb
+      sub-directories of 1Mb or more:
+        doc   3.2Mb
+    ```
+
 # detrendr
 
 Version: 0.6.0
@@ -55,6 +68,19 @@ Version: 0.2.1
 *   checking dependencies in R code ... NOTE
     ```
     Namespace in Imports field not imported from: ‘tools’
+      All declared Imports should be used.
+    ```
+
+# rosr
+
+Version: 0.0.6
+
+## In both
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Namespaces in Imports field not imported from:
+      ‘bookdown’ ‘rstudioapi’ ‘tinytex’
       All declared Imports should be used.
     ```
 
