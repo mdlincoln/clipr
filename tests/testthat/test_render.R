@@ -150,4 +150,14 @@ test_that("Tables written with rownames add extra space for column names", {
     expect_equivalent(mat_bnames_out, "\tc\td\na\t1\t3\nb\t2\t4")
     expect_equivalent(df_bnames_out, "\tc\td\na\t1\t3\nb\t2\t4")
   }
+
+  mat_nonames_out <- write_clip(d, row.names = FALSE, col.names = FALSE, return_new = TRUE)
+  df_nonames_out <- write_clip(df, row.names = FALSE, col.names = FALSE, return_new = TRUE)
+  if (sys_type() == "Windows") {
+    expect_equivalent(mat_nonames_out, "1\t3\r\n2\t4")
+    expect_equivalent(df_nonames_out, "1\t3\r\n2\t4")
+  } else {
+    expect_equivalent(mat_nonames_out, "1\t3\n2\t4")
+    expect_equivalent(df_nonames_out, "1\t3\n2\t4")
+  }
 })
