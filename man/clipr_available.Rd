@@ -29,7 +29,7 @@ the system clipboard may not be available.
 \details{
 If you are trying to call this in a non-interactive session, be sure to call
 using \code{clipr_available(allow_non_interactive = TRUE)}, or by setting the
-environemnt variable \code{CLIPBOARD_AVAILABLE=TRUE}
+environment variable \code{CLIPBOARD_AVAILABLE=TRUE}
 }
 \examples{
 \dontrun{
