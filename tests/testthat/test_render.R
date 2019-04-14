@@ -70,6 +70,12 @@ test_that("Render default data.frames", {
   expect_equal(read_clip_tbl(), tbl)
 })
 
+test_that("Probable rownames are read", {
+  skip_if_not(is_clipr_available, skip_msg)
+  write_clip(mtcars)
+  expect_equal(read_clip_tbl(), mtcars)
+})
+
 test_that("Render custom data.frames", {
   skip_if_not(is_clipr_available, skip_msg)
 

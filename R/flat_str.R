@@ -19,10 +19,12 @@ table_str <- function(content, breaks, .dots) {
   .dots$sep <- .dots$sep
   .dots$quote <- ifelse(is.null(.dots$quote), FALSE, .dots$quote)
   .dots$na <- ifelse(is.null(.dots$na), "", .dots$na)
-  .dots$row.names <- ifelse(is.null(.dots$row.names), FALSE, .dots$row.names)
-  # If matrix, default to not printing column names
-  if (is.matrix(content))
-    .dots$col.names <- ifelse(is.null(.dots$col.names), FALSE, .dots$col.names)
+  .dots$col.names <- ifelse(is.null(.dots$col.names), !is.null(colnames(content)), .dots$col.names)
+
+  # Check if dataframe rownames are anything different than the default numbered names
+  numbered_rownames <- all(rownames(content) == as.character(seq_along(rownames(content))))
+
+  .dots$row.names <- ifelse(is.null(.dots$row.names), ifelse(numbered_rownames, FALSE, !is.null(rownames(content))), .dots$row.names)
 
   # Writing to and reading from a temp file is much faster than using capture.output
   tbl_file <- tempfile()
@@ -33,10 +35,8 @@ table_str <- function(content, breaks, .dots) {
 
   # If row.names = TRUE and col.names = TRUE, add additional sep character to
   # the start of the table
-  if (!is.null(.dots$row.names) & !is.null(.dots$col.names)) {
-    if (.dots$row.names & .dots$col.names) {
-      read_tbl <- paste0(.dots$sep, read_tbl)
-    }
+  if (.dots$row.names & .dots$col.names) {
+    read_tbl <- paste0(.dots$sep, read_tbl)
   }
 
   return(read_tbl)

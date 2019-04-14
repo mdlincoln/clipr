@@ -8,7 +8,9 @@
 #' @param \ldots Options to pass to \code{\link{read.table}}. The following
 #'   \code{\link{read.table}} arguments will be passed by default, but can be
 #'   overridden by specifying them when calling \code{read_clip_tbl}: \describe{
-#'   \item{\code{header}}{\code{TRUE}} \item{\code{sep}}{\code{"\t"}}
+#'   \item{\code{header}}{\code{TRUE}}
+#'   \item{\code{sep}}{\code{"\t"}}
+#'   \item{\code{row.names}}{\code{1}}
 #'   \item{\code{stringsAsFactors}}{\code{FALSE}}
 #'   \item{\code{na.strings}}{\code{c("NA", "")}}
 #'   \item{\code{strip.white}}{\code{TRUE}} }
@@ -26,6 +28,13 @@ read_clip_tbl <- function(x = read_clip(), ...) {
 
   if (is.null(.dots$header))
     .dots$header <- TRUE
+  if (is.null(.dots$row.names)) {
+    if (substr(x[1], 1, 1) == "\t") {
+      .dots$row.names <- 1
+    } else {
+    .dots$row.names <- NULL
+    }
+  }
   if (is.null(.dots$sep))
     .dots$sep <- "\t"
   if (is.null(.dots$stringsAsFactors))
