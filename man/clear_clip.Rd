@@ -7,11 +7,11 @@
 clear_clip(...)
 }
 \arguments{
-\item{\ldots}{Pass other options to \link{write_clip}.}
+\item{\ldots}{Pass other options to \code{\link[=write_clip]{write_clip()}}.}
 }
 \description{
 Clear the system clipboard.
 }
 \note{
-This is a simple wrapper function for write_clip("")
+This is a wrapper function for \code{write_clip("")}
 }

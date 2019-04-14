@@ -11,9 +11,9 @@ write_clip(content, object_type = c("auto", "character", "table"),
 \arguments{
 \item{content}{An object to be written to the system clipboard.}
 
-\item{object_type}{write_clip() tries to be smart about writing objects in a
+\item{object_type}{\code{\link[=write_clip]{write_clip()}} tries to be smart about writing objects in a
 useful manner. If passed a data.frame or matrix, it will format it using
-\code{\link{write.table}} for pasting into an external spreadsheet program.
+\code{\link[=write.table]{write.table()}} for pasting into an external spreadsheet program.
 It will otherwise coerce the object to a character vector. \code{auto} will
 check the object type, otherwise \code{table} or \code{character} can be
 explicitly specified.}
@@ -34,7 +34,7 @@ a non-interactive session. Set the environment variable
 \code{CLIPR_ALLOW=TRUE} in order to override this behavior, however see the
 advisory below before doing so.}
 
-\item{...}{Custom options to be passed to \code{\link{write.table}} (if
+\item{...}{Custom options to be passed to \code{\link[=write.table]{write.table()}} (if
 \code{x} is a table-like). Defaults to sane line-break and tab standards
 based on the operating system. By default \code{col.names = FALSE}, however
 you may override this by passing \code{col.names = TRUE}.}
@@ -46,23 +46,22 @@ Invisibly returns the original object
 Write a character vector to the system clipboard
 }
 \note{
-On X11 systems, \code{write_clip} will cause either xclip (preferred)
-  or xsel to be called. Be aware that, by design, these processes will fork
-  into the background. They will run until the next paste event, when they
-  will then exit silently. (See the man pages for
-  \href{https://linux.die.net/man/1/xclip}{xclip} and
-  \href{http://www.vergenet.net/~conrad/software/xsel/xsel.1x.html#notes}{xsel}
-   for more on their behaviors.) However, this means that even if you
-  terminate your R session after running \code{write_clip}, those processes
-  will continue until you access the clipboard via another program. This may
-  be expected behavior for interactive use, but is generally undesirable for
-  non-interactive use. For this reason you must not run \code{write_clip} on
-  CRAN, as the nature of xsel
-  \href{https://github.com/mdlincoln/clipr/issues/38}{has caused issues in
-  the past}.
+On X11 systems, \code{\link[=write_clip]{write_clip()}} will cause either xclip (preferred)
+or xsel to be called. Be aware that, by design, these processes will fork
+into the background. They will run until the next paste event, when they
+will then exit silently. (See the man pages for
+\href{https://linux.die.net/man/1/xclip}{xclip} and
+\href{http://www.vergenet.net/~conrad/software/xsel/xsel.1x.html#notes}{xsel}
+for more on their behaviors.) However, this means that even if you
+terminate your R session after running \code{write_clip}, those processes
+will continue until you access the clipboard via another program. This may
+be expected behavior for interactive use, but is generally undesirable for
+non-interactive use. For this reason you must not run \code{write_clip} on
+CRAN, as the nature of xsel
+\href{https://github.com/mdlincoln/clipr/issues/38}{has caused issues in the past}.
 
-  Call \code{\link{clipr_available}} to safely check whether the clipboard is
-  readable and writable.
+Call \code{\link[=clipr_available]{clipr_available()}} to safely check whether the clipboard is
+readable and writable.
 }
 \examples{
 \dontrun{

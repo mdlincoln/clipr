@@ -5,9 +5,9 @@
 #' @return A character vector with the contents of the clipboard. If the system
 #'   clipboard is empty, returns NULL
 #'
-#' @note \code{read_clip} will not try to guess at how to parse copied text. If
+#' @note [read_clip()] will not try to guess at how to parse copied text. If
 #'   you are copying tabular data, it is suggested that you use
-#'   \code{\link{read_clip_tbl}}.
+#'   [read_clip_tbl()].
 #'
 #' @examples
 #' \dontrun{
@@ -42,45 +42,45 @@ read_clip <- function() {
 #' Write a character vector to the system clipboard
 #'
 #' @param content An object to be written to the system clipboard.
-#' @param object_type write_clip() tries to be smart about writing objects in a
+#' @param object_type [write_clip()] tries to be smart about writing objects in a
 #'   useful manner. If passed a data.frame or matrix, it will format it using
-#'   \code{\link{write.table}} for pasting into an external spreadsheet program.
-#'   It will otherwise coerce the object to a character vector. \code{auto} will
-#'   check the object type, otherwise \code{table} or \code{character} can be
+#'   [write.table()] for pasting into an external spreadsheet program.
+#'   It will otherwise coerce the object to a character vector. `auto` will
+#'   check the object type, otherwise `table` or `character` can be
 #'   explicitly specified.
 #' @param breaks The separator to be used between each element of the character
-#'   vector being written. \code{NULL} defaults to writing system-specific line
+#'   vector being written. `NULL` defaults to writing system-specific line
 #'   breaks between each element of a character vector, or each row of a table.
 #' @param eos The terminator to be written after each string, followed by an
-#'   ASCII \code{nul}. Defaults to no terminator character, indicated by
-#'   \code{NULL}.
+#'   ASCII `nul`. Defaults to no terminator character, indicated by
+#'   `NULL`.
 #' @param return_new If true, returns the rendered string; if false, returns the
 #'   original object
 #' @param allow_non_interactive By default, clipr will throw an error if run in
 #'   a non-interactive session. Set the environment variable
-#'   \code{CLIPR_ALLOW=TRUE} in order to override this behavior, however see the
+#'   `CLIPR_ALLOW=TRUE` in order to override this behavior, however see the
 #'   advisory below before doing so.
-#' @param ... Custom options to be passed to \code{\link{write.table}} (if
-#'   \code{x} is a table-like). Defaults to sane line-break and tab standards
-#'   based on the operating system. By default \code{col.names = FALSE}, however
-#'   you may override this by passing \code{col.names = TRUE}.
+#' @param ... Custom options to be passed to [write.table()] (if
+#'   `x` is a table-like). Defaults to sane line-break and tab standards
+#'   based on the operating system. By default `col.names = FALSE`, however
+#'   you may override this by passing `col.names = TRUE`.
 #'
-#' @note On X11 systems, \code{write_clip} will cause either xclip (preferred)
+#' @note On X11 systems, [write_clip()] will cause either xclip (preferred)
 #'   or xsel to be called. Be aware that, by design, these processes will fork
 #'   into the background. They will run until the next paste event, when they
 #'   will then exit silently. (See the man pages for
-#'   \href{https://linux.die.net/man/1/xclip}{xclip} and
-#'   \href{http://www.vergenet.net/~conrad/software/xsel/xsel.1x.html#notes}{xsel}
+#'   [xclip](https://linux.die.net/man/1/xclip) and
+#'   [xsel](http://www.vergenet.net/~conrad/software/xsel/xsel.1x.html#notes)
 #'    for more on their behaviors.) However, this means that even if you
-#'   terminate your R session after running \code{write_clip}, those processes
+#'   terminate your R session after running `write_clip`, those processes
 #'   will continue until you access the clipboard via another program. This may
 #'   be expected behavior for interactive use, but is generally undesirable for
-#'   non-interactive use. For this reason you must not run \code{write_clip} on
+#'   non-interactive use. For this reason you must not run `write_clip` on
 #'   CRAN, as the nature of xsel
-#'   \href{https://github.com/mdlincoln/clipr/issues/38}{has caused issues in
-#'   the past}.
+#'   [has caused issues in
+#'   the past](https://github.com/mdlincoln/clipr/issues/38).
 #'
-#'   Call \code{\link{clipr_available}} to safely check whether the clipboard is
+#'   Call [clipr_available()] to safely check whether the clipboard is
 #'   readable and writable.
 #'
 #' @return Invisibly returns the original object
@@ -129,9 +129,9 @@ write_clip <- function(content, object_type = c("auto", "character", "table"),
 #'
 #' Clear the system clipboard.
 #'
-#' @param \ldots Pass other options to \link{write_clip}.
+#' @param \ldots Pass other options to [write_clip()].
 #'
-#' @note This is a simple wrapper function for \code{write_clip("")}
+#' @note This is a wrapper function for `write_clip("")`
 #'
 #' @export
 clear_clip <- function(...) {
@@ -140,9 +140,9 @@ clear_clip <- function(...) {
 
 #' Write contents of the last R expression to the clipboard
 #'
-#' @param \ldots Pass other options to \link{write_clip}.
+#' @param \ldots Pass other options to [write_clip()].
 #'
-#' @note This is a wrapper function for \code{write_clip(.Last.value)}
+#' @note This is a wrapper function for `write_clip(.Last.value)`
 #' @export
 write_last_clip <- function(...) {
   write_clip(.Last.value, ...)

@@ -10,18 +10,18 @@ sys_type <- function() {
 #' Is the system clipboard available?
 #'
 #' Checks to see if the system clipboard is write-able/read-able. This may be
-#' useful if you are developing a package that relies on \link{clipr} and need
+#' useful if you are developing a package that relies on clipr and need
 #' to ensure that it will skip tests on machines (e.g. CRAN, Travis) where
 #' the system clipboard may not be available.
 #'
 #' If you are trying to call this in a non-interactive session, be sure to call
-#' using \code{clipr_available(allow_non_interactive = TRUE), or by setting the
-#' environemnt variable CLIPBOARD_AVAILABLE=TRUE}
+#' using `clipr_available(allow_non_interactive = TRUE)`, or by setting the
+#' environemnt variable `CLIPBOARD_AVAILABLE=TRUE`
 #'
-#' @param \ldots Pass other options to \link{write_clip}. Generally only used to
-#'   pass the argument \code{allow_non_interactive_use = TRUE}.
+#' @param \ldots Pass other options to [`write_clip()`]. Generally only used to
+#'   pass the argument `allow_non_interactive_use = TRUE`.
 #'
-#' @return \code{clipr_available} returns a boolean value.
+#' @return `clipr_available` returns a boolean value.
 #'
 #' @examples
 #' \dontrun{
@@ -37,7 +37,7 @@ clipr_available <- function(...) {
 
 #' @rdname clipr_available
 #'
-#' @return \code{dr_clipr} prints an informative message to the console with
+#' @return Prints an informative message to the console with
 #'   software and system configuration requirements if clipr is not available
 #'   (invisibly returns the same string)
 #'

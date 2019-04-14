@@ -10,11 +10,11 @@ Simple utility functions to read from and write to the Windows, OS X, and X11
 clipboards.
 }
 \details{
-The basic functions \code{\link{read_clip}} and \code{\link{write_clip}} wrap
+The basic functions \code{\link[=read_clip]{read_clip()}} and \code{\link[=write_clip]{write_clip()}} wrap
 platform-specific functions for writing values from R to the system
-clipboard. \code{\link{read_clip_tbl}} will attempt to process the clipboard
+clipboard. \code{\link[=read_clip_tbl]{read_clip_tbl()}} will attempt to process the clipboard
 content like a table copied from a spreadsheet program.
 
-\code{\link{clipr_available}} is useful when building packages that
-depend on \link{clipr} functionality.
+\code{\link[=clipr_available]{clipr_available()}} is useful when building packages that
+depend on clipr functionality.
 }

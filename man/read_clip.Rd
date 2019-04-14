@@ -8,15 +8,15 @@ read_clip()
 }
 \value{
 A character vector with the contents of the clipboard. If the system
-  clipboard is empty, returns NULL
+clipboard is empty, returns NULL
 }
 \description{
 Read the contents of the system clipboard into a character vector.
 }
 \note{
-\code{read_clip} will not try to guess at how to parse copied text. If
-  you are copying tabular data, it is suggested that you use
-  \code{\link{read_clip_tbl}}.
+\code{\link[=read_clip]{read_clip()}} will not try to guess at how to parse copied text. If
+you are copying tabular data, it is suggested that you use
+\code{\link[=read_clip_tbl]{read_clip_tbl()}}.
 }
 \examples{
 \dontrun{
