@@ -13,7 +13,7 @@ Version: 0.4.1
 
 # detrendr
 
-Version: 0.6.0
+Version: 0.6.1
 
 ## In both
 
@@ -92,9 +92,9 @@ Version: 1.10.5
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  6.7Mb
+      installed size is  5.8Mb
       sub-directories of 1Mb or more:
         doc   2.9Mb
-        R     3.0Mb
+        R     2.2Mb
     ```
 
