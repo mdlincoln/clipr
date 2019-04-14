@@ -65,23 +65,22 @@ read_clip <- function() {
 #'   based on the operating system. By default `col.names = FALSE`, however
 #'   you may override this by passing `col.names = TRUE`.
 #'
-#' @note On X11 systems, [write_clip()] will cause either xclip (preferred)
-#'   or xsel to be called. Be aware that, by design, these processes will fork
-#'   into the background. They will run until the next paste event, when they
-#'   will then exit silently. (See the man pages for
+#' @note On X11 systems, [write_clip()] will cause either xclip (preferred) or
+#'   xsel to be called. Be aware that, by design, these processes will fork into
+#'   the background. They will run until the next paste event, when they will
+#'   then exit silently. (See the man pages for
 #'   [xclip](https://linux.die.net/man/1/xclip) and
 #'   [xsel](http://www.vergenet.net/~conrad/software/xsel/xsel.1x.html#notes)
-#'    for more on their behaviors.) However, this means that even if you
-#'   terminate your R session after running `write_clip`, those processes
-#'   will continue until you access the clipboard via another program. This may
-#'   be expected behavior for interactive use, but is generally undesirable for
-#'   non-interactive use. For this reason you must not run `write_clip` on
-#'   CRAN, as the nature of xsel
-#'   [has caused issues in
-#'   the past](https://github.com/mdlincoln/clipr/issues/38).
+#'   for more on their behaviors.) However, this means that even if you
+#'   terminate your R session after running [write_clip()], those processes will
+#'   continue until you access the clipboard via another program. This may be
+#'   expected behavior for interactive use, but is generally undesirable for
+#'   non-interactive use. For this reason you must not run [write_clip()] on
+#'   CRAN, as the nature of xsel [has caused issues in the
+#'   past](https://github.com/mdlincoln/clipr/issues/38).
 #'
-#'   Call [clipr_available()] to safely check whether the clipboard is
-#'   readable and writable.
+#'   Call [clipr_available()] to safely check whether the clipboard is readable
+#'   and writable.
 #'
 #' @return Invisibly returns the original object
 #'
