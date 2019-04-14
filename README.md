@@ -36,19 +36,32 @@ devtools::install_github("mdlincoln/clipr")
 
 ``` r
 library("clipr")
-#> Welcome to clipr. See ?write_clip for advisories on
-#>                         writing to teh clipboard in R.
+#> Welcome to clipr. See ?write_clip for advisories on writing to the clipboard in R.
 
 cb <- read_clip()
+```
 
-# Character vectors with length > 1 will be collapsed with system-appropriate
-# line breaks, unless otherwise specified
+clipr is pipe-friendly, and will default to returning the same object
+that was passed in.
 
-cb <- write_clip(c("Text", "for", "clipboard"))
+``` r
+res <- write_clip(c("Text", "for", "clipboard"))
+res
+#> [1] "Text"      "for"       "clipboard"
+```
+
+To capture the string that clipr writes to the clipboard, specify
+`return_new = TRUE`. Character vectors with length \> 1 will be
+collapsed with system-appropriate line breaks, unless otherwise
+specified
+
+``` r
+
+cb <- write_clip(c("Text", "for", "clipboard"), return_new = TRUE)
 cb
 #> [1] "Text\nfor\nclipboard"
 
-cb <- write_clip(c("Text", "for", "clipboard"), breaks = ", ")
+cb <- write_clip(c("Text", "for", "clipboard"), breaks = ", ", return_new = TRUE)
 cb
 #> [1] "Text, for, clipboard"
 ```
@@ -59,7 +72,7 @@ into a spreadsheet like Excel.
 
 ``` r
 tbl <- data.frame(a = c(1, 2, 3), b = c(4, 5, 6))
-cb <- write_clip(tbl)
+cb <- write_clip(tbl, return_new = TRUE)
 cb
 #> [1] "a\tb\n1\t4\n2\t5\n3\t6"
 ```
@@ -69,55 +82,8 @@ into data frames directly.
 
 ## Developing with clipr
 
-### Interactive & non-interactive use
-
-If you use clipr in your own package, **you must not call it in
-non-interactive sessions**, as this goes against [CRAN repository
-policy](https://cran.r-project.org/web/packages/policies.html):
-
-> Packages should not write in the user’s home filespace (including
-> clipboards), nor anywhere else on the file system apart from the R
-> session’s temporary directory (or during installation in the location
-> pointed to by TMPDIR: and such usage should be cleaned up). Installing
-> into the system’s R installation (e.g., scripts to its bin directory)
-> is not allowed.
-> 
-> Limited exceptions may be allowed in interactive sessions if the
-> package obtains confirmation from the user.
-
-For this reason, `write_clip()` will error by default in non-interactive
-use, which includes CRAN tests.
-
-### Linux utility availability
-
-clipr’s functionality on X11-based systems depends on the installation
-of additional software. Therefore, if you want to use clipr in your
-package, you will want to take some care in how you call it, and make
-sure that your package will respond gracefully if clipboard
-functionality is not working as expected. You can use the function
-`clipr_available()` to check if the clipboard is readable and writable
-by the current R session.
-
-### Testing on CRAN and CI
-
-A few best practices will also help you responsibly test your
-clipr-using package on headless systems like CRAN or other testing
-infrastructure like Travis:
-
-1.  Examples that will try to use `read_clip()` or `write_clip()` ought
-    to be wrapped in `\dontrun{}`
-2.  Tests calling clipr should be conditionally skipped, based on the
-    output of `clipr_available()`. This is necessary to pass CRAN
-    checks, as otherwise `write_clip` will error out.
-3.  If you are using [Travis.ci](https://travis-ci.org/) to check your
-    package build on Linux, consult the
-    [`.travis.yml`](https://github.com/mdlincoln/clipr/blob/master/.travis.yml)
-    for this package, which includes code for setting the `DISPLAY` and
-    `CLIPR_ALLOW` environment variables, installing `xclip` and `xsel`,
-    and running a pre-build script that will set up `xclip`/`xsel` to
-    run headlessly.
-4.  If you wish to display system requirements and configuration
-    messages to X11 users, `dr_clipr()` provides these.
+See the “Developing with clipr” vignette included with this package for
+advisories on writing code that calls clipr functions.
 
 ## Nice uses of clipr
 
@@ -131,10 +97,6 @@ infrastructure like Travis:
     [@milesmcbain](https://github.com/milesmcbain) eases the copying and
     pasting of R objects in and out of different sources (Excel, Google
     Sheets).
-3.  [curlconverter](https://github.com/hrbrmstr/curlconverter) by
-    [@hrbrmstr](https://github.com/hrbrmstr/curlconverter) translates
-    cURL command lines into [httr](https://github.com/hadley/httr)
-    calls.
 
 -----
 

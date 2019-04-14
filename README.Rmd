@@ -43,22 +43,31 @@ devtools::install_github("mdlincoln/clipr")
 library("clipr")
 
 cb <- read_clip()
+```
 
-# Character vectors with length > 1 will be collapsed with system-appropriate
-# line breaks, unless otherwise specified
+clipr is pipe-friendly, and will default to returning the same object that was passed in.
 
-cb <- write_clip(c("Text", "for", "clipboard"))
+```{r pipe-friendly}
+res <- write_clip(c("Text", "for", "clipboard"))
+res
+```
+
+To capture the string that clipr writes to the clipboard, specify `return_new = TRUE`. Character vectors with length > 1 will be collapsed with system-appropriate line breaks, unless otherwise specified
+
+```{r return-new}
+
+cb <- write_clip(c("Text", "for", "clipboard"), return_new = TRUE)
 cb
 
-cb <- write_clip(c("Text", "for", "clipboard"), breaks = ", ")
+cb <- write_clip(c("Text", "for", "clipboard"), breaks = ", ", return_new = TRUE)
 cb
 ```
 
 `write_clip` also tries to intelligently handle data.frames and matrices, rendering them with `write.table` so that they can be pasted into a spreadsheet like Excel.
 
-```{r}
+```{r tbl}
 tbl <- data.frame(a = c(1, 2, 3), b = c(4, 5, 6))
-cb <- write_clip(tbl)
+cb <- write_clip(tbl, return_new = TRUE)
 cb
 ```
 
