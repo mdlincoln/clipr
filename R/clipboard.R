@@ -131,9 +131,19 @@ write_clip <- function(content, object_type = c("auto", "character", "table"),
 #'
 #' @param \ldots Pass other options to \link{write_clip}.
 #'
-#' @note This is a simple wrapper function for write_clip("")
+#' @note This is a simple wrapper function for \code{write_clip("")}
 #'
 #' @export
 clear_clip <- function(...) {
   write_clip(content = "", ...)
+}
+
+#' Write contents of the last R expression to the clipboard
+#'
+#' @param \ldots Pass other options to \link{write_clip}.
+#'
+#' @note This is a wrapper function for \code{write_clip(.Last.value)}
+#' @export
+write_last_clip <- function(...) {
+  write_clip(.Last.value, ...)
 }
