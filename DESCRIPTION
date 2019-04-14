@@ -26,16 +26,17 @@ Imports:
     utils
 Suggests:
     covr,
-    rstudioapi (>= 0.5),
-    testthat (>= 2.0.0),
     knitr,
-    rmarkdown
+    rmarkdown,
+    rstudioapi (>= 0.5),
+    testthat (>= 2.0.0)
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 Language: en-US
 LazyData: TRUE
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 SystemRequirements: xclip (https://github.com/astrand/xclip) or
     xsel (http://www.vergenet.net/~conrad/software/xsel/) for accessing
     the X11 clipboard
-VignetteBuilder: knitr
-Roxygen: list(markdown = TRUE)
