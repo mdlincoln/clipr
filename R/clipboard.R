@@ -60,10 +60,12 @@ read_clip <- function() {
 #'   a non-interactive session. Set the environment variable
 #'   `CLIPR_ALLOW=TRUE` in order to override this behavior, however see the
 #'   advisory below before doing so.
-#' @param ... Custom options to be passed to [write.table()] (if
-#'   `x` is a table-like). Defaults to sane line-break and tab standards
-#'   based on the operating system. By default `col.names = FALSE`, however
-#'   you may override this by passing `col.names = TRUE`.
+#' @param ... Custom options to be passed to [write.table()] (if `x` is a
+#'   table-like). Defaults to sane line-break and tab standards based on the
+#'   operating system. By default, this will use `col.names = TRUE` if the table
+#'   object has column names, and `row.names = TRUE` if the object has row names
+#'   other than `c("1", "2", "3"...)`. Override these defaults by passing
+#'   arguments here.
 #'
 #' @note On X11 systems, [write_clip()] will cause either xclip (preferred) or
 #'   xsel to be called. Be aware that, by design, these processes will fork into
