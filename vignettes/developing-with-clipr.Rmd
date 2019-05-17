@@ -32,7 +32,7 @@ If you use clipr in your own package, **you must not try to call it in non-inter
 
 For this reason, `write_clip()` will error by default in non-interactive use, which includes CRAN tests.
 
-If you want to use `write_clip()` interactively, you may either set the environment variable `CLIPR_ALLOW=TRUE` or call `write_clip(..., allow_non_interactive = TRUE)`.
+If you want to use `write_clip()` non-interactively, you may either set the environment variable `CLIPR_ALLOW=TRUE` or call `write_clip(..., allow_non_interactive = TRUE)`.
 
 ## Testing on CRAN and CI
 
