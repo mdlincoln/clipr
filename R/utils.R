@@ -63,7 +63,7 @@ clipr_available_handler <- function(...) {
   if (!interactive()) {
     clipr_allow <- as.logical(Sys.getenv("CLIPR_ALLOW", "FALSE"))
     if (!clipr_allow) {
-      return(FALSE)
+      return(list(read = FALSE, write = FALSE))
     }
   }
   suppressWarnings({
@@ -74,13 +74,9 @@ clipr_available_handler <- function(...) {
 }
 
 clipr_results_check <- function(res) {
-  if (inherits(res$read, "try-error")) {
-    return(FALSE)
-  }
-
-  if (inherits(res$write, "try-error")) {
-    return(FALSE)
-  }
+  if (inherits(res$read, "try-error")) return(FALSE)
+  if (inherits(res$write, "try-error")) return(FALSE)
+  if (res$read == FALSE) return(FALSE)
   TRUE
 }
 
