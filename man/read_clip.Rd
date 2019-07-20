@@ -4,7 +4,13 @@
 \alias{read_clip}
 \title{Read clipboard}
 \usage{
-read_clip()
+read_clip(allow_non_interactive = Sys.getenv("CLIPR_ALLOW",
+  interactive()))
+}
+\arguments{
+\item{allow_non_interactive}{By default, clipr will throw an error if run in
+a non-interactive session. Set the environment variable
+\code{CLIPR_ALLOW=TRUE} in order to override this behavior.}
 }
 \value{
 A character vector with the contents of the clipboard. If the system
