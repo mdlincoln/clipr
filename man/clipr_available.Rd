@@ -22,14 +22,17 @@ software and system configuration requirements if clipr is not available
 }
 \description{
 Checks to see if the system clipboard is write-able/read-able. This may be
-useful if you are developing a package that relies on clipr and need
-to ensure that it will skip tests on machines (e.g. CRAN, Travis) where
-the system clipboard may not be available.
+useful if you are developing a package that relies on clipr and need to
+ensure that it will skip tests on machines (e.g. CRAN, Travis) where the
+system clipboard may not be available.
 }
-\details{
-If you are trying to call this in a non-interactive session, be sure to call
-using \code{clipr_available(allow_non_interactive = TRUE)}, or by setting the
-environment variable \code{CLIPBOARD_AVAILABLE=TRUE}
+\note{
+This will automatically return \code{FALSE}, without even performing the
+check, if you are running in a non-interactive session. If you must call
+this non-interactively, be sure to call using
+\code{clipr_available(allow_non_interactive = TRUE)}, or by setting the
+environment variable \code{CLIPR_ALLOW=TRUE}. \strong{Do not attempt to run
+clipr non-interactively on CRAN; this will result in a failed build!}
 }
 \examples{
 \dontrun{
