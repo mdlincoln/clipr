@@ -63,7 +63,8 @@ clipr_available_handler <- function(...) {
   if (!interactive()) {
     clipr_allow <- as.logical(Sys.getenv("CLIPR_ALLOW", "FALSE"))
     if (!clipr_allow) {
-      return(list(disallow = TRUE))
+      fake_write_attempt <- try(stop("CLIPR_ALLOW has not been set, so clipr will not run interactively"), silent = TRUE)
+      return(list(write = fake_write_attempt))
     }
   }
   suppressWarnings({
@@ -74,12 +75,8 @@ clipr_available_handler <- function(...) {
 }
 
 clipr_results_check <- function(res) {
-  if ("disallow" %in% names(res)) {
-    return(FALSE)
-  } else {
-    if (inherits(res$read, "try-error")) return(FALSE)
-    if (inherits(res$write, "try-error")) return(FALSE)
-  }
+  if (inherits(res$write, "try-error")) return(FALSE)
+  if (inherits(res$read, "try-error")) return(FALSE)
   TRUE
 }
 
