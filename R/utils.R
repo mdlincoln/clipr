@@ -10,13 +10,16 @@ sys_type <- function() {
 #' Is the system clipboard available?
 #'
 #' Checks to see if the system clipboard is write-able/read-able. This may be
-#' useful if you are developing a package that relies on clipr and need
-#' to ensure that it will skip tests on machines (e.g. CRAN, Travis) where
-#' the system clipboard may not be available.
+#' useful if you are developing a package that relies on clipr and need to
+#' ensure that it will skip tests on machines (e.g. CRAN, Travis) where the
+#' system clipboard may not be available.
 #'
-#' If you are trying to call this in a non-interactive session, be sure to call
-#' using `clipr_available(allow_non_interactive = TRUE)`, or by setting the
-#' environment variable `CLIPBOARD_AVAILABLE=TRUE`
+#' @note This will automatically return `FALSE`, without even performing the
+#'   check, if you are running in a non-interactive session. If you must call
+#'   this non-interactively, be sure to call using
+#'   `clipr_available(allow_non_interactive = TRUE)`, or by setting the
+#'   environment variable `CLIPR_ALLOW=TRUE`. **Do not attempt to run
+#'   clipr non-interactively on CRAN; this will result in a failed build!**
 #'
 #' @param \ldots Pass other options to [`write_clip()`]. Generally only used to
 #'   pass the argument `allow_non_interactive_use = TRUE`.
@@ -56,6 +59,14 @@ dr_clipr <- function(...) {
 }
 
 clipr_available_handler <- function(...) {
+  # Do not even do a check unless user has explicitly set CLIPR_ALLOW
+  if (!interactive()) {
+    clipr_allow <- as.logical(Sys.getenv("CLIPR_ALLOW", "FALSE"))
+    if (!clipr_allow) {
+      fake_write_attempt <- try(stop("CLIPR_ALLOW has not been set, so clipr will not run interactively"), silent = TRUE)
+      return(list(write = fake_write_attempt))
+    }
+  }
   suppressWarnings({
     read_attempt <- try(read_clip(...), silent = TRUE)
     write_attempt <- try(write_clip(read_attempt, ...), silent = TRUE)
@@ -64,13 +75,8 @@ clipr_available_handler <- function(...) {
 }
 
 clipr_results_check <- function(res) {
-  if (inherits(res$read, "try-error")) {
-    return(FALSE)
-  }
-
-  if (inherits(res$write, "try-error")) {
-    return(FALSE)
-  }
+  if (inherits(res$write, "try-error")) return(FALSE)
+  if (inherits(res$read, "try-error")) return(FALSE)
   TRUE
 }
 
