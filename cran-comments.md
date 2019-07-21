@@ -3,7 +3,7 @@ function, and revises and clarifies package documentation.
 
 ## Test environments 
 * local OS X install, R 3.6.0
-* ubuntu 14.04 (Travis.ci: R oldrel, release, and devel)
+* ubuntu 16.04 (Travis.ci: R oldrel, release, and devel)
 * win-builder (devel and release)
 
 ## R CMD check results
