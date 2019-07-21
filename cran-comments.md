@@ -2,7 +2,7 @@ This submission improves table reading and writing, introduces a new wrapper
 function, and revises and clarifies package documentation.
 
 ## Test environments 
-* local OS X install, R 3.5.4
+* local OS X install, R 3.6.0
 * ubuntu 14.04 (Travis.ci: R oldrel, release, and devel)
 * win-builder (devel and release)
 
