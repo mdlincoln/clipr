@@ -21,7 +21,7 @@ test_that("clipr_available fails when DISPLAY is not configured; succeeds when i
 
 test_that("dr_clipr provides informative messages", {
   if (identical(Sys.getenv("CLIPR_ALLOW"), "")) {
-    expect_message(dr_clipr(), msg_interactive(), fixed = TRUE)
+    expect_message(dr_clipr(), "CLIPR_ALLOW", fixed = TRUE)
   } else {
     if (identical(Sys.getenv("TRAVIS_CLIP"), "xclip"))
       expect_message(dr_clipr(), msg_clipr_available(), fixed = TRUE)
