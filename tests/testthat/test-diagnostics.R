@@ -30,7 +30,7 @@ test_that("dr_clipr provides informative messages", {
     if (identical(Sys.getenv("TRAVIS_CLIP"), "none"))
       expect_message(dr_clipr(), msg_no_clipboard(), fixed = TRUE)
     if (identical(Sys.getenv("TRAVIS_CLIP"), "nodisplay"))
-      expect_message(dr_clipr(), msg_no_display(), fixed = TRUE)
+      expect_message(dr_clipr(), "CLIPR_ALLOW", fixed = TRUE)
 
     expect_true(grepl("has read/write access", msg_clipr_available()))
     expect_true(grepl("requires 'xclip'", msg_no_clipboard()))
