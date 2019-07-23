@@ -2,7 +2,7 @@
 
 Thank you to @jennybc for prompting these changes:
 
-- Before attemptint to read/write form the clipboard, `clipr_available()` will first explicity check if it is being run non-interactively, and if so, if the `CLIPR_ALLOW` environment variable has been set. This will hopefully prevent starting spurious Linux processes during CRAN tests.
+- Before attempting to read/write form the clipboard, `clipr_available()` will first explicitly check if it is being run non-interactively, and if so, if the `CLIPR_ALLOW` environment variable has been set. This will hopefully prevent starting spurious Linux processes during CRAN tests.
 - Out of an abundance of caution, `read_clip()` now does the same interactive/envvar check that `write_clip()` does.
 - Some documentation clarifications
 
