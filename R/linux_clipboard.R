@@ -27,6 +27,12 @@ has_xclip <- function() has_util(c("xclip", "-o", "-selection", "clipboard"))
 # Determine if system has 'xsel' installed
 has_xsel <- function() has_util(c("xsel", "--clipboard"))
 
+# Determine if system has 'wl-paste' installed
+has_wlpaste <- function() has_util(c("wl-paste", "--primary"))
+
+# Determine if system has 'wl-paste' installed
+has_wlcopy <- function() has_util(c("wl-copy", "--primary"))
+
 # Stop read/write and return an error of missing clipboard software.
 notify_no_cb <- function() {
   stop(msg_no_clipboard(), call. = FALSE)
@@ -47,6 +53,8 @@ X11_read_clip <- function() {
     con <- pipe("xclip -o -selection clipboard")
   } else if (has_xsel()) {
     con <- pipe("xsel --clipboard")
+  } else if (has_wlpaste()) {
+    con <- pipe("wl-paste")
   } else {
     notify_no_cb()
   }
@@ -69,6 +77,8 @@ X11_write_clip <- function(content, object_type, breaks, eos, return_new, ...) {
     con <- pipe("xclip -i -sel p -f | xclip -i -sel c", "w")
   } else if (has_xsel()) {
     con <- pipe("xsel -b -i", "w")
+  } else if (has_wlcopy()) {
+    con <- pipe("wl-copy", "w")
   } else {
     notify_no_cb()
   }
