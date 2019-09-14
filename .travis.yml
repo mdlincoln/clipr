@@ -10,28 +10,36 @@ r_check_revdep: false
 matrix:
   include:
     - r: oldrel
-      env: TRAVIS_CLIP=xsel DISPLAY=:99.0 CLIPR_ALLOW=TRUE
+      env: TRAVIS_CLIP=xsel CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xsel]}}
+      services: [xvfb]
     - r: release
-      env: TRAVIS_CLIP=xsel DISPLAY=:99.0 CLIPR_ALLOW=TRUE
+      env: TRAVIS_CLIP=xsel CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xsel]}}
+      services: [xvfb]
     - r: devel
-      env: TRAVIS_CLIP=xsel DISPLAY=:99.0 CLIPR_ALLOW=TRUE
+      env: TRAVIS_CLIP=xsel CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xsel]}}
+      services: [xvfb]
     - r: oldrel
-      env: TRAVIS_CLIP=xclip DISPLAY=:99.0 CLIPR_ALLOW=TRUE
+      env: TRAVIS_CLIP=xclip CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xclip]}}
+      services: [xvfb]
     - r: release
-      env: TRAVIS_CLIP=xclip DISPLAY=:99.0 CLIPR_ALLOW=TRUE
+      env: TRAVIS_CLIP=xclip CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xclip]}}
+      services: [xvfb]
     - r: release
-      env: TRAVIS_CLIP=xclip DISPLAY=:99.0
+      env: TRAVIS_CLIP=xclip
       addons: {apt: {packages: [xclip]}}
+      services: [xvfb]
     - r: devel
-      env: TRAVIS_CLIP=xclip DISPLAY=:99.0 CLIPR_ALLOW=TRUE
+      env: TRAVIS_CLIP=xclip CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xclip]}}
+      services: [xvfb]
     - r: release
-      env: TRAVIS_CLIP=none DISPLAY=:99.0 CLIPR_ALLOW=TRUE
+      env: TRAVIS_CLIP=none CLIPR_ALLOW=TRUE
+      services: [xvfb]
     - r: release
       env: TRAVIS_CLIP=nodisplay CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xclip]}}
