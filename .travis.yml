@@ -44,6 +44,9 @@ matrix:
       env: TRAVIS_CLIP=nodisplay CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xclip]}}
 
+before_script:
+  - if [ "$TRAVIS_CLIP" == "xclip" ]; then uptime | xclip -i -sel p -f | xclip -i -sel c; xclip -o -sel clipboard; fi
+
 # covr report
 after_success:
   - Rscript -e 'covr::codecov()'
