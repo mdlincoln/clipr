@@ -16,10 +16,10 @@ matrix:
       services: [xvfb]
       before_install:
         - sudo apt-get purge x11-*
-        - git clone https://github.com/bugaevc/wl-clipboard.git
-        - cd wl-clipboard; meson build
-        - cd wl-clipboard/build; ninja
-        - cd wl-clipboard/build; sudo ninja install
+        - git clone https://github.com/bugaevc/wl-clipboard.git /home/travis/build/nacnudus/wl-clipboard
+        - cd /home/travis/build/nacnudus/wl-clipboard; meson build
+        - cd /home/travis/build/nacnudus/wl-clipboard/build; ninja
+        - cd /home/travis/build/nacnudus/wl-clipboard/build; sudo ninja install
 
 before_script:
   - if [ "$TRAVIS_CLIP" == "xclip" ]; then uptime | xclip -i -sel p -f | xclip -i -sel c; xclip -o -sel clipboard; fi
