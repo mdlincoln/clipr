@@ -53,7 +53,11 @@ X11_read_clip <- function() {
     con <- pipe("xclip -o -selection clipboard")
   } else if (has_xsel()) {
     con <- pipe("xsel --clipboard")
+<<<<<<< HEAD
   } else if (has_wl_paste()) {
+=======
+  } else if (has_wlpaste()) {
+>>>>>>> d790d5c26010496a70107640bb2c30464e8de1b4
     con <- pipe("wl-paste")
   } else {
     notify_no_cb()
@@ -77,7 +81,11 @@ X11_write_clip <- function(content, object_type, breaks, eos, return_new, ...) {
     con <- pipe("xclip -i -sel p -f | xclip -i -sel c", "w")
   } else if (has_xsel()) {
     con <- pipe("xsel -b -i", "w")
+<<<<<<< HEAD
   } else if (has_wl_copy()) {
+=======
+  } else if (has_wlcopy()) {
+>>>>>>> d790d5c26010496a70107640bb2c30464e8de1b4
     con <- pipe("wl-copy", "w")
   } else {
     notify_no_cb()
