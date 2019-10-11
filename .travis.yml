@@ -21,15 +21,18 @@ matrix:
         - cd build
         - ninja
         - sudo ninja install
+    - r: release
       env: TRAVIS_CLIP=wl-clipboard CLIPR_ALLOW=TRUE
-      addons: {apt: {packages: [wl-clipboard]}}
+      addons: {apt: {packages: [wayland meson git]}}
       services: [xvfb]
-    - r: devel
       before_install:
         - sudo apt-get purge x11-*
+    - r: devel
       env: TRAVIS_CLIP=wl-clipboard CLIPR_ALLOW=TRUE
-      addons: {apt: {packages: [wl-clipboard]}}
+      addons: {apt: {packages: [wayland meson git]}}
       services: [xvfb]
+      before_install:
+        - sudo apt-get purge x11-*
 
 before_script:
   - if [ "$TRAVIS_CLIP" == "xclip" ]; then uptime | xclip -i -sel p -f | xclip -i -sel c; xclip -o -sel clipboard; fi
