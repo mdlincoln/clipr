@@ -11,7 +11,8 @@ matrix:
   include:
     - r: oldrel
       env: TRAVIS_CLIP=wl-clipboard CLIPR_ALLOW=TRUE
-      addons: {apt: {packages: [wayland meson git]}}
+      dist: bionic
+      addons: {apt: {packages: [meson git]}}
       services: [xvfb]
       before_install:
         - sudo apt-get purge x11-*
