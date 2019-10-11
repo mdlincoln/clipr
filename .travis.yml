@@ -18,6 +18,8 @@ matrix:
         - sudo apt-get purge x11-*
         - git clone https://github.com/bugaevc/wl-clipboard.git /home/travis/build/nacnudus/wl-clipboard
         - ls
+        - ls /home/travis/build/nacnudus/wl-clipboard
+        - cd /home/travis/build/nacnudus/wl-clipboard; ls
         - cd /home/travis/build/nacnudus/wl-clipboard; meson build
         - cd /home/travis/build/nacnudus/wl-clipboard/build; ninja
         - cd /home/travis/build/nacnudus/wl-clipboard/build; sudo ninja install
