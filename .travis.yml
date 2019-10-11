@@ -10,14 +10,17 @@ r_check_revdep: false
 matrix:
   include:
     - r: oldrel
-      before_install:
-        - sudo apt-get purge x11-*
       env: TRAVIS_CLIP=wl-clipboard CLIPR_ALLOW=TRUE
-      addons: {apt: {packages: [wl-clipboard]}}
+      addons: {apt: {packages: [wayland meson git]}}
       services: [xvfb]
-    - r: release
       before_install:
         - sudo apt-get purge x11-*
+        - git clone https://github.com/bugaevc/wl-clipboard.git
+        - cd wl-clipboard
+        - meson build
+        - cd build
+        - ninja
+        - sudo ninja install
       env: TRAVIS_CLIP=wl-clipboard CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [wl-clipboard]}}
       services: [xvfb]
