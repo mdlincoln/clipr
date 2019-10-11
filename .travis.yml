@@ -43,6 +43,24 @@ matrix:
     - r: release
       env: TRAVIS_CLIP=nodisplay CLIPR_ALLOW=TRUE
       addons: {apt: {packages: [xclip]}}
+    - r: oldrel
+      before_install:
+        - sudo apt-get purge x11-*
+      env: TRAVIS_CLIP=wl-clipboard CLIPR_ALLOW=TRUE
+      addons: {apt: {packages: [wl-clipboard]}}
+      services: [xvfb]
+    - r: release
+      before_install:
+        - sudo apt-get purge x11-*
+      env: TRAVIS_CLIP=wl-clipboard CLIPR_ALLOW=TRUE
+      addons: {apt: {packages: [wl-clipboard]}}
+      services: [xvfb]
+    - r: devel
+      before_install:
+        - sudo apt-get purge x11-*
+      env: TRAVIS_CLIP=wl-clipboard CLIPR_ALLOW=TRUE
+      addons: {apt: {packages: [wl-clipboard]}}
+      services: [xvfb]
 
 before_script:
   - if [ "$TRAVIS_CLIP" == "xclip" ]; then uptime | xclip -i -sel p -f | xclip -i -sel c; xclip -o -sel clipboard; fi
