@@ -4,9 +4,15 @@
 \alias{write_clip}
 \title{Write clipboard}
 \usage{
-write_clip(content, object_type = c("auto", "character", "table"),
-  breaks = NULL, eos = NULL, return_new = FALSE,
-  allow_non_interactive = Sys.getenv("CLIPR_ALLOW", interactive()), ...)
+write_clip(
+  content,
+  object_type = c("auto", "character", "table"),
+  breaks = NULL,
+  eos = NULL,
+  return_new = FALSE,
+  allow_non_interactive = Sys.getenv("CLIPR_ALLOW", interactive()),
+  ...
+)
 }
 \arguments{
 \item{content}{An object to be written to the system clipboard.}
@@ -37,7 +43,7 @@ a non-interactive session. Set the environment variable
 table-like). Defaults to sane line-break and tab standards based on the
 operating system. By default, this will use \code{col.names = TRUE} if the table
 object has column names, and \code{row.names = TRUE} if the object has row names
-other than \code{c("1", "2", "3"...)}. Override these defaults by passing
+other than \verb{c("1", "2", "3"...)}. Override these defaults by passing
 arguments here.}
 }
 \value{

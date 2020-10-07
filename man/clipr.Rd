@@ -3,7 +3,6 @@
 \docType{package}
 \name{clipr}
 \alias{clipr}
-\alias{clipr-package}
 \title{clipr: Read and Write from the System Clipboard}
 \description{
 Simple utility functions to read from and write to the Windows, OS X, and X11

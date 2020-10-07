@@ -4,8 +4,7 @@
 \alias{read_clip}
 \title{Read clipboard}
 \usage{
-read_clip(allow_non_interactive = Sys.getenv("CLIPR_ALLOW",
-  interactive()))
+read_clip(allow_non_interactive = Sys.getenv("CLIPR_ALLOW", interactive()))
 }
 \arguments{
 \item{allow_non_interactive}{By default, clipr will throw an error if run in
