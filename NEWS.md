@@ -1,3 +1,7 @@
+## clipr 0.7.1
+
+- Call xsel with the `--output` flag, which prevents RStudio from hanging when calling clipr functions on a system running certain Linux window managers. Thank you to @cgillespie and @kevinushey for identifying the bug and the solution, and to @hannahcgunderman for help in testing.
+
 ## clipr 0.7.0
 
 Thank you to @jennybc for prompting these changes:
