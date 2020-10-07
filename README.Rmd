@@ -15,8 +15,8 @@ knitr::opts_chunk$set(
 clipr
 =====
 
-[![CRAN status.](http://www.r-pkg.org/badges/version/clipr)](http://www.r-pkg.org/pkg/clipr)
-![Downloads, grand total](http://cranlogs.r-pkg.org/badges/grand-total/clipr)
+[![CRAN status.](https://www.r-pkg.org/badges/version/clipr)](http://www.r-pkg.org/pkg/clipr)
+![Downloads, grand total](https://cranlogs.r-pkg.org/badges/grand-total/clipr)
 [![Travis-CI Build Status](https://travis-ci.com/mdlincoln/clipr.svg?branch=master)](https://travis-ci.com/github/mdlincoln/clipr)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/mdlincoln/clipr?branch=master&svg=true)](https://ci.appveyor.com/project/mdlincoln/clipr)
 [![Coverage Status](https://img.shields.io/codecov/c/github/mdlincoln/clipr/master.svg)](https://codecov.io/github/mdlincoln/clipr?branch=master)
@@ -81,7 +81,7 @@ See the "Developing with clipr" vignette included with this package for advisori
 
 (a non-comprehensive list)
 
-1. [reprex](https://github.com/jennybc/reprex) by [\@jennybc](https://github.com/jennybc) takes R code on the clipboard and renders a reproducible example from it, ready to then paste on to GitHub, Stack Overflow, or the like.
+1. [reprex](https://github.com/tidyverse/reprex) by [\@jennybc](https://github.com/jennybc) takes R code on the clipboard and renders a reproducible example from it, ready to then paste on to GitHub, Stack Overflow, or the like.
 2. [datapasta](https://github.com/milesmcbain/datapasta) by [\@milesmcbain](https://github.com/milesmcbain) eases the copying and pasting of R objects in and out of different sources (Excel, Google Sheets).
 
 ---

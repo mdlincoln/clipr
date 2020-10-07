@@ -5,9 +5,9 @@ clipr
 =====
 
 [![CRAN
-status.](http://www.r-pkg.org/badges/version/clipr)](http://www.r-pkg.org/pkg/clipr)
+status.](https://www.r-pkg.org/badges/version/clipr)](http://www.r-pkg.org/pkg/clipr)
 ![Downloads, grand
-total](http://cranlogs.r-pkg.org/badges/grand-total/clipr) [![Travis-CI
+total](https://cranlogs.r-pkg.org/badges/grand-total/clipr) [![Travis-CI
 Build
 Status](https://travis-ci.com/mdlincoln/clipr.svg?branch=master)](https://travis-ci.com/github/mdlincoln/clipr)
 [![AppVeyor Build
@@ -82,7 +82,7 @@ Nice uses of clipr
 
 (a non-comprehensive list)
 
-1.  [reprex](https://github.com/jennybc/reprex) by
+1.  [reprex](https://github.com/tidyverse/reprex) by
     [@jennybc](https://github.com/jennybc) takes R code on the clipboard
     and renders a reproducible example from it, ready to then paste on
     to GitHub, Stack Overflow, or the like.
