@@ -25,7 +25,7 @@ has_util <- function(util_test) {
 has_xclip <- function() has_util(c("xclip", "-o", "-selection", "clipboard"))
 
 # Determine if system has 'xsel' installed
-has_xsel <- function() has_util(c("xsel", "--clipboard"))
+has_xsel <- function() has_util(c("xsel", "--clipboard", "--output"))
 
 # Stop read/write and return an error of missing clipboard software.
 notify_no_cb <- function() {
