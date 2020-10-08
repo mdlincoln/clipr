@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 clipr
 =====
 
-[![CRAN status.](https://www.r-pkg.org/badges/version/clipr)](http://www.r-pkg.org/pkg/clipr)
+[![CRAN status.](https://www.r-pkg.org/badges/version/clipr)](https://www.r-pkg.org/pkg/clipr)
 ![Downloads, grand total](https://cranlogs.r-pkg.org/badges/grand-total/clipr)
 [![Travis-CI Build Status](https://travis-ci.com/mdlincoln/clipr.svg?branch=master)](https://travis-ci.com/github/mdlincoln/clipr)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/mdlincoln/clipr?branch=master&svg=true)](https://ci.appveyor.com/project/mdlincoln/clipr)
@@ -85,4 +85,4 @@ See the "Developing with clipr" vignette included with this package for advisori
 2. [datapasta](https://github.com/milesmcbain/datapasta) by [\@milesmcbain](https://github.com/milesmcbain) eases the copying and pasting of R objects in and out of different sources (Excel, Google Sheets).
 
 ---
-[Matthew Lincoln](http://matthewlincoln.net)
+[Matthew Lincoln](https://matthewlincoln.net)

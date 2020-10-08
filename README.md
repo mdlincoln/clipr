@@ -5,7 +5,7 @@ clipr
 =====
 
 [![CRAN
-status.](https://www.r-pkg.org/badges/version/clipr)](http://www.r-pkg.org/pkg/clipr)
+status.](https://www.r-pkg.org/badges/version/clipr)](https://www.r-pkg.org/pkg/clipr)
 ![Downloads, grand
 total](https://cranlogs.r-pkg.org/badges/grand-total/clipr) [![Travis-CI
 Build
@@ -93,4 +93,4 @@ Nice uses of clipr
 
 ------------------------------------------------------------------------
 
-[Matthew Lincoln](http://matthewlincoln.net)
+[Matthew Lincoln](https://matthewlincoln.net)
