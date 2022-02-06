@@ -10,3 +10,4 @@ cran-comments.md
 ^README\.Rmd$
 ^README-.*\.png$
 ^codecov\.yml$
+^\.github$

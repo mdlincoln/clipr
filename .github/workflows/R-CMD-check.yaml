@@ -1,0 +1,119 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  push:
+    branches: [main, actions]
+  pull_request:
+    branches: [main, actions]
+
+name: R-CMD-check
+
+jobs:
+  R-CMD-check:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }}) (Clip? ${{ matrix.config.allow_clip }} Type? ${{ matrix.config.clip_type }})
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { os: macOS-latest, r: 'release', allow_clip: TRUE }
+          - { os: windows-latest, r: 'release', allow_clip: TRUE }
+          - {
+              os: ubuntu-latest,
+              r: 'devel',
+              http-user-agent: 'release',
+              allow_clip: TRUE,
+              clip_type: xclip,
+            }
+          - {
+              os: ubuntu-latest,
+              r: 'release',
+              allow_clip: TRUE,
+              clip_type: xclip,
+            }
+          - {
+              os: ubuntu-latest,
+              r: 'release',
+              allow_clip: TRUE,
+              clip_type: xsel,
+            }
+          - { os: ubuntu-latest, r: 'release', clip_type: xsel }
+          - {
+              os: ubuntu-latest,
+              r: 'release',
+              allow_clip: TRUE,
+              clip_type: none,
+            }
+          - {
+              os: ubuntu-latest,
+              r: 'release',
+              allow_clip: TRUE,
+              clip_type: nodisplay,
+            }
+          - {
+              os: ubuntu-latest,
+              r: 'oldrel-1',
+              allow_clip: TRUE,
+              clip_type: xclip,
+            }
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_KEEP_PKG_SOURCE: yes
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install and run XVFB
+        if: ${{ matrix.config.clip_type == 'xclip' || matrix.config.clip_type == 'xsel' }}
+        run: |
+          sudo apt-get install -y xvfb
+          sudo /usr/bin/Xvfb :99.0 -screen 0 1280x1024x24 &
+          sleep 3
+
+      - name: Install xclip
+        if: ${{ matrix.config.clip_type == 'xclip' }}
+        run: |
+          sudo apt-get install -y xclip
+          # Initialize xclip
+          uptime | xclip -i -sel p -f | xclip -i -sel c
+          xclip -o -sel clipboard
+        env:
+          DISPLAY: ':99.0'
+
+      - name: Install xclip (nodisplay)
+        if: ${{ matrix.config.clip_type == 'nodisplay' }}
+        run: |
+          sudo apt-get install -y xclip
+
+      - name: Install xsel
+        if: ${{ matrix.config.clip_type == 'xsel' }}
+        run: |
+          sudo apt-get install -y xsel
+
+      - uses: r-lib/actions/setup-pandoc@v1
+
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: ${{ matrix.config.r }}
+          http-user-agent: ${{ matrix.config.http-user-agent }}
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v1
+        with:
+          extra-packages: rcmdcheck
+
+      - uses: r-lib/actions/check-r-package@v1
+        if: ${{ matrix.config.clip_type != 'nodisplay' }}
+        env:
+          ALLOW_CLIP: ${{ matrix.config.allow_clip }}
+          CLIP_TYPE: ${{ matrix.config.clip_type }}
+          DISPLAY: ':99.0'
+
+      - uses: r-lib/actions/check-r-package@v1
+        if: ${{ matrix.config.clip_type == 'nodisplay' }}
+        env:
+          ALLOW_CLIP: ${{ matrix.config.allow_clip }}
+          CLIP_TYPE: ${{ matrix.config.clip_type }}
