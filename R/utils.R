@@ -82,7 +82,7 @@ clipr_results_check <- function(res) {
 
 msg_clipr_available <- function() "clipr has read/write access to the system clipboard!"
 
-msg_no_clipboard <- function() "Clipboard on X11 requires 'xclip' (recommended) or 'xsel'."
+msg_no_clipboard <- function() "Clipboard on X11 requires 'xclip' (recommended) or 'xsel'; Clipboard on Wayland requires 'wl-copy' and 'wl-paste'."
 
 msg_no_display <- function() "Clipboard on X11 requires that the DISPLAY envvar be configured."
 
