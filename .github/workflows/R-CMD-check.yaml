@@ -20,7 +20,7 @@ jobs:
         config:
           - { os: macOS-latest, r: 'release', allow_clip: TRUE }
           - { os: windows-latest, r: 'release', allow_clip: TRUE }
-          - { os: windows-devel, r: 'devel', allow_clip: TRUE }
+          - { os: windows-latest, r: 'devel', allow_clip: TRUE }
           - {
               os: ubuntu-latest,
               r: 'devel',
