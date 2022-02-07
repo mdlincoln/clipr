@@ -1,10 +1,15 @@
 # Helper function to read from the Windows clipboard
 win_read_clip <- function() {
-  utils::readClipboard()
+  # On R >= 4.2 (built with UCRT), the default encoding is UTF-8 even on Windows.
+  # To avoid the encoding mismatch garbles texts, use 13 (CF_UNICODETEXT),
+  format <- if (identical(R.version$crt, "ucrt")) 13 else 1
+
+  utils::readClipboard(format = format)
 }
 
 # Helper function to write to the Windows clipboard
 win_write_clip <- function(content, object_type, breaks, eos, return_new, ...) {
+  format <- if (identical(R.version$crt, "ucrt")) 13 else 1
 
   .dots <- list(...)
 
@@ -18,7 +23,7 @@ win_write_clip <- function(content, object_type, breaks, eos, return_new, ...) {
 
   # Pass the object to rendering functions before writing out to the clipboard
   rendered_content <- render_object(content, object_type, breaks, .dots)
-  utils::writeClipboard(rendered_content, format = 1)
+  utils::writeClipboard(rendered_content, format = format)
   if (return_new) {
     rendered_content
   } else {
