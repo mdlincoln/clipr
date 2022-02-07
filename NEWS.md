@@ -1,3 +1,10 @@
+## clipr 0.8.0
+
+- Add handlers for using the clipboard on systems using [Wayland](https://wayland.freedesktop.org/) via [wl-clipboard](https://github.com/bugaevc/wl-clipboard). Thank you to @nacnudus for the PR.
+- For R >= 4.2, `write_clip()` calls on Windows are modified to work well with R's shift to supporting UTF-8 as a native encoding on Windows. Thank you to @yutannihilation for the PR. Read more here: <https://github.com/mdlincoln/clipr/issues/62>
+- Moved CI off of Travis and on to GitHub Actions
+- Clipr now has a pkgdown site at <https://matthewlincoln.net/clipr/>
+
 ## clipr 0.7.1
 
 - Call xsel with the `--output` flag, which prevents RStudio from hanging when calling clipr functions on a system running certain Linux window managers. Thank you to @cgillespie and @kevinushey for identifying the bug and the solution, and to @hannahcgunderman for help in testing.
