@@ -11,3 +11,6 @@ cran-comments.md
 ^README-.*\.png$
 ^codecov\.yml$
 ^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

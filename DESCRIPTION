@@ -20,7 +20,8 @@ Authors@R:
 Description: Simple utility functions to read from and write to
     the Windows, OS X, and X11 clipboards.
 License: GPL-3
-URL: https://github.com/mdlincoln/clipr
+URL: https://github.com/mdlincoln/clipr,
+    http://matthewlincoln.net/clipr/
 BugReports: https://github.com/mdlincoln/clipr/issues
 Imports:
     utils
