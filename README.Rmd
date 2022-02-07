@@ -33,7 +33,7 @@ install.packages("clipr")
 Or try the development version
 
 ```{r, eval = FALSE}
-devtools::install_github("mdlincoln/clipr")
+remotes::install_github("mdlincoln/clipr")
 ```
 
 ## Usage
