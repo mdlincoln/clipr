@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 
 To check whether the system has been properly configured to allow access to the clipboard, you may run `clipr_available()` which will either return `TRUE` or `FALSE`.
 This will be particularly useful for Linux-based systems, where clipr's functionality depends on the installation of additional software.
-If you wish to display system requirements and configuration messages to X11 users, `dr_clipr()` will print these.
+If you wish to display system requirements and configuration messages to X11 and Wayland users, `dr_clipr()` will print these.
 
 ## Interactive & non-interactive use
 
