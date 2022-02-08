@@ -1,10 +1,9 @@
-This is a resubmission.
-
-This submission repairs system command calls that were causing some newer Linux window managers to hang indefinitely.
+This submission adds clipboard handlers for systems using Wayland, and modifies 
+calls on Windows with R>=4.2 to work with UTF-8 native encodings.
 
 ## Test environments 
-* local OS X install, R 4.0.2
-* ubuntu 16.04 (Travis.ci: R oldrel, release, and devel)
+* local OS X install, R 4.1.2
+* ubuntu 20.04 (GitHub Actions: R oldrel, release, and devel)
 * win-builder (devel and release)
 
 ## R CMD check results
