@@ -37,7 +37,7 @@ Encoding: UTF-8
 Language: en-US
 LazyData: TRUE
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 SystemRequirements: xclip (https://github.com/astrand/xclip) or
     xsel (http://www.vergenet.net/~conrad/software/xsel/) for accessing
     the X11 clipboard
