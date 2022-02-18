@@ -1,22 +1,14 @@
 Type: Package
 Package: clipr
 Title: Read and Write from the System Clipboard
-Version: 0.7.1.9000
-Authors@R: 
-    c(person(given = "Matthew",
-             family = "Lincoln",
-             role = c("aut", "cre"),
-             email = "matthew.d.lincoln@gmail.com",
-             comment = c(ORCID = "0000-0002-4387-3384")),
-      person(given = "Louis",
-             family = "Maddox",
-             role = "ctb"),
-      person(given = "Steve",
-             family = "Simpson",
-             role = "ctb"),
-      person(given = "Jennifer",
-             family = "Bryan",
-             role = "ctb"))
+Version: 0.8.0
+Authors@R: c(
+    person("Matthew", "Lincoln", , "matthew.d.lincoln@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-4387-3384")),
+    person("Louis", "Maddox", role = "ctb"),
+    person("Steve", "Simpson", role = "ctb"),
+    person("Jennifer", "Bryan", role = "ctb")
+  )
 Description: Simple utility functions to read from and write to
     the Windows, OS X, and X11 clipboards.
 License: GPL-3
