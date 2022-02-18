@@ -82,7 +82,7 @@ CRAN, Travis) where the system clipboard may not be available. Thank you to
   - Implements genuine testing of clipr functionality with thanks to some deft 
   environment variable settings added by @jennybc.
   
-  - Two Rstudio addins: one to copy the _value_ returned when a highlighted 
+  - Two RStudio addins: one to copy the _value_ returned when a highlighted 
   expression is evaluated, and another that copies the _console output_.
   
   ## clipr 0.2.1
