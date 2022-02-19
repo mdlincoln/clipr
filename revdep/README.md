@@ -21,10 +21,3 @@
 |clipr   |0.7.1 |0.8.0 |*  |
 
 # Revdeps
-
-## Failed to check (1)
-
-|package |version |error |warning |note |
-|:-------|:-------|:-----|:-------|:----|
-|ltable  |2.0.1   |1     |        |     |
-
