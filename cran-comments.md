@@ -1,5 +1,5 @@
 This submission adds clipboard handlers for systems using Wayland, and modifies 
-calls on Windows with R>=4.2 to work with UTF-8 native encodings.
+calls on Windows with R>=4.2 to work with UTF-8 native encoding.
 
 ## Test environments 
 * local OS X install, R 4.1.2
