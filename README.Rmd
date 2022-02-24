@@ -37,17 +37,16 @@ remotes::install_github("mdlincoln/clipr")
 
 ## Usage
 
-``` {r}
-library("clipr")
-
-cb <- read_clip()
-```
-
 clipr is pipe-friendly, and will default to returning the same object that was passed in.
 
 ```{r pipe-friendly}
+library("clipr")
+
 res <- write_clip(c("Text", "for", "clipboard"))
 res
+
+cb <- read_clip()
+cb
 ```
 
 To capture the string that clipr writes to the clipboard, specify `return_new = TRUE`. Character vectors with length > 1 will be collapsed with system-appropriate line breaks, unless otherwise specified

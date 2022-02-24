@@ -29,19 +29,19 @@ remotes::install_github("mdlincoln/clipr")
 
 ## Usage
 
-``` r
-library("clipr")
-#> Welcome to clipr. See ?write_clip for advisories on writing to the clipboard in R.
-
-cb <- read_clip()
-```
-
 clipr is pipe-friendly, and will default to returning the same object
 that was passed in.
 
 ``` r
+library("clipr")
+#> Welcome to clipr. See ?write_clip for advisories on writing to the clipboard in R.
+
 res <- write_clip(c("Text", "for", "clipboard"))
 res
+#> [1] "Text"      "for"       "clipboard"
+
+cb <- read_clip()
+cb
 #> [1] "Text"      "for"       "clipboard"
 ```
 
