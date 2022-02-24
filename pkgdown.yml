@@ -1,0 +1,10 @@
+pandoc: 2.7.3
+pkgdown: 2.0.2
+pkgdown_sha: ~
+articles:
+  developing-with-clipr: developing-with-clipr.html
+last_built: 2022-02-24T11:50Z
+urls:
+  reference: http://matthewlincoln.net/clipr/reference
+  article: http://matthewlincoln.net/clipr/articles
+
