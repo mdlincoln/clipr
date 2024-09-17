@@ -9,5 +9,7 @@ mirror <- function(length) {
 }
 
 test_that("large sizes of content can be copied losslessly", {
+  skip_if_not(is_clipr_available, skip_msg)
+
   lapply(10^(1:8), mirror)
 })
