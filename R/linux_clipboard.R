@@ -5,15 +5,16 @@
 has_util <- function(util_test) {
   if (nzchar(Sys.which(util_test[1]))) {
     # If utility is accessible, check that DISPLAY can be opened.
-    try_res <- tryCatch(system2(util_test[1], util_test[-1], stdout = TRUE, stderr = TRUE),
-                        error = function(c) {
-                          print(c)
-                          return(FALSE)
-                        },
-                        warning = function(c) {
-                          print(c)
-                          return(FALSE)
-                        }
+    try_res <- tryCatch(
+      system2(util_test[1], util_test[-1], stdout = TRUE, stderr = FALSE),
+      error = function(c) {
+        print(c)
+        return(FALSE)
+      },
+      warning = function(c) {
+        print(c)
+        return(FALSE)
+      }
     )
 
     # In the case of an error/warning on trying the function, then the util is
@@ -41,7 +42,7 @@ has_wl_clipboard <- function() has_wl_paste() & has_wl_copy()
 has_wl_paste <- function() has_util(c("wl-paste", "--primary"))
 
 # Determine if system has 'wl-paste' installed
-has_wl_copy <- function() has_util(c("wl-copy", "--primary"))
+has_wl_copy <- function() has_util(c("wl-copy", "--primary", "clipboard"))
 
 # Stop read/write and return an error of missing clipboard software.
 notify_no_cb <- function() {
