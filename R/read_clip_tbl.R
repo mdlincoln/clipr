@@ -13,7 +13,8 @@
 #'   \item{`row.names`}{`1`}
 #'   \item{`stringsAsFactors`}{`FALSE`}
 #'   \item{`na.strings`}{`c("NA", "")`}
-#'   \item{`strip.white`}{`TRUE`} }
+#'   \item{`strip.white`}{`TRUE`}
+#'   \item{`quote`}{`""`} }
 #'
 #' @return A data frame with the contents of the clipboard. If the system
 #'   clipboard is empty, returns `NULL`
@@ -24,7 +25,7 @@ read_clip_tbl <- function(x = read_clip(), ...) {
     return(NULL)
 
   .dots <- list(...)
-  .dots$file <- textConnection(paste0(x, collapse = "\n"))
+  .dots$file <- textConnection(paste0(paste0(x, collapse = "\n"), "\n"))
 
   if (is.null(.dots$header))
     .dots$header <- TRUE
@@ -43,6 +44,8 @@ read_clip_tbl <- function(x = read_clip(), ...) {
     .dots$na.strings <- c("NA", "")
   if (is.null(.dots$strip.white))
     .dots$strip.white <- TRUE
+  if (is.null(.dots$quote))
+    .dots$quote <- ""
 
 
   do.call(utils::read.table, args = .dots)
