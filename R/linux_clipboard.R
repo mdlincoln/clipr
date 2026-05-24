@@ -41,8 +41,8 @@ has_wl_clipboard <- function() has_wl_paste() & has_wl_copy()
 # Determine if system has 'wl-paste' installed
 has_wl_paste <- function() has_util(c("wl-paste", "--primary"))
 
-# Determine if system has 'wl-paste' installed
-has_wl_copy <- function() has_util(c("wl-copy", "--primary", "clipboard"))
+# Determine if system has 'wl-copy' installed
+has_wl_copy <- function() has_util(c("wl-copy", "--help"))
 
 # Stop read/write and return an error of missing clipboard software.
 notify_no_cb <- function() {
