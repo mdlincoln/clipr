@@ -1,0 +1,205 @@
+# Changelog
+
+## clipr 0.8.0
+
+CRAN release: 2022-02-21
+
+- Add handlers for using the clipboard on systems using
+  [Wayland](https://wayland.freedesktop.org/) via
+  [wl-clipboard](https://github.com/bugaevc/wl-clipboard). Thank you to
+  [@nacnudus](https://github.com/nacnudus) for the PR.
+- For R \>= 4.2,
+  [`write_clip()`](http://matthewlincoln.net/clipr/reference/write_clip.md)
+  calls on Windows are modified to work well with R’s shift to
+  supporting UTF-8 as a native encoding on Windows. Thank you to
+  [@yutannihilation](https://github.com/yutannihilation) for the PR.
+  Read more here: <https://github.com/mdlincoln/clipr/issues/62>
+- Moved CI off of Travis and on to GitHub Actions
+- Clipr now has a pkgdown site at <https://matthewlincoln.net/clipr/>
+
+## clipr 0.7.1
+
+CRAN release: 2020-10-08
+
+- Call xsel with the `--output` flag, which prevents RStudio from
+  hanging when calling clipr functions on a system running certain Linux
+  window managers. Thank you to
+  [@cgillespie](https://github.com/cgillespie) and
+  [@kevinushey](https://github.com/kevinushey) for identifying the bug
+  and the solution, and to
+  [@hannahcgunderman](https://github.com/hannahcgunderman) for help in
+  testing.
+
+## clipr 0.7.0
+
+CRAN release: 2019-07-23
+
+Thank you to [@jennybc](https://github.com/jennybc) for prompting these
+changes:
+
+- Before attempting to read/write form the clipboard,
+  [`clipr_available()`](http://matthewlincoln.net/clipr/reference/clipr_available.md)
+  will first explicitly check if it is being run non-interactively, and
+  if so, if the `CLIPR_ALLOW` environment variable has been set. This
+  will hopefully prevent starting spurious Linux processes during CRAN
+  tests.
+- Out of an abundance of caution,
+  [`read_clip()`](http://matthewlincoln.net/clipr/reference/read_clip.md)
+  now does the same interactive/envvar check that
+  [`write_clip()`](http://matthewlincoln.net/clipr/reference/write_clip.md)
+  does.
+- Some documentation clarifications
+
+## clipr 0.6.0
+
+CRAN release: 2019-04-15
+
+Thank you to [@wangyuchen](https://github.com/wangyuchen) for making the
+following suggestions:
+
+- To make clipr more pipe-friendly,
+  [`write_clip()`](http://matthewlincoln.net/clipr/reference/write_clip.md)
+  now defaults to `return_new = FALSE`, and will instead return the
+  initial object that was passed in. To get the old behavior, pass
+  `return_new = TRUE`
+
+- In an effort to make
+  [`write_clip()`](http://matthewlincoln.net/clipr/reference/write_clip.md)
+  and
+  [`read_clip_tbl()`](http://matthewlincoln.net/clipr/reference/read_clip_tbl.md)
+  more symmetrical,
+  [`write_clip()`](http://matthewlincoln.net/clipr/reference/write_clip.md)
+  now defaults to writing out row and column names when they exist.
+
+- Introduces
+  [`write_last_clip()`](http://matthewlincoln.net/clipr/reference/write_last_clip.md),
+  a wrapper function for `write_clip(.Last.value)`
+
+## clipr 0.5.0
+
+CRAN release: 2019-01-11
+
+- To comply with CRAN policy,
+  [`write_clip()`](http://matthewlincoln.net/clipr/reference/write_clip.md)
+  will now error by default if run in a non-interactive session.
+  Non-interactive use must be explicitly enabled by setting an
+  environment variable `CLIPR_ALLOW=TRUE`.
+
+- Documented that the default behavior when writing matrices to
+  [`write_clip()`](http://matthewlincoln.net/clipr/reference/write_clip.md)
+  is `col.names = FALSE`
+
+## clipr 0.4.1
+
+CRAN release: 2018-06-23
+
+- Correct a formatting error by adding and separation character to
+  tables when they are being written with rownames.
+
+## clipr 0.4.0
+
+CRAN release: 2017-11-03
+
+- Introduces
+  [`dr_clipr()`](http://matthewlincoln.net/clipr/reference/clipr_available.md),
+  which gives informative suggestions for software and configuration
+  requirements when accessing the clipboard on X11-based systems.
+
+## clipr 0.3.3
+
+CRAN release: 2017-06-19
+
+- Due to poor testing and configuration options, clipr was not
+  delivering on its promised support for xsel :( This has now been
+  fixed, with more complete Travis tests, and some core fixes by
+  [@milesmcbain](https://github.com/milesmcbain).
+
+## clipr 0.3.2
+
+CRAN release: 2017-01-09
+
+- Suppress an erroneous warning on OS X / X11 systems when trying to
+  write an empty string to the clipboard.
+
+- Fix error when `NA` is passed to
+  [`write_clip()`](http://matthewlincoln.net/clipr/reference/write_clip.md).
+  This will now write `"NA"` to the clipboard.
+
+- Fix error when passing `NULL` or an empty vector
+  (e.g. `character(0)`). This will now write `""` to the clipboard.
+
+## clipr 0.3.1
+
+CRAN release: 2016-12-02
+
+- Fixes a breaking bug that caused `clipr_available` to erroneously
+  return `FALSE`. Thank you to [@krivit](https://github.com/krivit) for
+  catching this.
+
+- Introduces better testing of `clipr_available` to properly evaluate it
+  on Travis CI.
+
+## clipr 0.3.0
+
+CRAN release: 2016-11-19
+
+- Introduces `clipr_available` which checks to see if the system
+  clipboard is writeable/readable. This may be useful if you are
+  developing a package that relies on clipr and need to ensure that it
+  will skip tests on machines (e.g.  CRAN, Travis) where the system
+  clipboard may not be available. Thank you to
+  [@jennybc](https://github.com/jennybc) for this suggestion.
+
+  - Implements genuine testing of clipr functionality with thanks to
+    some deft environment variable settings added by
+    [@jennybc](https://github.com/jennybc).
+
+  - Two RStudio addins: one to copy the *value* returned when a
+    highlighted expression is evaluated, and another that copies the
+    *console output*.
+
+  ## clipr 0.2.1
+
+  CRAN release: 2016-11-19
+
+  - Introduces `read_clip_tbl`, a convenience function that takes
+    tab-delimited text from `read_clip` (such as that copied from a
+    spreadsheet) and parses it with `read.table`. Thank you to Steve
+    Simpson ([@data-steve](https://github.com/data-steve)) for the
+    original PR.
+
+  - `write_clip(object_type = "table")` has a new internal
+    implementation (writing to a temporary file rather than using
+    `capture.output`) which should dramatically shorten the time it
+    takes to write very large tables to the clipboard. Thank you to
+    [@r2evans](https://github.com/r2evans) for this suggestion.
+
+  ## clipr 0.2.0
+
+  CRAN release: 2016-11-19
+
+  - Several changes to `write_clip` - The separator to be used when
+    writing a character vector can now be explicitly declared using
+    `breaks`. `breaks=NULL` will default to system-specific line breaks
+    for both vectors and tables. - `write_clip` will default to
+    formatting data.frames and matrices with `write.table`, allowing
+    easy pasting of tabular objects into programs like Excel. Option
+    `object_type="auto"` will check the object type to decide on the
+    correct formatting, or the user may explicitly state
+    `object_type="table"` or `object_type="character"`. - clipr will
+    default to sane system-specific options for
+    [`write.table()`](https://rdrr.io/r/utils/write.table.html), however
+    you may pass any custom desired options via `write_clip` -
+    `return_new=TRUE` (the default behavior) will return the formatted
+    character string that was passed to the system clipboard, while
+    `write_clip(return_new=FALSE)` will return the original object.
+
+  - Introduces `clear_clip`, a wrapper function for `write_clip("")` for
+    easy clearing of the system clipboard.
+
+  ## clipr 0.1.1
+
+  CRAN release: 2016-11-19
+
+  - Bug fix that removes the explicit test for “Linux” in favor of a
+    check for “xclip” or “xsel”
