@@ -18,7 +18,8 @@ overridden by specifying them when calling \code{read_clip_tbl}: \describe{
 \item{\code{row.names}}{\code{1}}
 \item{\code{stringsAsFactors}}{\code{FALSE}}
 \item{\code{na.strings}}{\code{c("NA", "")}}
-\item{\code{strip.white}}{\code{TRUE}} }}
+\item{\code{strip.white}}{\code{TRUE}}
+\item{\code{quote}}{\code{""}} }}
 }
 \value{
 A data frame with the contents of the clipboard. If the system
