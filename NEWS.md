@@ -1,3 +1,9 @@
+## clipr 0.8.1
+
+- Fix `read_clip_tbl()` error with trailing newline and quote characters — append a trailing newline to clipboard content before passing to `read.table()`, and set default `quote=""` to prevent single quotes in headers from being interpreted as quote delimiters (#77)
+- Check for `wl-copy` non-destructively on Wayland systems, fixing clipboard detection issues (#75, @danielvartan)
+- Skip tests if clipr is not available (e.g. on CRAN build servers without a display)
+
 ## clipr 0.8.0
 
 - Add handlers for using the clipboard on systems using [Wayland](https://wayland.freedesktop.org/) via [wl-clipboard](https://github.com/bugaevc/wl-clipboard). Thank you to @nacnudus for the PR.
