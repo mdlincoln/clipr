@@ -76,6 +76,23 @@ test_that("Probable rownames are read", {
   expect_equal(read_clip_tbl(), mtcars)
 })
 
+test_that("read_clip_tbl handles content without trailing newline", {
+  skip_if_not(is_clipr_available, skip_msg)
+
+  x <- c("Name's\tAge", "Alice\t30", "Bob\t25")
+  tbl <- read_clip_tbl(x)
+  expect_equal(nrow(tbl), 2)
+  expect_equal(ncol(tbl), 2)
+  expect_equal(tbl[[1]], c("Alice", "Bob"))
+  expect_equal(tbl[[2]], c(30, 25))
+
+  x_no_special <- c("Name\tValue", "foo\t42")
+  tbl2 <- read_clip_tbl(x_no_special)
+  expect_equal(nrow(tbl2), 1)
+  expect_equal(tbl2[[1]], "foo")
+  expect_equal(tbl2[[2]], 42L)
+})
+
 test_that("Render custom data.frames", {
   skip_if_not(is_clipr_available, skip_msg)
 

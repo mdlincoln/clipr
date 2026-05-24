@@ -1,3 +1,7 @@
+#' @keywords internal
+"_PACKAGE"
+
+## usethis namespace: start
 #' clipr: Read and Write from the System Clipboard
 #'
 #' Simple utility functions to read from and write to the Windows, OS X, and X11
@@ -11,6 +15,6 @@
 #' [clipr_available()] is useful when building packages that
 #' depend on clipr functionality.
 #'
-#' @docType package
 #' @name clipr
+## usethis namespace: end
 NULL

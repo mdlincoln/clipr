@@ -3,11 +3,15 @@
 
 # clipr
 
-[![CRAN
-status.](https://www.r-pkg.org/badges/version/clipr)](https://www.r-pkg.org/pkg/clipr)
-![Downloads, grand
-total](https://cranlogs.r-pkg.org/badges/grand-total/clipr)
+<!-- badges: start -->
+
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/clipr)](https://cran.r-project.org/package=clipr)
+[![Downloads, grand
+total](http://cranlogs.r-pkg.org/badges/grand-total/clipr)](https://cranlogs.r-pkg.org/)
 [![R-CMD-check](https://github.com/mdlincoln/clipr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mdlincoln/clipr/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/mdlincoln/clipr/branch/master/graph/badge.svg)](https://app.codecov.io/gh/mdlincoln/clipr?branch=master)
+<!-- badges: end -->
 
 Simple utility functions to read and write from the system clipboards of
 Windows, OS X, and Unix-like systems (which require either xclip or
@@ -51,6 +55,7 @@ collapsed with system-appropriate line breaks, unless otherwise
 specified
 
 ``` r
+
 cb <- write_clip(c("Text", "for", "clipboard"), return_new = TRUE)
 cb
 #> [1] "Text\nfor\nclipboard"
