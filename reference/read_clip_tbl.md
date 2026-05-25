@@ -51,6 +51,10 @@ read_clip_tbl(x = read_clip(), ...)
 
   :   `TRUE`
 
+  `quote`
+
+  :   `""`
+
 ## Value
 
 A data frame with the contents of the clipboard. If the system clipboard

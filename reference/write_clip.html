@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">clipr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Write clipboard</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mdlincoln/clipr/blob/main/R/clipboard.R" class="external-link"><code>R/clipboard.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mdlincoln/clipr/blob/v0.8.1/R/clipboard.R" class="external-link"><code>R/clipboard.R</code></a></small>
       <div class="d-none name"><code>write_clip.Rd</code></div>
     </div>
 
@@ -114,7 +114,7 @@ xsel to be called. Be aware that, by design, these processes will fork into
 the background. They will run until the next paste event, when they will
 then exit silently. (See the man pages for
 <a href="https://linux.die.net/man/1/xclip" class="external-link">xclip</a> and
-<a href="http://www.vergenet.net/~conrad/software/xsel/xsel.1x.html#notes" class="external-link">xsel</a>
+<a href="https://www.vergenet.net/~conrad/software/xsel/xsel.1x.html#notes" class="external-link">xsel</a>
 for more on their behaviors.) However, this means that even if you
 terminate your R session after running <code>write_clip()</code>, those processes will
 continue until you access the clipboard via another program. This may be

@@ -74,7 +74,7 @@ xsel to be called. Be aware that, by design, these processes will fork
 into the background. They will run until the next paste event, when they
 will then exit silently. (See the man pages for
 [xclip](https://linux.die.net/man/1/xclip) and
-[xsel](http://www.vergenet.net/~conrad/software/xsel/xsel.1x.html#notes)
+[xsel](https://www.vergenet.net/~conrad/software/xsel/xsel.1x.html#notes)
 for more on their behaviors.) However, this means that even if you
 terminate your R session after running `write_clip()`, those processes
 will continue until you access the clipboard via another program. This

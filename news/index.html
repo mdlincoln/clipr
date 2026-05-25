@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">clipr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,9 +33,15 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/mdlincoln/clipr/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/mdlincoln/clipr/blob/v0.8.1/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.8.1" id="clipr-081">clipr 0.8.1<a class="anchor" aria-label="anchor" href="#clipr-081"></a></h2><p class="text-muted">CRAN release: 2026-05-25</p>
+<ul><li>Fix <code><a href="../reference/read_clip_tbl.html">read_clip_tbl()</a></code> error with trailing newline and quote characters — append a trailing newline to clipboard content before passing to <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table()</a></code>, and set default <code>quote=""</code> to prevent single quotes in headers from being interpreted as quote delimiters (<a href="https://github.com/mdlincoln/clipr/issues/77" class="external-link">#77</a>)</li>
+<li>Check for <code>wl-copy</code> non-destructively on Wayland systems, fixing clipboard detection issues (<a href="https://github.com/mdlincoln/clipr/issues/75" class="external-link">#75</a>, <a href="https://github.com/danielvartan" class="external-link">@danielvartan</a>)</li>
+<li>Skip tests if clipr is not available (e.g. on CRAN build servers without a display)</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.8.0" id="clipr-080">clipr 0.8.0<a class="anchor" aria-label="anchor" href="#clipr-080"></a></h2><p class="text-muted">CRAN release: 2022-02-21</p>
 <ul><li>Add handlers for using the clipboard on systems using <a href="https://wayland.freedesktop.org/" class="external-link">Wayland</a> via <a href="https://github.com/bugaevc/wl-clipboard" class="external-link">wl-clipboard</a>. Thank you to <a href="https://github.com/nacnudus" class="external-link">@nacnudus</a> for the PR.</li>

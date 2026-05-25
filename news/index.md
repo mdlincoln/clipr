@@ -1,5 +1,24 @@
 # Changelog
 
+## clipr 0.8.1
+
+CRAN release: 2026-05-25
+
+- Fix
+  [`read_clip_tbl()`](http://matthewlincoln.net/clipr/reference/read_clip_tbl.md)
+  error with trailing newline and quote characters — append a trailing
+  newline to clipboard content before passing to
+  [`read.table()`](https://rdrr.io/r/utils/read.table.html), and set
+  default `quote=""` to prevent single quotes in headers from being
+  interpreted as quote delimiters
+  ([\#77](https://github.com/mdlincoln/clipr/issues/77))
+- Check for `wl-copy` non-destructively on Wayland systems, fixing
+  clipboard detection issues
+  ([\#75](https://github.com/mdlincoln/clipr/issues/75),
+  [@danielvartan](https://github.com/danielvartan))
+- Skip tests if clipr is not available (e.g. on CRAN build servers
+  without a display)
+
 ## clipr 0.8.0
 
 CRAN release: 2022-02-21
