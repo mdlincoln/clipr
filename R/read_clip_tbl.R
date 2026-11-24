@@ -14,7 +14,9 @@
 #'   \item{`stringsAsFactors`}{`FALSE`}
 #'   \item{`na.strings`}{`c("NA", "")`}
 #'   \item{`strip.white`}{`TRUE`}
-#'   \item{`quote`}{`""`} }
+#'   \item{`quote`}{`""`}
+#'   \item{`comment.char`}{`""`} }
+#'   Set `comment.char` explicitly to treat part of a pasted line as a comment.
 #'
 #' @return A data frame with the contents of the clipboard. If the system
 #'   clipboard is empty, returns `NULL`
@@ -47,6 +49,8 @@ read_clip_tbl <- function(x = read_clip(), ...) {
   if (is.null(.dots$quote))
     .dots$quote <- ""
 
-
-  do.call(utils::read.table, args = .dots)
+  # Set the default on a local copy so read.table() still matches the arguments.
+  read_table <- utils::read.table
+  formals(read_table)[["comment.char"]] <- ""
+  do.call(read_table, args = .dots)
 }
