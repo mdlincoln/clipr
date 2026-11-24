@@ -32,3 +32,17 @@ test_that("utility checking works on Linux-like", {
     expect_false(has_wl_clipboard())
   }
 })
+
+test_that("failed utility probes do not print conditions", {
+  probe <- has_util
+  probe_env <- new.env(parent = environment(probe))
+  probe_env$Sys.which <- function(...) "/usr/bin/xclip"
+  environment(probe) <- probe_env
+  command <- c("xclip", "-o", "-selection", "clipboard")
+
+  probe_env$system2 <- function(...) warning("xclip exited with status 1")
+  expect_silent(expect_error(probe(command), msg_no_display(), fixed = TRUE))
+
+  probe_env$system2 <- function(...) stop("Failed to execute xclip")
+  expect_silent(expect_error(probe(command), msg_no_display(), fixed = TRUE))
+})

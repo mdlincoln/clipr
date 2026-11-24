@@ -7,14 +7,8 @@ has_util <- function(util_test) {
     # If utility is accessible, check that DISPLAY can be opened.
     try_res <- tryCatch(
       system2(util_test[1], util_test[-1], stdout = TRUE, stderr = FALSE),
-      error = function(c) {
-        print(c)
-        return(FALSE)
-      },
-      warning = function(c) {
-        print(c)
-        return(FALSE)
-      }
+      error = function(c) FALSE,
+      warning = function(c) FALSE
     )
 
     # In the case of an error/warning on trying the function, then the util is
