@@ -19,7 +19,9 @@ overridden by specifying them when calling \code{read_clip_tbl}: \describe{
 \item{\code{stringsAsFactors}}{\code{FALSE}}
 \item{\code{na.strings}}{\code{c("NA", "")}}
 \item{\code{strip.white}}{\code{TRUE}}
-\item{\code{quote}}{\code{""}} }}
+\item{\code{quote}}{\code{""}}
+\item{\code{comment.char}}{\code{""}} }
+Set \code{comment.char} explicitly to treat part of a pasted line as a comment.}
 }
 \value{
 A data frame with the contents of the clipboard. If the system
